@@ -1,4 +1,4 @@
-window.FH6_UPDATED = "2026-11-13";
+window.FH6_UPDATED = "2026-11-14";
 window.FH6_RAW = [
  {"y":2024,"mk":"Ford","md":"Mustang Dark Horse","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","lc":"A","tire":"Sport","sp":669,"lp":685,"hp":500,"tq":418,"wt":3949,"fw":54,"cc":5038,"z60":3.733,"z100":8.367,"top":182.3,"rS":[7,5.7,5.6,4.9,5,5.3],"ep":"Modern Mustang"},
  {"y":2024,"mk":"Ford","md":"Mustang GT","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","body":"Rear wing removed","lc":"A","tire":"Sport","sp":631,"lp":666,"hp":486,"tq":418,"wt":3823,"fw":53,"cc":5038,"z60":3.967,"z100":8.733,"top":194.2,"rS":[7.1,5.1,5.2,5.2,4.3,5.4],"ep":"Modern Mustang"},
@@ -654,5 +654,6 @@ window.FH6_RAW = [
  {"y":2022,"mk":"Wuling","md":"Hongguang Mini EV","co":"China","ty":"Hot Hatch","sc":"D","sp":100},
  {"y":2013,"mk":"Wuling","md":"Sunshine S","co":"China","ty":"Utility Heroes","sc":"D","sp":107},
  {"y":2013,"mk":"Wuling","md":"Sunshine S Forza Edition","co":"China","ty":"Track Toys","sc":"S1","sp":800},
- {"y":2019,"mk":"Zenvo","md":"TSR-S","co":"Denmark","ty":"Hypercars","sc":"R","sp":906}
+ {"y":2019,"mk":"Zenvo","md":"TSR-S","co":"Denmark","ty":"Hypercars","sc":"R","sp":906},
+ {"y":2011,"mk":"Alfa Romeo","md":"Giulietta","co":"Italy","sc":"C","sf":"2:05.576","sp":498}
 ];
