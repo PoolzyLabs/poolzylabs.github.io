@@ -233,7 +233,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="tag"><span class="dot"></span>Forza Horizon 6 · Test Bench · Method v2</div>
     <h1>One car.<br><em>One day.</em><br>Sunrise to lights out.</h1>
-    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for a sprint through the sunflower fields, laps Hokubu at sunset, then bolts on semi-slicks for seven laps of Legend Island under the lights. Same driver, same rules, every time. The lab was just rebuilt, so fresh results are rolling in.</p>
+    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for the Sunrise Sprint, laps Hokubu at Golden Hour, then bolts on semi-slicks for 7 Laps in Heaven around Legend Island under the lights. Same driver, same rules, every time. The lab was just rebuilt, so fresh results are rolling in.</p>
     <div class="tiles" id="tiles"></div>
   </div>
 </header>
@@ -244,8 +244,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="sh">
     <div><div class="num">01 / LEADERBOARDS</div><h2>Class Rankings</h2></div>
     <div class="seg" id="lbseg">
-      <button data-v="sf" class="on">Sunflower Sunrise Sprint</button>
-      <button data-v="hok">Hokubu · 5 laps</button>
+      <button data-v="sf" class="on">Sunrise Sprint</button>
+      <button data-v="hok">Golden Hour</button>
       <button data-v="li7">7 Laps in Heaven</button>
     </div>
   </div>
@@ -262,9 +262,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <input class="search" id="q" type="search" placeholder="Search make, model, year..." aria-label="Search cars">
     <div class="chips" id="chips"></div>
     <select id="sort" aria-label="Sort cars">
-      <option value="sf">Sort: Sunflower Sprint</option>
-      <option value="hok">Sort: Hokubu lap</option>
-      <option value="li7">Sort: 7 Laps in Heaven</option>
+      <option value="sf">Sort: Sprint time</option>
+      <option value="hok">Sort: Hokubu fastest lap</option>
+      <option value="li7">Sort: Heaven 7-lap total</option>
       <option value="pi">Sort: PI (high to low)</option>
       <option value="gain">Sort: Tire PI gain</option>
       <option value="year">Sort: Year (oldest)</option>
@@ -326,10 +326,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <p>Anyone with FH6 can replicate every number on this page. That's the point.</p>
   </div>
   <div class="mgrid">
-    <div class="mcard"><div class="n">01</div><h3>Sunflower Sunrise Sprint</h3><p>Sunrise. A solo point-to-point sprint on the car's stock tires, standing start, no traffic. A sprint, so its times aren't comparable to lap times.</p></div>
-    <div class="mcard"><div class="n">02</div><h3>Hokubu × 5</h3><p>Sunset. A solo five-lap private event on stock tires. The first laps warm the tires; the fastest lap is the result. Body panel changes are allowed and logged.</p></div>
-    <div class="mcard"><div class="n">03</div><h3>7 Laps in Heaven</h3><p>Night. The final test: semi-slicks go on for a solo seven-lap race around Legend Island. The 7-lap total is the result.</p></div>
-    <div class="mcard"><div class="n">AI</div><h3>Same Driver Every Time</h3><p>Every lap is driven by ANNA at Unbeatable, so the times show the car, not the driver. Manual gearbox, launch control on, simulation steering, damage off, fall, dry, no traffic. ABS, traction and stability settings are being finalized.</p></div>
+    <div class="mcard"><div class="n">01</div><h3>Sunrise Sprint</h3><p>Sunflower Charge route, Hokubu region. A solo standing-start sprint on the car's stock tires with every assist on, like the owner would drive it. Result: time. A sprint, so it isn't comparable to lap times.</p></div>
+    <div class="mcard"><div class="n">02</div><h3>Golden Hour</h3><p>Hokubu Circuit at sunset. Five solo laps on stock tires with ABS on and traction and stability off, like a sport mode. The first laps warm the tires. Result: fastest lap.</p></div>
+    <div class="mcard"><div class="n">03</div><h3>7 Laps in Heaven</h3><p>Legend Island Circuit at night. The final test: semi-slicks go on and every assist comes off for a solo seven-lap race. Result: 7-lap total.</p></div>
+    <div class="mcard"><div class="n">AI</div><h3>Same Driver Every Time</h3><p>Every lap is driven by ANNA at Unbeatable, so the times show the car, not the driver. Manual gearbox, launch control on, simulation steering, damage off, fall, dry, no traffic. Body changes, like a removed wing, are logged and apply to all three tests.</p></div>
     <div class="mcard"><div class="n">±.017</div><h3>Timing Precision</h3><p>Times are accurate to about 0.017s, one 60 Hz frame. Gaps smaller than that are a tie.</p></div>
     <div class="mcard"><div class="n">R</div><h3>What's Left Out</h3><p>R class is mostly purpose-built track cars, so it isn't ranked yet. Listed R cars are for reference.</p></div>
   </div>
@@ -1050,8 +1050,8 @@ function hideTip(){ tip.style.opacity=0; }
   const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First v2 runs coming soon",a:"var(--ink3)"}; };
   const T = [
     {k:"Cars on the bench",v:tested,s:`${runs} completed v2 test runs`,a:"var(--acid)"},
-    rec("Sunflower Sprint record","sfS","sc"),
-    rec("Hokubu record (non-R)","hokS","sc"),
+    rec("Sunrise Sprint record","sfS","sc"),
+    rec("Golden Hour record","hokS","sc"),
     rec("7 Laps in Heaven record","li7S","lc"),
   ];
   document.getElementById("tiles").innerHTML = T.map(t=>`<div class="tile" style="--acc:${t.a}"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="s">${esc(t.s)}</div></div>`).join("");
@@ -1103,7 +1103,7 @@ function card(c){
     <div class="nm"><div class="mk">${c.y} · ${esc(c.mk)}</div><div class="md">${esc(c.md)}</div></div>
     <div class="mid">
       <div class="reads">
-        ${rd("SUNFLOWER","sfS","sc")}${rd("HOKUBU","hokS","sc")}${rd("LEGEND ×7","li7S","lc")}
+        ${rd("SPRINT","sfS","sc")}${rd("HOKUBU","hokS","sc")}${rd("HEAVEN","li7S","lc")}
       </div>
       ${radar(c)}
     </div>
@@ -1138,9 +1138,9 @@ function openCar(id){
     </div>
     <div class="bd">
       <div>
-        <div class="read" style="margin-bottom:8px"><div class="l"><span>SUNFLOWER SUNRISE SPRINT · STOCK</span>${c.sfS?`<span>#${c.sfSR} in ${c.sc}</span>`:""}</div>${c.sfS?`<div class="t">${fmt(c.sfS)}</div>`:pend()}</div>
-        <div class="read" style="margin-bottom:8px"><div class="l"><span>HOKUBU · 5 LAPS · STOCK</span>${c.hokS?`<span>#${c.hokSR} in ${c.sc}</span>`:""}</div>${c.hokS?`<div class="t">${fmt(c.hokS)}</div>`:pend()}${c.body?`<div class="l" style="margin-top:4px"><span>BODY: ${esc(c.body).toUpperCase()}</span></div>`:""}</div>
-        <div class="read"><div class="l"><span>7 LAPS IN HEAVEN · SEMI-SLICKS</span>${c.li7S?`<span>#${c.li7SR} in ${c.lc}</span>`:""}</div>${c.li7S?`<div class="t">${fmt(c.li7S)}</div>`:pend()}</div>
+        <div class="read" style="margin-bottom:8px"><div class="l"><span>SUNRISE SPRINT · TIME</span>${c.sfS?`<span>#${c.sfSR} in ${c.sc}</span>`:""}</div>${c.sfS?`<div class="t">${fmt(c.sfS)}</div>`:pend()}</div>
+        <div class="read" style="margin-bottom:8px"><div class="l"><span>GOLDEN HOUR · FASTEST LAP</span>${c.hokS?`<span>#${c.hokSR} in ${c.sc}</span>`:""}</div>${c.hokS?`<div class="t">${fmt(c.hokS)}</div>`:pend()}${c.body?`<div class="l" style="margin-top:4px"><span>BODY: ${esc(c.body).toUpperCase()}</span></div>`:""}</div>
+        <div class="read"><div class="l"><span>7 LAPS IN HEAVEN · 7-LAP TOTAL</span>${c.li7S?`<span>#${c.li7SR} in ${c.lc}</span>`:""}</div>${c.li7S?`<div class="t">${fmt(c.li7S)}</div>`:pend()}</div>
         ${spec.length?`<table class="spec" style="margin-top:14px">${spec.map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join("")}</table>`:""}
       </div>
       <div>
@@ -1163,9 +1163,9 @@ document.getElementById("lbseg").addEventListener("click",e=>{ const b=e.target.
 function renderLB(){
   const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="li7"?"lc":"sc";
   document.getElementById("lbnote").textContent = {
-    sf:"Point-to-point sprint at sunrise on stock tires, grouped by stock class. Bars show the gap to the class leader.",
-    hok:"Fastest lap of a five-lap run at sunset on stock tires, grouped by stock class. Bars show the gap to the class leader.",
-    li7:"Seven-lap total at night on semi-slicks, grouped by semi-slick class. Bars show the gap to the class leader."}[lbMode];
+    sf:"Sunflower Charge route, Hokubu region. Time for a standing-start sprint at sunrise on stock tires, grouped by stock class. Bars show the gap to the class leader.",
+    hok:"Hokubu Circuit. Fastest lap of five at sunset on stock tires, grouped by stock class. Bars show the gap to the class leader.",
+    li7:"Legend Island Circuit. 7-lap total at night on semi-slicks, grouped by semi-slick class. Bars show the gap to the class leader."}[lbMode];
   const groups={}; CARS.filter(c=>c[key]!=null).forEach(c=>(groups[c[ck]] ||= []).push(c));
   const order = CLASSES.filter(k=>groups[k]).reverse();
   if(!order.length){ document.getElementById("lbgrid").innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;padding:40px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">The method was just rebuilt, so every car is being re-run. First v2 results land here soon.</p></div>`; return; }
@@ -1277,7 +1277,7 @@ renderLB();
       const best=Math.min(...have.map(x=>x.c[key])), worst=Math.max(...have.map(x=>x.c[key])); const span=Math.max(worst-best,0.5);
       return `<div class="metric"><h4>${title}</h4>${sel.map(x=>{ const v=x.c[key]; if(v==null) return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><span>${pend()}</span><span></span></div>`;
         const gap=v-best; return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><div class="track"><i style="background:${PCOL[x.i]};width:${gap===0?100:Math.max(8,100-gap/span*70)}%"></i></div><span class="val">${fmtf(v)}<br><small>${gap===0?"FASTEST":"+"+gap.toFixed(3)+"s"}</small></span></div>`; }).join("")}</div>`; };
-    document.getElementById("sdtimes").innerHTML = metric("Sunflower Sunrise Sprint","sfS",fmt)+metric("Hokubu · 5 laps","hokS",fmt)+metric("7 Laps in Heaven","li7S",fmt);
+    document.getElementById("sdtimes").innerHTML = metric("Sunrise Sprint · time","sfS",fmt)+metric("Golden Hour · fastest lap","hokS",fmt)+metric("7 Laps in Heaven · 7-lap total","li7S",fmt);
     const rat = sel.some(x=>x.c.rS) ? `<div class="metric"><h4>Stock ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.c.rS?x.c.rS[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars yet.</p>`;
     document.getElementById("sdrat").innerHTML = rat;
     const rows=[["Year","y",v=>v],["Stock class","sp",(v,c)=>c.sc+" "+v],["Semi-slick class","lp",(v,c)=>v?c.lc+" "+v:"n/a"],["Drivetrain","dt",v=>v||"n/a"],["Power","hp",v=>v?v+" hp":"n/a"],["Weight","wt",v=>v?v.toLocaleString()+" lb":"n/a"],["0-60 mph","z60",v=>v?v.toFixed(3)+" s":"n/a"],["Top speed","top",v=>v?v+" mph":"n/a"]];
@@ -1286,7 +1286,7 @@ renderLB();
     const v=document.getElementById("verdict");
     if(sel.length<2){ v.innerHTML="Pick at least two cars to start a showdown."; return; }
     const win=(k)=>{ const h=sel.filter(x=>x.c[k]!=null); if(h.length<2) return null; return h.sort((p,q)=>p.c[k]-q.c[k])[0].c; };
-    const ws=[["sfS","the Sunflower Sprint"],["hokS","Hokubu"],["li7S","7 Laps in Heaven"]].map(([k,n])=>({w:win(k),n})).filter(x=>x.w);
+    const ws=[["sfS","the Sunrise Sprint"],["hokS","Golden Hour"],["li7S","7 Laps in Heaven"]].map(([k,n])=>({w:win(k),n})).filter(x=>x.w);
     const parts=ws.map(x=>`<b>${esc(x.w.md)}</b> takes ${x.n}`);
     const sweep = ws.length===3 && ws.every(x=>x.w.id===ws[0].w.id);
     v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared tests between these cars yet. Check back soon.";
