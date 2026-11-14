@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poolzy Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=JetBrains+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#172426;--s1:#1E2E30;--line:#33494B;--ink:#E1DEE3;--ink2:#A9B6B7;--ink3:#748A8C;--teal:#1AB5C0;--acid:#98CE00}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px}
+.wrap{max-width:720px;width:100%}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Chakra Petch",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
+.logo b{color:var(--teal)}
+h1{font-family:"Chakra Petch",sans-serif;font-size:clamp(40px,8vw,72px);line-height:.95;text-transform:uppercase;margin:28px 0 14px}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+p{color:var(--ink2);font-size:17px;line-height:1.6;max-width:560px}
+.card{display:block;margin-top:32px;padding:22px 24px;background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:14px;color:var(--ink);text-decoration:none;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:var(--teal)}
+.k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--teal);text-transform:uppercase}
+.t{font-family:"Chakra Petch",sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;margin-top:6px}
+.s{color:var(--ink3);font-size:14px;margin-top:4px}
+footer{margin-top:40px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.1em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1AB5C0" stroke-width="1.8" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10" stroke-dasharray="2 2"/></svg>Poolzy <b>Labs</b></div>
+  <h1>Learning the world<br><em>through games.</em></h1>
+  <p>Shows, experiments and data from the lab. First up: every car in Forza Horizon 6, put through the same test day.</p>
+  <a class="card" href="fh6/">
+    <div class="k">Now testing</div>
+    <div class="t">FH6 Test Bench</div>
+    <div class="s">Leaderboards, lab reports and showdowns for every car in the game.</div>
+  </a>
+  <footer>POOLZY LABS</footer>
+</div>
+</body>
+</html>

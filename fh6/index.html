@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poolzy Labs: FH6 Test Bench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --bg:#172426; --s1:#1E2E30; --s2:#233537; --s3:#293E40; --line:#33494B; --line2:#415A5C;
+  --ink:#E1DEE3; --ink2:#A9B6B7; --ink3:#748A8C;
+  --acid:#98CE00; --acid-dim:rgba(152,206,0,.14); --teal:#1AB5C0;
+  --cD:#4fc3d9; --cC:#d9b23a; --cB:#e0702e; --cA:#e0434f; --cS1:#9a6cf0; --cS2:#3a92e0; --cX:#2fb86b; --cR:#d64aa0;
+  --p1:#1AB5C0; --p2:#D97757; --p3:#896279;
+  --mono:'JetBrains Mono',ui-monospace,monospace; --disp:'Chakra Petch',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:32px 32px;}
+a{color:var(--acid)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:20;background:rgba(23,36,38,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:56px}
+.logo{font-family:var(--disp);font-weight:700;letter-spacing:.08em;font-size:15px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo .flask{width:22px;height:22px}
+.logo b{color:var(--teal)}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+nav ul a{display:block;padding:6px 12px;border-radius:6px;color:var(--ink2);text-decoration:none;font-family:var(--disp);font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+nav ul a:hover,nav ul a.on{color:var(--ink);background:var(--s3)}
+
+/* HERO */
+.hero{padding:72px 0 40px;position:relative;overflow:hidden}
+.hero .tag{font-family:var(--mono);font-size:12px;color:var(--acid);letter-spacing:.16em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.hero .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.hero h1{font-family:var(--disp);font-size:clamp(44px,7vw,92px);line-height:.92;margin:18px 0 18px;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--ink2)}
+.hero p.lede{max-width:640px;color:var(--ink2);font-size:17px;margin:0}
+.hero .ghost{position:absolute;right:-40px;top:30px;font-family:var(--mono);font-size:220px;font-weight:700;color:rgba(255,255,255,.025);pointer-events:none;letter-spacing:-.04em}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.tile{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;position:relative;overflow:hidden}
+.tile::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc,var(--acid))}
+.tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.tile .v{font-family:var(--mono);font-size:34px;font-weight:700;margin:6px 0 2px;letter-spacing:-.02em}
+.tile .s{font-size:13px;color:var(--ink2)}
+
+/* SECTIONS */
+section{padding:56px 0 24px;scroll-margin-top:56px}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px;flex-wrap:wrap}
+.sh .num{font-family:var(--mono);color:var(--acid);font-size:12px;letter-spacing:.16em}
+.sh h2{font-family:var(--disp);font-size:36px;margin:4px 0 0;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.sh p{color:var(--ink2);max-width:520px;margin:0;font-size:14px}
+.panel{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:22px}
+
+/* CONTROLS */
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.search{flex:1 1 220px;max-width:320px;background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:9px 12px;color:var(--ink);font:inherit;font-size:14px}
+.search:focus,select:focus{outline:2px solid var(--acid);outline-offset:1px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--s1);color:var(--ink2);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.chip .sw{width:8px;height:8px;border-radius:2px;background:var(--c)}
+.chip.on{border-color:var(--ink2);color:var(--ink);background:var(--s3)}
+select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px}
+.seg{display:inline-flex;background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:3px}
+.seg button{background:none;border:0;color:var(--ink2);font-family:var(--disp);font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:6px 12px;border-radius:6px;cursor:pointer}
+.seg button.on{background:var(--s3);color:var(--ink)}
+.count{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-left:auto}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));gap:14px}
+.card{display:flex;flex-direction:column;justify-content:flex-start;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;cursor:pointer;position:relative;overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s;text-align:left;color:inherit;font:inherit}
+.card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--cc);box-shadow:0 10px 30px -12px var(--cc);outline:none}
+.card::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(var(--cc),transparent 70%);opacity:.12}
+.card .top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.08em}
+.card .nm{margin:10px 0 12px}
+.card .yr{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.card .mk{font-family:var(--disp);font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2)}
+.card .md{font-family:var(--disp);font-size:22px;font-weight:700;line-height:1.05;text-transform:uppercase}
+.card .mid{display:flex;gap:12px;align-items:center}
+.reads{flex:1;display:grid;gap:8px}
+.read{background:var(--s2);border-radius:8px;padding:7px 10px}
+.read .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink3);display:flex;justify-content:space-between;gap:8px}
+.read .t{font-family:var(--mono);font-size:19px;font-weight:700;letter-spacing:-.01em}
+.read .rkb{color:var(--ink2)}
+.read .l span{white-space:nowrap}
+.read .t small{font-size:11px;font-weight:400;color:var(--ink2);margin-left:6px}
+.pending{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--acid);padding:3px 0;
+  background:repeating-linear-gradient(135deg,transparent 0 6px,var(--acid-dim) 6px 12px);border-radius:4px;display:inline-block;padding:3px 8px;margin-top:2px}
+.cls{display:inline-flex;align-items:center;border-radius:5px;overflow:hidden;font-family:var(--mono);font-size:11px;font-weight:700;line-height:1}
+.cls .L{background:var(--c);color:#172426;padding:4px 6px}
+.cls .P{background:var(--s3);color:var(--ink);padding:4px 6px}
+.clsrow{display:flex;align-items:center;gap:6px;margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.clsrow .arrow{color:var(--ink3)}
+.clsrow .gain{margin-left:auto;color:var(--acid)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.etag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;border:1px solid var(--line2);color:var(--ink2);padding:2px 7px;border-radius:4px;text-transform:uppercase}
+.etag.ep{border-color:var(--acid);color:var(--acid)}
+
+/* LEADERBOARDS */
+.lbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.lb{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.lb h3{margin:0;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);font-family:var(--disp);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.lb h3 .big{font-family:var(--mono);font-weight:700;background:var(--c);color:#172426;border-radius:5px;padding:2px 8px;font-size:14px}
+.lb h3 span.n{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.08em}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr) 72px 104px;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer}
+.row:hover{background:var(--s2)}
+.row:last-child{border-bottom:0}
+.row .rk{font-family:var(--mono);font-weight:700;color:var(--ink3)}
+.row.first .rk{color:var(--acid)}
+.row .cn{font-size:13px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .cn small{display:block;color:var(--ink3);font-family:var(--mono);font-size:10px}
+.row .tm{font-family:var(--mono);font-weight:700;font-size:14px;text-align:right}
+.gapbar{position:relative;height:16px}
+.gapbar i{position:absolute;left:0;top:6px;max-width:44%;height:6px;border-radius:0 3px 3px 0;background:var(--c);opacity:.85}
+.gapbar b{position:absolute;right:0;top:0;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink2)}
+.crown{font-family:var(--mono);font-size:10px;color:var(--acid);letter-spacing:.1em}
+
+/* CHART PANELS */
+.two{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+.callout{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.callout .big{font-family:var(--disp);font-size:26px;font-weight:700;text-transform:uppercase;line-height:1.05}
+.callout .v{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--acid);line-height:1}
+.mini{display:grid;gap:8px}
+.mini .r{display:grid;grid-template-columns:80px 1fr 48px;gap:10px;align-items:center;font-size:13px}
+.mini .r .bar{height:8px;background:var(--s3);border-radius:4px;overflow:hidden}
+.mini .r .bar i{display:block;height:100%;background:var(--acid);border-radius:0 4px 4px 0}
+.mini .r .n{font-family:var(--mono);font-size:12px;text-align:right}
+svg text{font-family:var(--mono)}
+.axis text{fill:var(--ink3);font-size:11px}
+.axis line,.axis path{stroke:var(--line)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:10px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.list .it{display:grid;grid-template-columns:24px 1fr auto;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center;font-size:13px;cursor:pointer}
+.list .it:last-child{border-bottom:0}
+.list .it .d{font-family:var(--mono);font-weight:700}
+.up{color:var(--acid)} .dn{color:#D97757}
+
+/* SHOWDOWN */
+.sdpick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.sdpick label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink3);margin-bottom:6px}
+.sdpick label i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sdpick select{width:100%}
+.sdgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.metric{margin-bottom:16px}
+.metric h4{margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink3);font-weight:500;text-transform:uppercase}
+.mrow{display:grid;grid-template-columns:140px 1fr 86px;gap:10px;align-items:center;margin-bottom:6px;font-size:13px}
+.mrow .nm{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.mrow .track{height:14px;background:var(--s3);border-radius:3px;position:relative}
+.mrow .track i{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0}
+.mrow .val{font-family:var(--mono);font-size:13px;text-align:right}
+.mrow .val small{color:var(--ink3)}
+.verdict{border:1px dashed var(--acid);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--ink2);margin-bottom:14px}
+.verdict b{color:var(--ink)}
+.spec{width:100%;border-collapse:collapse;font-size:13px}
+.spec th,.spec td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--mono)}
+.spec th:first-child,.spec td:first-child{text-align:left;font-family:var(--body);color:var(--ink2)}
+.spec th{font-weight:500;color:var(--ink2);font-size:12px}
+
+/* METHOD */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mcard{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px}
+.mcard .n{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--acid);line-height:1}
+.mcard h3{font-family:var(--disp);text-transform:uppercase;margin:10px 0 6px;font-size:18px}
+.mcard p{margin:0;color:var(--ink2);font-size:14px}
+
+footer{border-top:1px solid var(--line);margin-top:56px;padding:28px 0 48px;color:var(--ink3);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(12,20,21,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.sheet{background:var(--s1);border:1px solid var(--line2);border-radius:18px;max-width:820px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.sheet .hd{padding:22px 24px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.sheet .hd::after{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(var(--cc),transparent 70%);opacity:.2}
+.sheet .x{position:absolute;right:14px;top:14px;z-index:2;background:var(--s3);border:0;color:var(--ink);width:34px;height:34px;border-radius:8px;font-size:18px;cursor:pointer}
+.sheet .bd{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rbar{display:grid;grid-template-columns:76px 1fr 76px;gap:8px;align-items:center;margin-bottom:7px;font-size:13px}
+.rbar .tr{height:10px;background:var(--s3);border-radius:3px;position:relative}
+.rbar .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:0 3px 3px 0}
+.rbar .tr i.s{background:var(--ink3)}
+.rbar .tr i.t{background:var(--cc);top:3px;bottom:3px}
+.rbar .n{font-family:var(--mono);font-size:12px;text-align:right}
+.note{background:var(--s2);border-radius:10px;padding:12px 14px;color:var(--ink2);font-size:13px;margin-top:12px}
+
+#tip{position:fixed;z-index:60;pointer-events:none;background:#101A1B;border:1px solid var(--line2);border-radius:8px;padding:8px 10px;font-size:12px;opacity:0;transition:opacity .1s;max-width:240px}
+#tip b{display:block;font-family:var(--disp);font-size:14px;text-transform:uppercase}
+#tip .m{font-family:var(--mono);color:var(--ink2)}
+
+@media (max-width:900px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .two,.sdgrid,.sheet .bd{grid-template-columns:1fr}
+  .mgrid{grid-template-columns:1fr}
+  .sdpick{grid-template-columns:1fr}
+  .mrow{grid-template-columns:110px 1fr 96px}
+  .lbgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <svg class="flask" viewBox="0 0 24 24" fill="none" stroke="#1AB5C0" stroke-width="1.8" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10" stroke-dasharray="2 2"/></svg>
+      POOLZY <b>LABS</b>
+    </div>
+    <ul id="navl">
+      <li><a href="#leaderboards">Leaderboards</a></li>
+      <li><a href="#garage">Garage</a></li>
+      <li><a href="#tires">Tire Effect</a></li>
+      <li><a href="#overachievers">Overachievers</a></li>
+      <li><a href="#showdown">Showdown</a></li>
+      <li><a href="#method">Method</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="ghost">0:00.000</div>
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span>Forza Horizon 6 · Test Bench · Method v2</div>
+    <h1>One car.<br><em>One day.</em><br>Sunrise to lights out.</h1>
+    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for a sprint through the sunflower fields, laps Hokubu at sunset, then bolts on semi-slicks for seven laps of Legend Island under the lights. Same driver, same rules, every time. The lab was just rebuilt, so fresh results are rolling in.</p>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="leaderboards">
+  <div class="sh">
+    <div><div class="num">01 / LEADERBOARDS</div><h2>Class Rankings</h2></div>
+    <div class="seg" id="lbseg">
+      <button data-v="sf" class="on">Sunflower Sunrise Sprint</button>
+      <button data-v="hok">Hokubu · 5 laps</button>
+      <button data-v="li7">7 Laps in Heaven</button>
+    </div>
+  </div>
+  <p style="color:var(--ink2);margin:-8px 0 18px;font-size:14px" id="lbnote"></p>
+  <div class="lbgrid" id="lbgrid"></div>
+</section>
+
+<section id="garage">
+  <div class="sh">
+    <div><div class="num">02 / THE GARAGE</div><h2>Every Car</h2></div>
+    <p>Every car on the bench. Click any card to open its full lab report. "In the lab" means that test hasn't been run under the new method yet.</p>
+  </div>
+  <div class="controls">
+    <input class="search" id="q" type="search" placeholder="Search make, model, year..." aria-label="Search cars">
+    <div class="chips" id="chips"></div>
+    <select id="sort" aria-label="Sort cars">
+      <option value="sf">Sort: Sunflower Sprint</option>
+      <option value="hok">Sort: Hokubu lap</option>
+      <option value="li7">Sort: 7 Laps in Heaven</option>
+      <option value="pi">Sort: PI (high to low)</option>
+      <option value="gain">Sort: Tire PI gain</option>
+      <option value="year">Sort: Year (oldest)</option>
+      <option value="name">Sort: Make A to Z</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="tires">
+  <div class="sh">
+    <div><div class="num">03 / TIRE EFFECT</div><h2>Who Grows on Semi-Slicks?</h2></div>
+    <p>Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
+  </div>
+  <div class="two">
+    <div class="panel"><div id="dumb"></div>
+      <div class="legend"><span><i style="background:var(--ink3)"></i>Stock PI</span><span><i style="background:var(--acid)"></i>On semi-slicks</span><span>Shaded bands mark each class</span></div>
+    </div>
+    <div class="callout" id="tirecall"></div>
+  </div>
+</section>
+
+<section id="overachievers">
+  <div class="sh">
+    <div><div class="num">04 / OVERACHIEVERS</div><h2>Beating the Number</h2></div>
+    <p>PI is Forza's prediction of how fast a car is. The line is what the data expects at each PI. Above it, the car finishes 7 Laps in Heaven faster than its rating says it should.</p>
+  </div>
+  <div class="two">
+    <div class="panel"><div id="scatter"></div>
+      <div class="legend" id="scleg"></div>
+    </div>
+    <div class="callout">
+      <div><div class="k">Faster than PI predicts</div><div class="list" id="overlist"></div></div>
+      <div><div class="k">Slower than PI predicts</div><div class="list" id="underlist"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="showdown">
+  <div class="sh">
+    <div><div class="num">05 / SHOWDOWN</div><h2>Pick a Fight</h2></div>
+    <p>Choose up to three cars. Times show the gap to the quickest car in the lineup.</p>
+  </div>
+  <div class="panel">
+    <div class="sdpick" id="sdpick"></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="sdgrid">
+      <div id="sdtimes"></div>
+      <div id="sdrat"></div>
+    </div>
+    <div style="overflow-x:auto;margin-top:8px"><table class="spec" id="sdspec"></table></div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="sh">
+    <div><div class="num">06 / METHOD</div><h2>How We Test</h2></div>
+    <p>Anyone with FH6 can replicate every number on this page. That's the point.</p>
+  </div>
+  <div class="mgrid">
+    <div class="mcard"><div class="n">01</div><h3>Sunflower Sunrise Sprint</h3><p>Sunrise. A solo point-to-point sprint on the car's stock tires, standing start, no traffic. A sprint, so its times aren't comparable to lap times.</p></div>
+    <div class="mcard"><div class="n">02</div><h3>Hokubu × 5</h3><p>Sunset. A solo five-lap private event on stock tires. The first laps warm the tires; the fastest lap is the result. Body panel changes are allowed and logged.</p></div>
+    <div class="mcard"><div class="n">03</div><h3>7 Laps in Heaven</h3><p>Night. The final test: semi-slicks go on for a solo seven-lap race around Legend Island. The 7-lap total is the result.</p></div>
+    <div class="mcard"><div class="n">AI</div><h3>Same Driver Every Time</h3><p>Every lap is driven by ANNA at Unbeatable, so the times show the car, not the driver. Manual gearbox, launch control on, simulation steering, damage off, fall, dry, no traffic. ABS, traction and stability settings are being finalized.</p></div>
+    <div class="mcard"><div class="n">±.017</div><h3>Timing Precision</h3><p>Times are accurate to about 0.017s, one 60 Hz frame. Gaps smaller than that are a tie.</p></div>
+    <div class="mcard"><div class="n">R</div><h3>What's Left Out</h3><p>R class is mostly purpose-built track cars, so it isn't ranked yet. Listed R cars are for reference.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Poolzy Labs: Forza Edition · Data from the FH6 Track Times log</div>
+    <div class="mono" id="updated"></div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Car lab report"><div class="sheet" id="sheet"></div></div>
+<div id="tip"></div>
+
+<script>
+// ===== DATA (from Video Benchmarks tab) =====
+// rS / rT ratings order: Speed, Handling, Accel, Launch, Braking, Offroad
+const RAW = [
+ {y:2024,mk:"Ford",md:"Mustang Dark Horse",co:"USA",ty:"Modern Muscle",dt:"RWD",sp:669,sc:"A",lp:685,lc:"A",tire:"Sport",hp:500,tq:418,wt:3949,fw:54,cc:5038,z60:3.733,z100:8.367,top:182.3,rS:[7.0,5.7,5.6,4.9,5.0,5.3],ep:"Modern Mustang"},
+ {y:2024,mk:"Ford",md:"Mustang GT",co:"USA",ty:"Modern Muscle",dt:"RWD",sp:631,sc:"A",body:"Rear wing removed",lp:666,lc:"A",tire:"Sport",hp:486,tq:418,wt:3823,fw:53,cc:5038,z60:3.967,z100:8.733,top:194.2,rS:[7.1,5.1,5.2,5.2,4.3,5.4],ep:"Modern Mustang"},
+ {y:1997,mk:"BMW",md:"M3",co:"Germany",ty:"Retro Super Saloons",sp:549,sc:"B",lp:612,lc:"A",ep:"1997"},
+ {y:1997,mk:"Lamborghini",md:"Diablo SV",co:"Italy",ty:"Retro Supercars",dt:"RWD",sp:649,sc:"A",lp:702,lc:"S1",tire:"Street",hp:530,tq:446,wt:3474,fw:41,cc:5707,z60:3.833,z100:8.000,top:208.2,rS:[7.7,5.5,5.2,4.2,4.9,5.1],rT:[7.7,6.2,5.2,4.2,5.2,5.3],ep:"1997"},
+ {y:2021,mk:"BMW",md:"M4 Competition Coupé",co:"Germany",ty:"Modern Super Saloons",sp:800,sc:"S1"},
+ {y:1999,mk:"Dodge",md:"Viper GTS ACR",co:"USA",ty:"Retro Muscle",sp:598,sc:"B"},
+ {y:2009,mk:"Ferrari",md:"458 Italia",co:"Italy",ty:"Modern Supercars",dt:"RWD",sp:721,sc:"S1",lp:757,lc:"S1",tire:"Sport",rS:[7.9,6.5,6.3,6.8,6.8,4.6],rT:[7.9,6.9,7.1,7.8,7.2,4.7]},
+ {y:2012,mk:"Ferrari",md:"599XX Evolution",co:"Italy",ty:"Extreme Track Toys",sp:894,sc:"S2"},
+ {y:2013,mk:"Ferrari",md:"458 Speciale",co:"Italy",ty:"Track Toys",sp:768,sc:"S1"},
+ {y:2014,mk:"Ferrari",md:"FXX K",co:"Italy",ty:"Extreme Track Toys",sp:936,sc:"R"},
+ {y:2017,mk:"Ferrari",md:"812 Superfast",co:"Italy",ty:"Super GT",sp:780,sc:"S1"},
+ {y:2020,mk:"Ferrari",md:"Roma",co:"Italy",ty:"Super GT",dt:"RWD",sp:735,sc:"S1",lp:752,lc:"S1",tire:"Sport",rS:[7.4,5.8,5.9,6.3,6.9,4.9],rT:[7.4,6.0,6.2,6.7,7.0,4.8]},
+ {y:2025,mk:"Ferrari",md:"F80",co:"Italy",ty:"Hypercars",sp:920,sc:"R"},
+ {y:2020,mk:"Gordon Murray",md:"T.50",co:"UK",ty:"Hypercars",dt:"RWD",sp:871,sc:"S2",lp:871,lc:"S2",tire:"Semi-Slick",rS:[8.1,8.1,7.7,8.4,10.0,5.1],rT:[8.1,8.1,7.7,8.4,10.0,5.1],note:"Ships on semi-slicks, so the tire swap changes nothing."},
+ {y:1997,mk:"Honda",md:"Civic Type R",co:"Japan",ty:"Retro Hot Hatch",dt:"FWD",sp:430,sc:"C",lp:518,lc:"B",tire:"Standard",hp:182,tq:118,wt:2403,fw:62,cc:1595,z60:6.017,z100:15.683,top:149.6,rS:[5.5,4.3,3.7,3.0,3.0,5.1],rT:[5.5,5.5,3.7,3.0,4.0,5.5],ep:"1997"},
+ {y:2019,mk:"Porsche",md:"911 Carrera S",co:"Germany",ty:"Modern Semi-Slick Cars",dt:"RWD",sp:714,sc:"S1",tire:"Sport",rS:[7.4,6.6,6.4,6.9,7.6,5.0]},
+ {y:2023,mk:"Porsche",md:"911 GT3 RS",co:"Germany",ty:"Track Toys",sp:758,sc:"S1"},
+ {y:2005,mk:"Honda",md:"NSX-R GT",co:"Japan",ty:"Retro Semi-Slick Cars",sp:608,sc:"A"},
+ {y:2005,mk:"Honda",md:"NSX-R",co:"Japan",ty:"Retro Semi-Slick Cars",sp:570,sc:"B"},
+ {y:2025,mk:"Ford",md:"Mustang GTD",co:"USA",ty:"Track Toys",dt:"RWD",sp:781,sc:"S1",lp:781,lc:"S1",tire:"Semi-Slick",hp:815,tq:664,wt:4404,fw:51,cc:5163,z60:3.333,z100:6.633,top:207.0,rS:[7.8,7.5,6.0,6.5,9.9,4.6],ep:"Modern Mustang"},
+ {y:2023,mk:"Acura",md:"Integra A-Spec",co:"USA",ty:"Hot Hatch",dt:"FWD",sp:484,sc:"C",lp:540,lc:"B",tire:"Standard",hp:200,tq:192,wt:3073,fw:60,cc:1498,z60:6.300,z100:15.783,top:153.8,rS:[5.7,4.7,4.2,4.2,3.7,5.5],rT:[5.7,5.4,4.7,4.9,4.4,5.6]},
+ {y:2014,mk:"Volkswagen",md:"Golf R",co:"Germany",ty:"Super Hot Hatch",sp:536,sc:"B",lp:577,lc:"B"},
+ {y:2013,mk:"Mazda",md:"MX-5",co:"Japan",ty:"Modern Semi-Slick Cars",dt:"RWD",sp:432,sc:"C",lp:498,lc:"C",tire:"Standard",hp:167,tq:140,wt:2593,fw:51,cc:1999,z60:7.100,z100:19.817,top:129.3,rS:[4.8,4.9,3.9,3.4,3.4,5.5],rT:[4.8,5.8,3.9,3.4,4.2,5.8]},
+ {y:2015,mk:"Lexus",md:"RC F",co:"Japan",ty:"Modern Super Saloons",dt:"RWD",sp:623,sc:"A",lp:658,lc:"A",tire:"Sport",hp:467,tq:388,wt:3957,fw:55,cc:4969,z60:4.200,z100:9.350,top:181.1,rS:[6.7,5.3,5.0,5.2,5.2,5.3]},
+ {y:2019,mk:"Nissan",md:"370Z Nismo",co:"Japan",ty:"Modern Semi-Slick Cars",dt:"RWD",sp:603,sc:"A",lp:632,lc:"A",tire:"Sport",hp:350,tq:276,wt:3389,fw:54,cc:3696,z60:4.567,z100:10.717,top:177.0,rS:[6.6,5.6,5.3,4.8,4.5,5.4],rT:[6.6,6.1,5.7,4.8,4.8,5.5]},
+ {y:2014,mk:"McLaren",md:"650S Spider",co:"UK",ty:"Modern Supercars",dt:"RWD",sp:765,sc:"S1",lp:781,lc:"S1",tire:"Sport",hp:641,tq:500,wt:3236,fw:42,cc:3799,z60:2.933,z100:5.783,top:203.0,rS:[7.4,6.3,6.7,4.8,7.8,5.1],rT:[7.4,6.5,7.1,4.8,7.9,5.0]},
+ {y:2002,mk:"Nissan",md:"Silvia Spec-R",co:"Japan",ty:"Retro Semi-Slick Cars",dt:"RWD",sp:551,sc:"B",lp:618,lc:"A",tire:"Standard",rS:[6.3,5.0,4.8,3.0,3.8,5.3],rT:[6.3,5.7,5.7,3.0,4.4,5.5]},
+ {y:1996,mk:"Chevrolet",md:"Impala Super Sport",co:"USA",ty:"Retro Muscle",dt:"RWD",sp:407,sc:"C",lp:519,lc:"B",tire:"Standard",rS:[5.0,4.0,3.6,2.6,2.7,5.5],rT:[5.0,5.1,3.6,2.6,3.9,6.1]},
+ {y:2015,mk:"Dodge",md:"Challenger SRT Hellcat",co:"USA",ty:"Modern Muscle",dt:"RWD",sp:631,sc:"A",lp:688,lc:"A",tire:"Street",rS:[7.7,4.7,4.5,4.6,4.9,4.8],rT:[7.7,5.3,5.3,5.6,5.4,4.7]},
+ {y:1988,mk:"Mitsubishi",md:"Starion ESI-R",co:"Japan",ty:"Retro Sports Cars",dt:"RWD",sp:446,sc:"C",lp:534,lc:"B",tire:"Standard",rS:[5.2,4.6,4.2,3.5,2.9,5.6],rT:[5.2,5.7,4.2,3.5,3.9,6.0]},
+ {y:1969,mk:"Dodge",md:"Charger R/T",co:"USA",ty:"Classic Muscle",dt:"RWD",sp:417,sc:"C",lp:558,lc:"B",tire:"Vintage",rS:[5.1,3.5,3.6,3.5,2.4,5.3],rT:[5.1,4.5,4.9,3.7,3.5,6.2]},
+ {y:2020,mk:"Hyundai",md:"i30 N",co:"Korea",ty:"Super Hot Hatch",dt:"FWD",sp:553,sc:"B",lp:579,lc:"B",tire:"Sport",rS:[5.3,5.1,4.6,4.8,4.3,5.3],rT:[5.3,5.4,4.9,5.1,4.6,5.4]},
+ {y:2010,mk:"Lexus",md:"LFA",co:"Japan",ty:"Modern Supercars",dt:"RWD",sp:699,sc:"A",lp:733,lc:"S1",tire:"Sport",hp:552,tq:354,wt:3263,fw:48,cc:4805,z60:3.433,z100:7.167,top:201.4,rS:[7.4,5.9,5.8,6.0,7.0,5.0],rT:[7.4,6.4,6.5,6.0,7.4,5.1]},
+];
+const UPDATED = "2026-11-13";
+const CLASSES = ["D","C","B","A","S1","S2","X","R"];
+const CCOL = {D:"var(--cD)",C:"var(--cC)",B:"var(--cB)",A:"var(--cA)",S1:"var(--cS1)",S2:"var(--cS2)",X:"var(--cX)",R:"var(--cR)"};
+const CHEX = {D:"#4fc3d9",C:"#d9b23a",B:"#e0702e",A:"#e0434f",S1:"#9a6cf0",S2:"#3a92e0",X:"#2fb86b",R:"#d64aa0"};
+const RLAB = ["Speed","Handling","Accel","Launch","Braking","Offroad"];
+const PCOL = ["var(--p1)","var(--p2)","var(--p3)"];
+
+// ===== HELPERS =====
+const sec = s => { if(!s) return null; const [m,r]=s.split(":"); return (+m)*60 + (+r); };
+const fmt = x => { if(x==null) return "n/a"; const m=Math.floor(x/60); const r=(x-m*60).toFixed(3).padStart(6,"0"); return m+":"+r; };
+const el = (h) => { const d=document.createElement("div"); d.innerHTML=h.trim(); return d.firstChild; };
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cls = (c,pi) => c ? `<span class="cls" style="--c:${CCOL[c]}"><span class="L">${c}</span>${pi?`<span class="P">${pi}</span>`:""}</span>` : "";
+const pend = () => `<span class="pending">IN THE LAB</span>`;
+
+const CARS = RAW.map((c,i)=>({...c, id:i, tag:"PL-"+String(i+1).padStart(3,"0"),
+  hokS:sec(c.hok), sfS:sec(c.sf), li7S:sec(c.li7),
+  gain:(c.lp&&c.sp)? c.lp-c.sp : null, name:`${c.y} ${c.mk} ${c.md}`}));
+
+// ranks within the bench set, by class
+function rankBy(key, clsKey){
+  const groups={};
+  CARS.forEach(c=>{ if(c[key]!=null){ (groups[c[clsKey]] ||= []).push(c);} });
+  Object.values(groups).forEach(g=>{ g.sort((a,b)=>a[key]-b[key]); g.forEach((c,i)=>c[key+"R"]=i+1); });
+  return groups;
+}
+rankBy("hokS","sc"); rankBy("sfS","sc"); rankBy("li7S","lc");
+
+// ===== TOOLTIP =====
+const tip = document.getElementById("tip");
+function showTip(e,html){ tip.innerHTML=html; tip.style.opacity=1; moveTip(e); }
+function moveTip(e){ const x=e.clientX+14, y=e.clientY+14; const w=tip.offsetWidth, h=tip.offsetHeight;
+  tip.style.left=Math.min(x, innerWidth-w-8)+"px"; tip.style.top=Math.min(y, innerHeight-h-8)+"px"; }
+function hideTip(){ tip.style.opacity=0; }
+
+// ===== HERO TILES =====
+(function(){
+  const tested = CARS.length;
+  const best=(k)=>CARS.filter(c=>c[k]!=null && c.sc!=="R").sort((a,b)=>a[k]-b[k])[0];
+  const runs = ["sfS","hokS","li7S"].reduce((a,k)=>a+CARS.filter(c=>c[k]!=null).length,0);
+  const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First v2 runs coming soon",a:"var(--ink3)"}; };
+  const T = [
+    {k:"Cars on the bench",v:tested,s:`${runs} completed v2 test runs`,a:"var(--acid)"},
+    rec("Sunflower Sprint record","sfS","sc"),
+    rec("Hokubu record (non-R)","hokS","sc"),
+    rec("7 Laps in Heaven record","li7S","lc"),
+  ];
+  document.getElementById("tiles").innerHTML = T.map(t=>`<div class="tile" style="--acc:${t.a}"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="s">${esc(t.s)}</div></div>`).join("");
+  document.getElementById("updated").textContent = "Last updated "+UPDATED;
+})();
+
+// ===== RADAR =====
+function radar(c, size=104){
+  const r=size/2-12, cx=size/2, cy=size/2, n=6;
+  const pt=(i,v)=>{ const a=-Math.PI/2 + i*2*Math.PI/n; return [cx+Math.cos(a)*r*v/10, cy+Math.sin(a)*r*v/10]; };
+  let rings=""; [2.5,5,7.5,10].forEach(v=>{ rings+=`<polygon points="${[...Array(n)].map((_,i)=>pt(i,v).join(",")).join(" ")}" fill="none" stroke="#33494B" stroke-width="1"/>`; });
+  let spokes=""; for(let i=0;i<n;i++){ const p=pt(i,10); spokes+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#33494B"/>`; }
+  let labs=""; const short=["SPD","HDL","ACC","LCH","BRK","OFF"]; for(let i=0;i<n;i++){ const p=pt(i,12.4); labs+=`<text x="${p[0]}" y="${p[1]+3}" text-anchor="middle" font-size="7.5" fill="#748A8C">${short[i]}</text>`; }
+  const poly=(arr,st)=>`<polygon points="${arr.map((v,i)=>pt(i,v).join(",")).join(" ")}" ${st}/>`;
+  const col = CHEX[c.lc||c.sc];
+  let body="";
+  if(c.rT) body+=poly(c.rT,`fill="${col}" fill-opacity=".28" stroke="${col}" stroke-width="2" stroke-linejoin="round"`);
+  if(c.rS) body+=poly(c.rS,`fill="none" stroke="#A9B6B7" stroke-width="1.5" stroke-dasharray="3 2" stroke-linejoin="round"`);
+  if(!c.rS && !c.rT) body=`<text x="${cx}" y="${cy+3}" text-anchor="middle" font-size="8" fill="#748A8C">NO STATS YET</text>`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true">${rings}${spokes}${body}${labs}</svg>`;
+}
+
+// ===== CARDS =====
+const state = {q:"", cls:new Set(), sort:"sf"};
+const present = CLASSES.filter(k=>CARS.some(c=>c.sc===k));
+document.getElementById("chips").innerHTML = `<button class="chip on" data-c="all">All</button>` + present.map(k=>`<button class="chip" data-c="${k}" style="--c:${CCOL[k]}"><span class="sw"></span>${k}</button>`).join("");
+document.getElementById("chips").addEventListener("click",e=>{
+  const b=e.target.closest(".chip"); if(!b) return; const k=b.dataset.c;
+  if(k==="all") state.cls.clear(); else state.cls.has(k)?state.cls.delete(k):state.cls.add(k);
+  document.querySelectorAll("#chips .chip").forEach(x=>x.classList.toggle("on", x.dataset.c==="all"? state.cls.size===0 : state.cls.has(x.dataset.c)));
+  renderCards();
+});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.toLowerCase(); renderCards();});
+document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value; renderCards();});
+
+function sortFn(k){
+  const nullLast=(a,b,f)=>{ const x=f(a),y=f(b); if(x==null&&y==null) return 0; if(x==null) return 1; if(y==null) return -1; return x-y; };
+  return {
+    hok:(a,b)=>nullLast(a,b,c=>c.hokS), sf:(a,b)=>nullLast(a,b,c=>c.sfS), li7:(a,b)=>nullLast(a,b,c=>c.li7S),
+    pi:(a,b)=>b.sp-a.sp, gain:(a,b)=>nullLast(a,b,c=>c.gain==null?null:-c.gain),
+    year:(a,b)=>a.y-b.y, name:(a,b)=>a.name.localeCompare(b.name)
+  }[k];
+}
+function card(c){
+  const rd = (lab,k,ck) => `<div class="read"><div class="l"><span>${lab}</span>${c[k]?`<span class="rkb">#${c[k+"R"]} · ${c[ck]}</span>`:""}</div>${c[k]?`<div class="t">${fmt(c[k])}</div>`:pend()}</div>`;
+  const tags = [c.ep?`<span class="etag ep">S1 · ${esc(c.ep)}</span>`:"", c.body?`<span class="etag">${esc(c.body)}</span>`:"", c.sc==="R"?`<span class="etag">Reference only</span>`:""].join("");
+  return `<button class="card" data-id="${c.id}" style="--cc:${CHEX[c.lc||c.sc]}">
+    <div class="top"><span>${c.tag}</span><span>${esc(c.co).toUpperCase()}${c.dt?" · "+c.dt:""}</span></div>
+    <div class="nm"><div class="mk">${c.y} · ${esc(c.mk)}</div><div class="md">${esc(c.md)}</div></div>
+    <div class="mid">
+      <div class="reads">
+        ${rd("SUNFLOWER","sfS","sc")}${rd("HOKUBU","hokS","sc")}${rd("LEGEND ×7","li7S","lc")}
+      </div>
+      ${radar(c)}
+    </div>
+    <div class="clsrow">${cls(c.sc,c.sp)}${c.lp?`<span class="arrow">→</span>${cls(c.lc,c.lp)}<span class="gain">+${c.gain} PI on semis</span>`:""}</div>
+    ${tags?`<div class="tags">${tags}</div>`:""}
+  </button>`;
+}
+function renderCards(){
+  let list = CARS.filter(c=>(state.cls.size===0||state.cls.has(c.sc)) && (!state.q || (c.name+" "+c.ty+" "+c.co).toLowerCase().includes(state.q)));
+  list.sort(sortFn(state.sort));
+  document.getElementById("grid").innerHTML = list.map(card).join("") || `<p style="color:var(--ink3)">No cars match. Try another search.</p>`;
+  document.getElementById("count").textContent = `${list.length} of ${CARS.length} cars`;
+}
+document.getElementById("grid").addEventListener("click",e=>{ const b=e.target.closest(".card"); if(b) openCar(+b.dataset.id); });
+renderCards();
+
+// ===== MODAL =====
+const modal=document.getElementById("modal"), sheet=document.getElementById("sheet");
+function openCar(id){
+  const c=CARS[id];
+  const rb = c.rS ? RLAB.map((l,i)=>{ const s=c.rS[i], t=c.rT?c.rT[i]:null; const d=t!=null?+(t-s).toFixed(1):null;
+    return `<div class="rbar"><span>${l}</span><div class="tr"><i class="s" style="width:${s*10}%"></i>${t!=null?`<i class="t" style="width:${t*10}%"></i>`:""}</div><span class="n">${s.toFixed(1)}${t!=null?` → ${t.toFixed(1)}`:""}${d?` <span class="up">+${d}</span>`:""}</span></div>`; }).join("")
+    : `<p style="color:var(--ink3)">Ratings screenshots not logged yet.</p>`;
+  const spec = [["Stock tire",c.tire],["Power",c.hp&&c.hp+" hp"],["Torque",c.tq&&c.tq+" lb-ft"],["Weight",c.wt&&c.wt.toLocaleString()+" lb"],["Front weight",c.fw&&c.fw+"%"],["Displacement",c.cc&&c.cc.toLocaleString()+" cc"],["0-60 mph",c.z60&&c.z60.toFixed(3)+" s"],["0-100 mph",c.z100&&c.z100.toFixed(3)+" s"],["Top speed",c.top&&c.top+" mph"]].filter(r=>r[1]);
+  sheet.innerHTML = `<div class="hd" style="--cc:${CHEX[c.lc||c.sc]}"><button class="x" aria-label="Close">×</button>
+      <div class="mono" style="font-size:11px;color:var(--ink3);letter-spacing:.12em">${c.tag} · LAB REPORT · ${esc(c.ty).toUpperCase()}</div>
+      <div class="mk" style="font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-top:8px">${c.y} · ${esc(c.mk)}</div>
+      <div style="font-family:var(--disp);font-size:34px;font-weight:700;text-transform:uppercase;line-height:1">${esc(c.md)}</div>
+      <div class="clsrow" style="margin-top:12px">${cls(c.sc,c.sp)}${c.lp?`<span class="arrow">→</span>${cls(c.lc,c.lp)}<span class="gain" style="margin-left:8px">+${c.gain} PI on semi-slicks</span>`:""}</div>
+    </div>
+    <div class="bd">
+      <div>
+        <div class="read" style="margin-bottom:8px"><div class="l"><span>SUNFLOWER SUNRISE SPRINT · STOCK</span>${c.sfS?`<span>#${c.sfSR} in ${c.sc}</span>`:""}</div>${c.sfS?`<div class="t">${fmt(c.sfS)}</div>`:pend()}</div>
+        <div class="read" style="margin-bottom:8px"><div class="l"><span>HOKUBU · 5 LAPS · STOCK</span>${c.hokS?`<span>#${c.hokSR} in ${c.sc}</span>`:""}</div>${c.hokS?`<div class="t">${fmt(c.hokS)}</div>`:pend()}${c.body?`<div class="l" style="margin-top:4px"><span>BODY: ${esc(c.body).toUpperCase()}</span></div>`:""}</div>
+        <div class="read"><div class="l"><span>7 LAPS IN HEAVEN · SEMI-SLICKS</span>${c.li7S?`<span>#${c.li7SR} in ${c.lc}</span>`:""}</div>${c.li7S?`<div class="t">${fmt(c.li7S)}</div>`:pend()}</div>
+        ${spec.length?`<table class="spec" style="margin-top:14px">${spec.map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join("")}</table>`:""}
+      </div>
+      <div>
+        <div class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--ink3);margin-bottom:10px">RATINGS · <span style="color:var(--ink2)">GRAY STOCK</span>${c.rT?` · <span style="color:${CHEX[c.lc||c.sc]}">COLOR SEMI-SLICK</span>`:""}</div>
+        ${rb}
+        ${c.rS?`<div style="display:flex;justify-content:center;margin-top:10px">${radar(c,180)}</div>`:""}
+        ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
+      </div>
+    </div>`;
+  modal.classList.add("open");
+  sheet.querySelector(".x").focus();
+}
+modal.addEventListener("click",e=>{ if(e.target===modal || e.target.closest(".x")) modal.classList.remove("open"); });
+addEventListener("keydown",e=>{ if(e.key==="Escape") modal.classList.remove("open"); });
+
+// ===== LEADERBOARDS =====
+let lbMode="sf";
+document.getElementById("lbseg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; lbMode=b.dataset.v;
+  document.querySelectorAll("#lbseg button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
+function renderLB(){
+  const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="li7"?"lc":"sc";
+  document.getElementById("lbnote").textContent = {
+    sf:"Point-to-point sprint at sunrise on stock tires, grouped by stock class. Bars show the gap to the class leader.",
+    hok:"Fastest lap of a five-lap run at sunset on stock tires, grouped by stock class. Bars show the gap to the class leader.",
+    li7:"Seven-lap total at night on semi-slicks, grouped by semi-slick class. Bars show the gap to the class leader."}[lbMode];
+  const groups={}; CARS.filter(c=>c[key]!=null).forEach(c=>(groups[c[ck]] ||= []).push(c));
+  const order = CLASSES.filter(k=>groups[k]).reverse();
+  if(!order.length){ document.getElementById("lbgrid").innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;padding:40px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">The method was just rebuilt, so every car is being re-run. First v2 results land here soon.</p></div>`; return; }
+  document.getElementById("lbgrid").innerHTML = order.map(k=>{
+    const g=groups[k].sort((a,b)=>a[key]-b[key]); const lead=g[0][key]; const maxGap=Math.max(...g.map(c=>c[key]-lead), lbMode==="li7"?10:1);
+    return `<div class="lb" style="--c:${CCOL[k]}"><h3><span class="big">${k}</span>Class ${k}${k==="R"?" · reference":""}<span class="n">${g.length} CAR${g.length>1?"S":""}</span></h3>
+      ${g.map((c,i)=>{ const gap=c[key]-lead; return `<div class="row ${i===0?"first":""}" data-id="${c.id}">
+        <span class="rk">${i+1}</span>
+        <span class="cn">${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${ck==="sc"?c.sp:c.lp}</small></span>
+        <span class="tm">${fmt(c[key])}</span>
+        <span class="gapbar">${i===0?`<span class="crown">CLASS LEADER</span>`:`<i style="width:${Math.max(4,gap/maxGap*44)}%"></i><b>+${gap.toFixed(3)}</b>`}</span>
+      </div>`; }).join("")}
+    </div>`; }).join("");
+}
+document.getElementById("lbgrid").addEventListener("click",e=>{ const r=e.target.closest(".row"); if(r) openCar(+r.dataset.id); });
+renderLB();
+
+// ===== TIRE EFFECT (dumbbell) =====
+(function(){
+  const list = CARS.filter(c=>c.gain!=null).sort((a,b)=>b.gain-a.gain);
+  const W=720, rowH=24, top=30, left=200, right=40, H=top+list.length*rowH+10;
+  const x0=380, x1=900; const X=v=>left+(v-x0)/(x1-x0)*(W-left-right);
+  // class bands (FH thresholds)
+  const bands=[["C",400,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900]];
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Stock PI versus semi-slick PI for each car">`;
+  bands.forEach(([k,a,b])=>{ s+=`<rect x="${X(Math.max(a,x0))}" y="${top-14}" width="${X(b)-X(Math.max(a,x0))}" height="${H-top+4}" fill="${CHEX[k]}" opacity=".05"/>
+    <text x="${(X(Math.max(a,x0))+X(b))/2}" y="${top-18}" text-anchor="middle" font-size="11" font-weight="700" fill="${CHEX[k]}">${k}</text>`; });
+  list.forEach((c,i)=>{ const y=top+i*rowH+rowH/2;
+    s+=`<g class="db" data-id="${c.id}" style="cursor:pointer">
+      <rect x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>
+      <text x="${left-12}" y="${y+4}" text-anchor="end" font-size="11.5" fill="#A9B6B7">${esc((c.mk+" "+c.md).length>26?(c.mk+" "+c.md).slice(0,25)+"…":c.mk+" "+c.md)}</text>
+      <line x1="${X(c.sp)}" x2="${X(c.lp)}" y1="${y}" y2="${y}" stroke="#98CE00" stroke-opacity=".5" stroke-width="2"/>
+      <circle cx="${X(c.sp)}" cy="${y}" r="5" fill="#748A8C" stroke="#1E2E30" stroke-width="2"/>
+      <circle cx="${X(c.lp)}" cy="${y}" r="5.5" fill="#98CE00" stroke="#1E2E30" stroke-width="2"/>
+      <text x="${X(c.lp)+10}" y="${y+4}" font-size="11" fill="#E1DEE3" font-weight="700">+${c.gain}</text>
+    </g>`; });
+  s+=`</svg>`;
+  const d=document.getElementById("dumb"); d.innerHTML=s;
+  d.querySelectorAll(".db").forEach(g=>{ const c=CARS[+g.dataset.id];
+    g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.sc} ${c.sp} → ${c.lc} ${c.lp}<br>+${c.gain} PI${c.sc!==c.lc?" · class jump":""}</span>`));
+    g.addEventListener("mouseleave",hideTip); g.addEventListener("click",()=>openCar(c.id)); });
+  const top1=list[0], jumpers=list.filter(c=>c.sc!==c.lc).length, zero=list.filter(c=>c.gain===0);
+  const withBoth=CARS.filter(c=>c.rS&&c.rT);
+  const avg=RLAB.map((l,i)=>({l, v:withBoth.reduce((a,c)=>a+(c.rT[i]-c.rS[i]),0)/withBoth.length}));
+  const mx=Math.max(...avg.map(a=>a.v));
+  document.getElementById("tirecall").innerHTML = `
+    <div><div class="k">Biggest glow-up</div><div class="v">+${top1.gain}</div><div class="big" style="margin-top:6px">${top1.y} ${esc(top1.mk)} ${esc(top1.md)}</div><div style="color:var(--ink2);font-size:13px;margin-top:4px">${top1.sc} ${top1.sp} on its stock ${esc(top1.tire||"")} tires, ${top1.lc} ${top1.lp} on semi-slicks.</div></div>
+    <div style="display:flex;gap:24px"><div><div class="k">Changed class</div><div class="mono" style="font-size:28px;font-weight:700">${jumpers}<span style="font-size:14px;color:var(--ink3)"> / ${list.length}</span></div></div>
+      <div><div class="k">No change</div><div style="font-size:13px;color:var(--ink2);margin-top:6px">${zero.map(c=>esc(c.md)).join(", ")||"None"}</div></div></div>
+    <div><div class="k" style="margin-bottom:10px">Average rating gain on semi-slicks (${withBoth.length} cars)</div>
+      <div class="mini">${avg.map(a=>`<div class="r"><span>${a.l}</span><div class="bar"><i style="width:${mx?a.v/mx*100:0}%"></i></div><span class="n">+${a.v.toFixed(2)}</span></div>`).join("")}</div></div>`;
+})();
+
+// ===== OVERACHIEVERS (scatter) =====
+(function(){
+  const pts=CARS.filter(c=>c.li7S && c.lp);
+  if(pts.length<3){
+    document.getElementById("scatter").innerHTML = `<div style="text-align:center;padding:60px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">This chart needs at least three cars with a 7 Laps in Heaven time. Check back soon.</p></div>`;
+    ["overlist","underlist"].forEach(id=>document.getElementById(id).innerHTML=`<p style="color:var(--ink3);font-size:13px">Coming soon</p>`);
+    return;
+  }
+  const n=pts.length, mx=pts.reduce((a,c)=>a+c.lp,0)/n, my=pts.reduce((a,c)=>a+c.li7S,0)/n;
+  const b=pts.reduce((a,c)=>a+(c.lp-mx)*(c.li7S-my),0)/pts.reduce((a,c)=>a+(c.lp-mx)**2,0), a=my-b*mx;
+  pts.forEach(c=>c.res = (a+b*c.lp) - c.li7S); // positive = faster than predicted
+  const W=720,H=420,L=52,R=20,T=24,B=44;
+  const xmin=480,xmax=890; const lim=Math.ceil(Math.max(...pts.map(c=>Math.abs(c.res)))+0.5);
+  const X=v=>L+(v-xmin)/(xmax-xmin)*(W-L-R), Y=v=>T+(lim-v)/(2*lim)*(H-T-B);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Seconds faster or slower than PI predicts, by PI">`;
+  s+=`<rect x="${L}" y="${T}" width="${W-L-R}" height="${Y(0)-T}" fill="#98CE00" opacity=".04"/><rect x="${L}" y="${Y(0)}" width="${W-L-R}" height="${H-B-Y(0)}" fill="#D97757" opacity=".035"/>`;
+  s+=`<g class="axis">`;
+  const stp=lim>12?5:(lim>6?2:1); for(let v=-lim+(lim%stp); v<=lim; v+=stp){ if(v===0) continue; s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke-dasharray="2 4"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end">${v>0?"−":"+"}${Math.abs(v)}s</text>`; }
+  [["C",400,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900]].forEach(([k,a2,b2])=>{ const xa=X(Math.max(a2,xmin)), xb=X(Math.min(b2,xmax)); s+=`<text x="${(xa+xb)/2}" y="${H-B+20}" text-anchor="middle" fill="${CHEX[k]}" font-weight="700">${k}</text>`; if(a2>xmin) s+=`<line x1="${xa}" x2="${xa}" y1="${T}" y2="${H-B}" stroke-dasharray="1 4"/>`; });
+  s+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">PI ON SEMI-SLICKS →</text>
+      <text x="${L+8}" y="${T+16}" fill="#98CE00" font-size="10" font-weight="700">FASTER THAN PI SAYS ↑</text>
+      <text x="${L+8}" y="${H-B-8}" fill="#D97757" font-size="10" font-weight="700">SLOWER THAN PI SAYS ↓</text></g>`;
+  s+=`<line x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#98CE00" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
+      <text x="${W-R-4}" y="${Y(0)-8}" text-anchor="end" font-size="10" fill="#98CE00">EXPECTED FOR ITS PI</text>`;
+  const sorted=[...pts].sort((p,q)=>q.res-p.res);
+  const labelIds=new Set([...sorted.slice(0,3),...sorted.slice(-3)].map(c=>c.id));
+  const flip=new Set(); [...pts].filter(c=>labelIds.has(c.id)&&c.res<0).sort((p,q)=>p.lp-q.lp).forEach((c,i,arr)=>{ if(i<arr.length-1 && arr[i+1].lp-c.lp<40) flip.add(c.id); });
+  pts.forEach(c=>{ const cx=X(c.lp), cy=Y(c.res);
+    s+=`<g class="pt" data-id="${c.id}" style="cursor:pointer"><line x1="${cx}" x2="${cx}" y1="${Y(0)}" y2="${cy}" stroke="${CHEX[c.lc]}" stroke-opacity=".45" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>
+      <circle cx="${cx}" cy="${cy}" r="6.5" fill="${CHEX[c.lc]}" stroke="#1E2E30" stroke-width="2"/>
+      ${labelIds.has(c.id)?`<text x="${flip.has(c.id)?cx-10:cx+10}" y="${cy+(c.res>0?-6:16)}" text-anchor="${flip.has(c.id)?"end":"start"}" font-size="10.5" fill="#E1DEE3">${esc(c.md)}</text>`:""}</g>`; });
+  s+=`</svg>`;
+  const d=document.getElementById("scatter"); d.innerHTML=s;
+  d.querySelectorAll(".pt").forEach(g=>{ const c=CARS[+g.dataset.id];
+    g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.y} · ${c.lc} ${c.lp}<br>7 laps ${fmt(c.li7S)}<br>${c.res>=0?"Faster":"Slower"} than expected by ${Math.abs(c.res).toFixed(2)}s</span>`));
+    g.addEventListener("mouseleave",hideTip); g.addEventListener("click",()=>openCar(c.id)); });
+  const used=CLASSES.filter(k=>pts.some(c=>c.lc===k));
+  document.getElementById("scleg").innerHTML = used.map(k=>`<span><i style="background:${CHEX[k]}"></i>Class ${k}</span>`).join("") + `<span>Hover a dot for details</span>`;
+  const item=(c,i)=>`<div class="it" data-id="${c.id}"><span class="mono" style="color:var(--ink3)">${i+1}</span><span>${c.y} ${esc(c.mk)} ${esc(c.md)} ${cls(c.lc)}</span><span class="d ${c.res>=0?"up":"dn"}">${c.res>=0?"−":"+"}${Math.abs(c.res).toFixed(2)}s</span></div>`;
+  document.getElementById("overlist").innerHTML = sorted.slice(0,4).map(item).join("");
+  document.getElementById("underlist").innerHTML = sorted.slice(-4).reverse().map(item).join("");
+  document.querySelectorAll(".list").forEach(l=>l.addEventListener("click",e=>{ const it=e.target.closest(".it"); if(it) openCar(+it.dataset.id); }));
+})();
+
+// ===== SHOWDOWN =====
+(function(){
+  const pick=document.getElementById("sdpick");
+  const opts = [...CARS].sort((a,b)=>a.name.localeCompare(b.name));
+  const def = ["Mustang Dark Horse","Mustang GT","Mustang GTD"].map(m=>CARS.find(c=>c.md===m).id);
+  pick.innerHTML = [0,1,2].map(i=>`<div><label><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select data-i="${i}" aria-label="Car ${i+1}"><option value="">None</option>${opts.map(c=>`<option value="${c.id}" ${c.id===def[i]?"selected":""}>${esc(c.name)}</option>`).join("")}</select></div>`).join("");
+  pick.addEventListener("change",render);
+  function render(){
+    const sel=[...pick.querySelectorAll("select")].map((s,i)=>({i, c: s.value===""?null:CARS[+s.value]})).filter(x=>x.c);
+    const metric=(title,key,fmtf)=>{ const have=sel.filter(x=>x.c[key]!=null); if(!have.length) return "";
+      const best=Math.min(...have.map(x=>x.c[key])), worst=Math.max(...have.map(x=>x.c[key])); const span=Math.max(worst-best,0.5);
+      return `<div class="metric"><h4>${title}</h4>${sel.map(x=>{ const v=x.c[key]; if(v==null) return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><span>${pend()}</span><span></span></div>`;
+        const gap=v-best; return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><div class="track"><i style="background:${PCOL[x.i]};width:${gap===0?100:Math.max(8,100-gap/span*70)}%"></i></div><span class="val">${fmtf(v)}<br><small>${gap===0?"FASTEST":"+"+gap.toFixed(3)+"s"}</small></span></div>`; }).join("")}</div>`; };
+    document.getElementById("sdtimes").innerHTML = metric("Sunflower Sunrise Sprint","sfS",fmt)+metric("Hokubu · 5 laps","hokS",fmt)+metric("7 Laps in Heaven","li7S",fmt);
+    const rat = sel.some(x=>x.c.rS) ? `<div class="metric"><h4>Stock ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.c.rS?x.c.rS[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars yet.</p>`;
+    document.getElementById("sdrat").innerHTML = rat;
+    const rows=[["Year","y",v=>v],["Stock class","sp",(v,c)=>c.sc+" "+v],["Semi-slick class","lp",(v,c)=>v?c.lc+" "+v:"n/a"],["Drivetrain","dt",v=>v||"n/a"],["Power","hp",v=>v?v+" hp":"n/a"],["Weight","wt",v=>v?v.toLocaleString()+" lb":"n/a"],["0-60 mph","z60",v=>v?v.toFixed(3)+" s":"n/a"],["Top speed","top",v=>v?v+" mph":"n/a"]];
+    document.getElementById("sdspec").innerHTML = `<tr><th></th>${sel.map(x=>`<th style="color:${PCOL[x.i]}">${esc(x.c.md)}</th>`).join("")}</tr>` + rows.map(r=>`<tr><td>${r[0]}</td>${sel.map(x=>`<td>${esc(r[2](x.c[r[1]],x.c))}</td>`).join("")}</tr>`).join("");
+    // verdict
+    const v=document.getElementById("verdict");
+    if(sel.length<2){ v.innerHTML="Pick at least two cars to start a showdown."; return; }
+    const win=(k)=>{ const h=sel.filter(x=>x.c[k]!=null); if(h.length<2) return null; return h.sort((p,q)=>p.c[k]-q.c[k])[0].c; };
+    const ws=[["sfS","the Sunflower Sprint"],["hokS","Hokubu"],["li7S","7 Laps in Heaven"]].map(([k,n])=>({w:win(k),n})).filter(x=>x.w);
+    const parts=ws.map(x=>`<b>${esc(x.w.md)}</b> takes ${x.n}`);
+    const sweep = ws.length===3 && ws.every(x=>x.w.id===ws[0].w.id);
+    v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared tests between these cars yet. Check back soon.";
+  }
+  render();
+})();
+
+// ===== NAV highlight =====
+const links=[...document.querySelectorAll("#navl a")];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
