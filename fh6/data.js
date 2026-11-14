@@ -655,5 +655,5 @@ window.FH6_RAW = [
  {"y":2013,"mk":"Wuling","md":"Sunshine S","co":"China","ty":"Utility Heroes","sc":"D","sp":107},
  {"y":2013,"mk":"Wuling","md":"Sunshine S Forza Edition","co":"China","ty":"Track Toys","sc":"S1","sp":800},
  {"y":2019,"mk":"Zenvo","md":"TSR-S","co":"Denmark","ty":"Hypercars","sc":"R","sp":906},
- {"y":2011,"mk":"Alfa Romeo","md":"Giulietta","co":"Italy","sc":"C","sf":"2:05.576","sp":498}
+ {"y":2011,"mk":"Alfa Romeo","md":"Giulietta Quadrifoglio Verde","co":"Italy","sc":"C","sf":"2:05.576","sp":498}
 ];
