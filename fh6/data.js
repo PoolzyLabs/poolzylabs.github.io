@@ -287,7 +287,7 @@ window.FH6_RAW = [
  {"y":1965,"mk":"Ford","md":"Mustang GT Coupe","co":"USA","ty":"Classic Muscle","sc":"D","sp":388},
  {"y":2018,"mk":"Ford","md":"Mustang RTR Spec 5","co":"USA","ty":"Modern Muscle","sc":"A","sp":648},
  {"y":2016,"mk":"Ford","md":"Mustang Shelby GT350R","co":"USA","ty":"Track Toys","sc":"S1","sp":721},
- {"y":2013,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","sc":"A","sp":647},
+ {"y":2013,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","tire":"Street","sp":647,"rS":[7.4,4.7,4.7,4.6,4.3,5.3]},
  {"y":2020,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","sc":"S1","sp":734},
  {"y":1993,"mk":"Ford","md":"Mustang SVT Cobra R","co":"USA","ty":"Retro Muscle","sc":"C","sp":432},
  {"y":2000,"mk":"Ford","md":"Mustang SVT Cobra R","co":"USA","ty":"Retro Muscle","sc":"B","sp":528},
