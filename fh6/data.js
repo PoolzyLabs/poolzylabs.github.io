@@ -101,7 +101,7 @@ window.FH6_RAW = [
  {"y":2024,"mk":"Nissan","md":"GT-R Nismo","co":"Japan","ty":"Track Toys","sc":"S1","sp":741},
  {"y":2012,"mk":"Nissan","md":"GT-R Black Edition (R35)","co":"Japan","ty":"Modern Supercars","sc":"S1","sp":703},
  {"y":1968,"mk":"Abarth","md":"595 esseesse","co":"Italy","ty":"Cult Cars","sc":"D","sp":100},
- {"y":2016,"mk":"Abarth","md":"695 Biposto","co":"Italy","ty":"Hot Hatch","sc":"B","sp":540},
+ {"y":2016,"mk":"Abarth","md":"695 Biposto","co":"Italy","ty":"Hot Hatch","dt":"FWD","sc":"B","sf":"2:03.011","sp":540},
  {"y":1980,"mk":"Abarth","md":"Fiat 131","co":"Italy","ty":"Classic Rally","sc":"D","sp":399},
  {"y":2001,"mk":"Acura","md":"Integra Type R","co":"USA","ty":"Retro Hot Hatch","sc":"C","sp":471},
  {"y":2022,"mk":"Acura","md":"NSX Type S","co":"USA","ty":"Modern Supercars","sc":"S1","sp":734},
@@ -287,7 +287,7 @@ window.FH6_RAW = [
  {"y":1965,"mk":"Ford","md":"Mustang GT Coupe","co":"USA","ty":"Classic Muscle","sc":"D","sp":388},
  {"y":2018,"mk":"Ford","md":"Mustang RTR Spec 5","co":"USA","ty":"Modern Muscle","sc":"A","sp":648},
  {"y":2016,"mk":"Ford","md":"Mustang Shelby GT350R","co":"USA","ty":"Track Toys","sc":"S1","sp":721},
- {"y":2013,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","tire":"Street","sp":647,"rS":[7.4,4.7,4.7,4.6,4.3,5.3]},
+ {"y":2013,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","sf":"1:48.027","tire":"Street","sp":647,"rS":[7.4,4.7,4.7,4.6,4.3,5.3]},
  {"y":2020,"mk":"Ford","md":"Mustang Shelby GT500","co":"USA","ty":"Modern Muscle","sc":"S1","sp":734},
  {"y":1993,"mk":"Ford","md":"Mustang SVT Cobra R","co":"USA","ty":"Retro Muscle","sc":"C","sp":432},
  {"y":2000,"mk":"Ford","md":"Mustang SVT Cobra R","co":"USA","ty":"Retro Muscle","sc":"B","sp":528},
@@ -655,5 +655,5 @@ window.FH6_RAW = [
  {"y":2013,"mk":"Wuling","md":"Sunshine S","co":"China","ty":"Utility Heroes","sc":"D","sp":107},
  {"y":2013,"mk":"Wuling","md":"Sunshine S Forza Edition","co":"China","ty":"Track Toys","sc":"S1","sp":800},
  {"y":2019,"mk":"Zenvo","md":"TSR-S","co":"Denmark","ty":"Hypercars","sc":"R","sp":906},
- {"y":2011,"mk":"Alfa Romeo","md":"Giulietta Quadrifoglio Verde","co":"Italy","sc":"C","sf":"2:05.576","sp":498}
+ {"y":2011,"mk":"Alfa Romeo","md":"Giulietta Quadrifoglio Verde","co":"Italy","dt":"FWD","sc":"C","sf":"2:05.576","sp":498}
 ];
