@@ -242,6 +242,13 @@ svg text{font-family:var(--mono)}
 .tt.a3 i{background:var(--ink2)}
 .tt.a1 i:first-child{background:var(--ink2)}
 .tt.a0{border-color:var(--p2);color:var(--p2)}
+.assists{list-style:none;margin:10px 0 2px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.assists li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line2);padding:4px 0}
+.assists b{font-weight:600;color:var(--ink)}
+.assists b.on{color:var(--acid)}
+.assists b.off{color:var(--p2)}
+.assists-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:10px}
+@media (max-width:520px){.assists{grid-template-columns:1fr}}
 @media (max-width:900px){.tdays{grid-template-columns:1fr}}
 .eps{display:flex;flex-direction:column;gap:14px}
 article.ep{background:var(--s1);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;scroll-margin-top:72px;transition:border-color .3s}
@@ -387,7 +394,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
   <div class="wrap">
     <div class="tag"><span class="dot"></span>Poolzy Labs · Forza Horizon 6</div>
     <h1>The Data<br><em>Garage</em></h1>
-    <p class="lede">Every car in Forza Horizon 6 gets the same test day, from sunrise to lights out. Same driver, same rules, no tuning. As the day goes on, the safety net comes off: every assist on in the morning, fewer by sunset, and by nightfall it's semi-slicks with nothing to catch it. The goal is simple: a fair, repeatable way to see how every car really stacks up. Fresh results are rolling in.</p>
+    <p class="lede">Every car in Forza Horizon 6 gets the same test day, from sunrise to lights out. Same driver, same rules, no tuning. As the day goes on, the grip goes up and the safety net comes off: stock tires and every assist in the morning, semi-slicks and fewer assists by sunset, and by nightfall it's race slicks with nothing to catch it. The goal is simple: a fair, repeatable way to see how every car really stacks up. Fresh results are rolling in.</p>
     <div class="tiles" id="tiles"></div>
   </div>
 </header>
@@ -405,7 +412,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 <section id="testday">
   <div class="sh">
     <div><div class="num">02</div><h2>Test Day Tracks</h2></div>
-    <p>Three tests, in time order. Each one takes a little more of the safety net away.</p>
+    <p>Three tests, sunrise to night. Each one adds grip and takes a little more of the safety net away. Same driver every time: ANNA at Unbeatable, no tuning.</p>
   </div>
   <div class="tdays">
     <article class="tday">
@@ -426,6 +433,8 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
           <div><dt>Format</dt><dd>Solo standing-start sprint</dd></div>
           <div><dt>Result</dt><dd>Time</dd></div>
         </dl>
+        <div class="assists-h">Settings</div>
+        <ul class="assists"><li><span>ABS</span><b class="on">On</b></li><li><span>Traction control</span><b class="on">On</b></li><li><span>Stability control</span><b class="on">On</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Driving line</span><b class="off">Off</b></li><li><span>Rewind</span><b class="off">Off</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
         <div class="ttags"><span class="tt ">Stock tires</span><span class="tt a3"><i></i><i></i><i></i>All assists on</span></div>
       </div>
     </article>
@@ -442,12 +451,14 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
       <div class="tbody">
         <h3>Golden Hour</h3>
         <div class="tplace">Hokubu Circuit</div>
-        <p>Traction and stability control come off, and the first laps bring the tires up to temperature. This is where the chassis starts to show.</p>
+        <p>Track day. Horizon semi-slicks go on, traction and stability control come off, and the first lap brings the tires up to temperature. This is where the chassis starts to show.</p>
         <dl class="tfacts">
-          <div><dt>Format</dt><dd>5 solo laps</dd></div>
+          <div><dt>Format</dt><dd>7 solo laps</dd></div>
           <div><dt>Result</dt><dd>Fastest lap</dd></div>
         </dl>
-        <div class="ttags"><span class="tt ">Stock tires</span><span class="tt a1"><i></i><i></i><i></i>ABS only</span></div>
+        <div class="assists-h">Settings</div>
+        <ul class="assists"><li><span>ABS</span><b class="on">On</b></li><li><span>Traction control</span><b class="off">Off</b></li><li><span>Stability control</span><b class="off">Off</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Driving line</span><b class="off">Off</b></li><li><span>Rewind</span><b class="off">Off</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
+        <div class="ttags"><span class="tt semi">Semi-slicks</span><span class="tt a1"><i></i><i></i><i></i>ABS only</span></div>
       </div>
     </article>
     <article class="tday">
@@ -463,12 +474,14 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
       <div class="tbody">
         <h3>7 Laps in Heaven</h3>
         <div class="tplace">Legend Island Circuit</div>
-        <p>Grippier rubber, zero electronic help and seven laps under the lights. Nowhere to hide.</p>
+        <p>Race car. Full race slicks (the soft compound when there's a choice), zero electronic help and seven laps under the lights. Nowhere to hide.</p>
         <dl class="tfacts">
           <div><dt>Format</dt><dd>7-lap solo race</dd></div>
           <div><dt>Result</dt><dd>7-lap total</dd></div>
         </dl>
-        <div class="ttags"><span class="tt semi">Semi-slicks</span><span class="tt a0"><i></i><i></i><i></i>All assists off</span></div>
+        <div class="assists-h">Settings</div>
+        <ul class="assists"><li><span>ABS</span><b class="off">Off</b></li><li><span>Traction control</span><b class="off">Off</b></li><li><span>Stability control</span><b class="off">Off</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Driving line</span><b class="off">Off</b></li><li><span>Rewind</span><b class="off">Off</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
+        <div class="ttags"><span class="tt semi">Race slicks</span><span class="tt a0"><i></i><i></i><i></i>All assists off</span></div>
       </div>
     </article>
   </div>
@@ -629,7 +642,7 @@ function rankBy(key, clsKey){
   Object.values(groups).forEach(g=>{ g.sort((a,b)=>a[key]-b[key]); g.forEach((c,i)=>c[key+"R"]=i+1); });
   return groups;
 }
-rankBy("hokS","sc"); rankBy("sfS","sc"); rankBy("li7S","lc");
+rankBy("hokS","lc"); rankBy("sfS","sc"); rankBy("li7S","lc");
 
 // ===== TOOLTIP =====
 const tip = document.getElementById("tip");
@@ -647,7 +660,7 @@ function hideTip(){ tip.style.opacity=0; }
   const T = [
     {k:"Collection",v:`${CARS.filter(c=>c.sfS!=null&&c.hokS!=null&&c.li7S!=null).length}<small> / ${tested}</small>`,s:`cars fully benchmarked · ${CARS.filter(c=>c.sfS!=null||c.hokS!=null||c.li7S!=null).length} started`,a:"var(--acid)"},
     rec("Sunrise Sprint record","sfS","sc"),
-    rec("Golden Hour record","hokS","sc"),
+    rec("Golden Hour record","hokS","lc"),
     rec("7 Laps in Heaven record","li7S","lc"),
   ];
   document.getElementById("tiles").innerHTML = T.map(t=>`<div class="tile" style="--acc:${t.a}"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="s">${esc(t.s)}</div></div>`).join("");
@@ -719,7 +732,7 @@ function card(c){
     <div class="top">${cls(c.sc,c.sp)}<span class="ty">${esc(c.ty||"")}</span></div>
     <div class="nm"><div class="mk">${c.y} · ${esc(c.mk)}</div><div class="md">${esc(c.md)}</div></div>
     <div class="qs">${q("0-60",c.z60,2,"s")}${q("0-100",c.z100,2,"s")}${q("Top speed",c.top,0,"mph")}</div>
-    <div class="tss">${t("Sunrise","sfS","sc")}${t("Golden Hour","hokS","sc")}${t("Heaven","li7S","lc")}</div>
+    <div class="tss">${t("Sunrise","sfS","sc")}${t("Golden Hour","hokS","lc")}${t("Heaven","li7S","lc")}</div>
     <div class="tags">${tags}</div>
   </button>`;
 }
@@ -768,7 +781,7 @@ function openCar(id){
     </div>
     <div class="rp">
       <div class="rh">Test day</div>
-      <div class="tds">${td("Sunrise","Sunrise Sprint","Stock tires","sfS","sc")}${td("Sunset","Golden Hour","Stock tires","hokS","sc")}${td("Night","7 Laps in Heaven","Semi-slicks","li7S","lc")}</div>
+      <div class="tds">${td("Sunrise","Sunrise Sprint","Stock tires","sfS","sc")}${td("Sunset","Golden Hour","Semi-slicks","hokS","lc")}${td("Night","7 Laps in Heaven","Race slicks","li7S","lc")}</div>
 
       <div class="rh">${hasSemi?"Stock vs semi-slicks":"Performance"}</div>
       ${hasSemi?`<p class="sub">What bolting on Horizon semi-slicks does to this car.</p>`:""}
@@ -794,7 +807,7 @@ document.getElementById("lbview").addEventListener("click",e=>{ const b=e.target
   document.querySelectorAll("#lbview button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
 const cbadge = k => `<span class="cb" style="--c:${CCOL[k]}">${k}</span>`;
 function renderLB(){
-  const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="li7"?"lc":"sc";
+  const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="sf"?"sc":"lc";
   const place = {sf:"Sprint time on stock tires",
     hok:"Fastest lap on stock tires",
     li7:"7-lap total on semi-slicks"}[lbMode];
@@ -972,7 +985,7 @@ renderLB();
     const onStock = x => x.t==="stock" ? null : "RUN ON STOCK TIRES";
     const onSemi = x => x.t==="semi" ? null : "RUN ON SEMI-SLICKS";
     left += metric("Sunrise Sprint · time", x=>x.t==="stock"?x.c.sfS:null, fmt, "s", true, {na:x=>onStock(x)||"IN THE LAB"})
-          + metric("Golden Hour · fastest lap", x=>x.t==="stock"?x.c.hokS:null, fmt, "s", true, {na:x=>onStock(x)||"IN THE LAB"})
+          + metric("Golden Hour · fastest lap", x=>x.t==="semi"?x.c.hokS:null, fmt, "s", true, {na:x=>onSemi(x)||"IN THE LAB"})
           + metric("7 Laps in Heaven · 7-lap total", x=>x.t==="semi"?x.c.li7S:null, fmt, "s", true, {na:x=>onSemi(x)||"IN THE LAB"});
     document.getElementById("sdtimes").innerHTML = left;
     const rat = sel.some(x=>x.v.rat) ? `<div class="metric"><h4>Forza ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.v.rat?x.v.rat[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars on these tires yet.</p>`;
@@ -985,7 +998,7 @@ renderLB();
     if(sel.length<2){ v.innerHTML="Pick at least two cars to compare."; return; }
     const label = x => `<b>${esc(x.c.md)}</b>${sel.filter(y=>y.c.id===x.c.id).length>1||sel.some(y=>y.t!==x.t)?` (${x.t==="semi"?"semis":"stock"})`:""}`;
     const win=(get)=>{ const h=sel.filter(x=>get(x)!=null); if(h.length<2) return null; return h.sort((p,q)=>get(p)-get(q))[0]; };
-    const ws=[[x=>x.v.z60,"the sprint to 60"],[x=>x.v.z100,"the run to 100"],[x=>x.t==="stock"?x.c.sfS:null,"the Sunrise Sprint"],[x=>x.t==="stock"?x.c.hokS:null,"Golden Hour"],[x=>x.t==="semi"?x.c.li7S:null,"7 Laps in Heaven"]].map(([g,n])=>({w:win(g),n})).filter(x=>x.w);
+    const ws=[[x=>x.v.z60,"the sprint to 60"],[x=>x.v.z100,"the run to 100"],[x=>x.t==="stock"?x.c.sfS:null,"the Sunrise Sprint"],[x=>x.t==="semi"?x.c.hokS:null,"Golden Hour"],[x=>x.t==="semi"?x.c.li7S:null,"7 Laps in Heaven"]].map(([g,n])=>({w:win(g),n})).filter(x=>x.w);
     const parts=ws.map(x=>`${label(x.w)} takes ${x.n}`);
     const sweep = ws.length>=3 && ws.every(x=>x.w.i===ws[0].w.i);
     v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared numbers between these picks yet. Check back soon.";
