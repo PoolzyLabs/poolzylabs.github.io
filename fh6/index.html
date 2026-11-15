@@ -11,7 +11,7 @@
   color-scheme: dark;
   --bg:#172426; --s1:#1E2E30; --s2:#233537; --s3:#293E40; --line:#33494B; --line2:#415A5C;
   --ink:#E1DEE3; --ink2:#A9B6B7; --ink3:#748A8C;
-  --acid:#98CE00; --acid-dim:rgba(152,206,0,.14); --teal:#1AB5C0;
+  --acid:#1AB5C0; --acid-dim:rgba(26,181,192,.14); --teal:#1AB5C0;
   --cD:#4fc3d9; --cC:#d9b23a; --cB:#e0702e; --cA:#e0434f; --cS1:#9a6cf0; --cS2:#3a92e0; --cX:#2fb86b; --cR:#d64aa0;
   --p1:#1AB5C0; --p2:#D97757; --p3:#896279;
   --mono:'JetBrains Mono',ui-monospace,monospace; --disp:'Chakra Petch',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
@@ -71,6 +71,13 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .seg{display:inline-flex;background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:3px}
 .seg button{background:none;border:0;color:var(--ink2);font-family:var(--disp);font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:6px 12px;border-radius:6px;cursor:pointer}
 .seg button.on{background:var(--s3);color:var(--ink)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin:-6px 0 18px}
+.filters label{display:flex;flex-direction:column;gap:4px;flex:1 1 150px;max-width:230px}
+.filters label span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.filters select{width:100%}
+.filters select.set{border-color:var(--acid);color:var(--acid)}
+.clearf{background:none;border:1px solid var(--line2);color:var(--ink2);border-radius:8px;padding:8px 12px;min-height:36px;font-family:var(--disp);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.clearf:hover{color:var(--ink);border-color:var(--ink3)}
 .count{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-left:auto}
 
 /* CARDS */
@@ -107,6 +114,21 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .etag.ep{border-color:var(--acid);color:var(--acid)}
 
 /* LEADERBOARDS */
+.lbctl{display:flex;gap:10px;flex-wrap:wrap}
+.cb{display:inline-block;font-family:var(--mono);font-weight:700;font-size:10px;background:var(--c);color:#172426;border-radius:4px;padding:1px 5px;margin-right:6px;vertical-align:1px}
+.ut{color:var(--p2);font-family:var(--mono);font-size:10px;letter-spacing:.04em}
+.lb.wide{grid-column:1/-1}
+.lb.wide .row{grid-template-columns:28px minmax(0,1fr) 80px minmax(110px,220px)}
+.ups{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:14px}
+.up{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;color:inherit;font:inherit}
+.up:hover{background:var(--s2)}
+.up .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--p2);text-transform:uppercase}
+.up .m{display:flex;align-items:center;gap:8px;margin:8px 0 4px;font-size:14px;line-height:1.3;flex-wrap:wrap}
+.up .m b,.up .m span:not(.cb):not(.vs){color:var(--ink)}
+.up .m .vs{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.up .d{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.upnone{border:1px dashed var(--line2);border-radius:12px;padding:14px 16px;color:var(--ink2);font-size:14px;margin-bottom:14px}
+.upnone b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--p2);display:block;margin-bottom:4px}
 .lbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
 .lb{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .lb h3{margin:0;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);font-family:var(--disp);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
@@ -147,11 +169,18 @@ svg text{font-family:var(--mono)}
 .list .it .d{font-family:var(--mono);font-weight:700}
 .up{color:var(--acid)} .dn{color:#D97757}
 
-/* SHOWDOWN */
+/* COMPARISON */
 .sdpick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .sdpick label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink3);margin-bottom:6px}
 .sdpick label i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 .sdpick select{width:100%}
+.tseg{display:flex;margin-top:6px;background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:3px}
+.tseg button{flex:1;background:none;border:0;color:var(--ink2);font-family:var(--disp);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:8px 6px;min-height:36px;border-radius:6px;cursor:pointer}
+.tseg button.on{background:var(--s3);color:var(--ink)}
+.tseg button:disabled{opacity:.35;cursor:not-allowed}
+.metric.hm h4{color:var(--acid)}
+.mrow .nm small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.06em}
+.mrow .na{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.04em}
 .sdgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .metric{margin-bottom:16px}
 .metric h4{margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink3);font-weight:500;text-transform:uppercase}
@@ -181,7 +210,49 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 /* MODAL */
 .modal{position:fixed;inset:0;z-index:50;background:rgba(12,20,21,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
 .modal.open{display:flex}
-.sheet{background:var(--s1);border:1px solid var(--line2);border-radius:18px;max-width:820px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.sheet{background:var(--s1);border:1px solid var(--line2);border-radius:18px;max-width:880px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.rp{padding:6px 24px 24px}
+.rp .rh{font-family:var(--disp);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:22px 0 10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.rp .sub{margin:-6px 0 10px;color:var(--ink2);font-size:13px}
+.rp .key{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink2);display:inline-flex;align-items:center;gap:6px;text-transform:uppercase}
+.rp .key .dot{position:static;transform:none;display:inline-block;margin-left:6px}
+.tds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.td{background:var(--s2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.td .w{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+.td .n{font-family:var(--disp);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.td .t{font-family:var(--mono);font-size:24px;font-weight:700;margin-top:6px}
+.td .t.p{font-size:13px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;padding:7px 0 4px}
+.td .r{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.td .tire{margin-top:8px;align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:4px;border:1px solid var(--line2);color:var(--ink2)}
+.td .tire.semi{border-color:var(--acid);color:var(--acid)}
+table.cmp{width:100%;border-collapse:collapse;font-size:14px}
+table.cmp th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:500;text-align:right;padding:6px 10px;border-bottom:1px solid var(--line2)}
+table.cmp th.sv{color:var(--acid)}
+table.cmp td{padding:9px 10px;border-bottom:1px solid var(--line)}
+table.cmp td:first-child{color:var(--ink2)}
+table.cmp td.v,table.cmp td.d{text-align:right;font-family:var(--mono);white-space:nowrap}
+table.cmp td.sv{color:var(--ink);font-weight:700}
+.rp .inc{color:var(--acid);font-family:var(--mono)}
+.rp .dec{color:var(--p2);font-family:var(--mono)}
+.rp .same{color:var(--ink3);font-family:var(--mono);font-size:12px}
+.dbs .db{display:grid;grid-template-columns:78px minmax(0,1fr) 40px 40px 54px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.dbs.one .db{grid-template-columns:78px minmax(0,1fr) 40px}
+.db .l{font-size:13px;color:var(--ink2)}
+.db .v{font-family:var(--mono);font-size:13px;text-align:right;color:var(--ink2)}
+.db .v.sv{color:var(--ink);font-weight:700}
+.db .d{text-align:right;font-size:12px}
+.db .trk{position:relative;height:18px}
+.db .trk::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--s3);border-radius:2px}
+.db .trk .g{position:absolute;top:4px;bottom:4px;width:1px;background:var(--line2)}
+.db .trk .seg{position:absolute;top:50%;height:4px;margin-top:-2px;background:var(--acid);opacity:.45;border-radius:2px}
+.rp .dot{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%)}
+.rp .dot.s{background:var(--s1);border:2px solid var(--ink2)}
+.rp .dot.t{background:var(--acid);border:2px solid var(--acid)}
+.specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.specs div{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.specs span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase}
+.specs b{font-family:var(--mono);font-size:15px}
+@media (max-width:640px){.tds{grid-template-columns:1fr}.dbs .db{grid-template-columns:64px minmax(0,1fr) 34px 34px 44px;gap:6px}}
 .sheet .hd{padding:22px 24px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .sheet .hd::after{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(var(--cc),transparent 70%);opacity:.2}
 .sheet .x{position:absolute;right:14px;top:14px;z-index:2;background:var(--s3);border:0;color:var(--ink);width:34px;height:34px;border-radius:8px;font-size:18px;cursor:pointer}
@@ -219,10 +290,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <ul id="navl">
       <li><a href="#leaderboards">Leaderboards</a></li>
+      <li><a href="#compare">Comparison</a></li>
       <li><a href="#garage">Garage</a></li>
       <li><a href="#tires">Tire Effect</a></li>
       <li><a href="#overachievers">Overachievers</a></li>
-      <li><a href="#showdown">Showdown</a></li>
       <li><a href="#method">Method</a></li>
     </ul>
   </div>
@@ -231,9 +302,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header class="hero">
   <div class="ghost">0:00.000</div>
   <div class="wrap">
-    <div class="tag"><span class="dot"></span>The Data Garage · Forza Horizon 6 · Method v2</div>
+    <div class="tag"><span class="dot"></span>The Data Garage · Forza Horizon 6</div>
     <h1>One car.<br><em>One day.</em><br>Sunrise to lights out.</h1>
-    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for the Sunrise Sprint, laps Hokubu at Golden Hour, then bolts on semi-slicks for 7 Laps in Heaven around Legend Island under the lights. Same driver, same rules, every time. The lab was just rebuilt, so fresh results are rolling in.</p>
+    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for the Sunrise Sprint, laps Hokubu at Golden Hour, then bolts on semi-slicks for 7 Laps in Heaven around Legend Island under the lights. Same driver, same rules, every time. Fresh results are rolling in.</p>
     <div class="tiles" id="tiles"></div>
   </div>
 </header>
@@ -242,21 +313,44 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section id="leaderboards">
   <div class="sh">
-    <div><div class="num">01 / LEADERBOARDS</div><h2>Class Rankings</h2></div>
-    <div class="seg" id="lbseg">
+    <div><div class="num">01</div><h2>Leaderboards</h2></div>
+    <div class="lbctl">
+    <div class="seg" id="lbview" aria-label="Leaderboard view">
+      <button data-v="class" class="on">By Class</button>
+      <button data-v="all">Overall</button>
+    </div>
+    <div class="seg" id="lbseg" aria-label="Test">
       <button data-v="sf" class="on">Sunrise Sprint</button>
       <button data-v="hok">Golden Hour</button>
       <button data-v="li7">7 Laps in Heaven</button>
     </div>
+    </div>
   </div>
   <p style="color:var(--ink2);margin:-8px 0 18px;font-size:14px" id="lbnote"></p>
+  <div id="upsets"></div>
   <div class="lbgrid" id="lbgrid"></div>
+</section>
+
+<section id="compare">
+  <div class="sh">
+    <div><div class="num">02</div><h2>Comparison</h2></div>
+    <p>Pick up to three cars and the tires each one runs on. Stock Diablo against a semi-slick Civic? Go for it.</p>
+  </div>
+  <div class="panel">
+    <div class="sdpick" id="sdpick"></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="sdgrid">
+      <div id="sdtimes"></div>
+      <div id="sdrat"></div>
+    </div>
+    <div style="overflow-x:auto;margin-top:8px"><table class="spec" id="sdspec"></table></div>
+  </div>
 </section>
 
 <section id="garage">
   <div class="sh">
-    <div><div class="num">02 / THE GARAGE</div><h2>Every Car</h2></div>
-    <p>Every car on the bench. Click any card to open its full lab report. "In the lab" means that test hasn't been run under the new method yet.</p>
+    <div><div class="num">03</div><h2>The Garage</h2></div>
+    <p>Every car on the bench. Click any card to open its full lab report. "In the lab" means that test hasn't been run yet.</p>
   </div>
   <div class="controls">
     <input class="search" id="q" type="search" placeholder="Search make, model, year..." aria-label="Search cars">
@@ -265,6 +359,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <option value="sf">Sort: Sprint time</option>
       <option value="hok">Sort: Hokubu fastest lap</option>
       <option value="li7">Sort: Heaven 7-lap total</option>
+      <option value="z60">Sort: 0-60 (quickest)</option>
+      <option value="z100">Sort: 0-100 (quickest)</option>
+      <option value="top">Sort: Top speed (fastest)</option>
+      <option value="hp">Sort: Power (most)</option>
       <option value="pi">Sort: PI (high to low)</option>
       <option value="gain">Sort: Tire PI gain</option>
       <option value="year">Sort: Year (oldest)</option>
@@ -272,13 +370,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </select>
     <span class="count" id="count"></span>
   </div>
+  <div class="filters" id="filters">
+    <label><span>Make</span><select data-f="mk"></select></label>
+    <label><span>Car type</span><select data-f="ty"></select></label>
+    <label><span>Country</span><select data-f="co"></select></label>
+    <label><span>Era</span><select data-f="era"></select></label>
+    <button type="button" class="clearf" id="clearf" hidden>Clear filters</button>
+  </div>
   <div class="grid" id="grid"></div>
 </section>
 
 <section id="tires">
   <div class="sh">
-    <div><div class="num">03 / TIRE EFFECT</div><h2>Who Grows on Semi-Slicks?</h2></div>
-    <p>Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
+    <div><div class="num">04</div><h2>Tire Effect</h2></div>
+    <p>Who grows on semi-slicks? Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
   </div>
   <div class="two">
     <div class="panel"><div id="dumb"></div>
@@ -290,7 +395,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section id="overachievers">
   <div class="sh">
-    <div><div class="num">04 / OVERACHIEVERS</div><h2>Beating the Number</h2></div>
+    <div><div class="num">05</div><h2>Overachievers</h2></div>
     <p>PI is Forza's prediction of how fast a car is. The line is what the data expects at each PI. Above it, the car finishes 7 Laps in Heaven faster than its rating says it should.</p>
   </div>
   <div class="two">
@@ -304,25 +409,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="showdown">
-  <div class="sh">
-    <div><div class="num">05 / SHOWDOWN</div><h2>Pick a Fight</h2></div>
-    <p>Choose up to three cars. Times show the gap to the quickest car in the lineup.</p>
-  </div>
-  <div class="panel">
-    <div class="sdpick" id="sdpick"></div>
-    <div class="verdict" id="verdict"></div>
-    <div class="sdgrid">
-      <div id="sdtimes"></div>
-      <div id="sdrat"></div>
-    </div>
-    <div style="overflow-x:auto;margin-top:8px"><table class="spec" id="sdspec"></table></div>
-  </div>
-</section>
-
 <section id="method">
   <div class="sh">
-    <div><div class="num">06 / METHOD</div><h2>How We Test</h2></div>
+    <div><div class="num">06</div><h2>Method</h2></div>
     <p>Anyone with FH6 can replicate every number on this page. That's the point.</p>
   </div>
   <div class="mgrid">
@@ -392,9 +481,9 @@ function hideTip(){ tip.style.opacity=0; }
   const tested = CARS.length;
   const best=(k)=>CARS.filter(c=>c[k]!=null && c.sc!=="R").sort((a,b)=>a[k]-b[k])[0];
   const runs = ["sfS","hokS","li7S"].reduce((a,k)=>a+CARS.filter(c=>c[k]!=null).length,0);
-  const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First v2 runs coming soon",a:"var(--ink3)"}; };
+  const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First runs coming soon",a:"var(--ink3)"}; };
   const T = [
-    {k:"Cars on the bench",v:tested,s:`${runs} completed v2 test runs`,a:"var(--acid)"},
+    {k:"Cars on the bench",v:tested,s:`${runs} completed test runs`,a:"var(--acid)"},
     rec("Sunrise Sprint record","sfS","sc"),
     rec("Golden Hour record","hokS","sc"),
     rec("7 Laps in Heaven record","li7S","lc"),
@@ -420,22 +509,42 @@ function radar(c, size=104){
 }
 
 // ===== CARDS =====
-const state = {q:"", cls:new Set(), sort:"sf", limit:60};
+const state = {q:"", cls:new Set(), sort:"sf", limit:20, f:{mk:"",ty:"",co:"",era:""}};
+const era = c => c.y<1970 ? "Pre-1970" : c.y>=2020 ? "2020s" : Math.floor(c.y/10)*10+"s";
+const fval = (c,k) => k==="era" ? era(c) : (c[k]||"");
+const FLAB = {mk:"All makes",ty:"All car types",co:"All countries",era:"All eras",dt:"All drivetrains"};
+const ERA_ORDER = ["Pre-1970","1970s","1980s","1990s","2000s","2010s","2020s"];
+function fillFilters(){
+  document.querySelectorAll("#filters select").forEach(sel=>{
+    const k=sel.dataset.f;
+    // counts respect every other active filter, so options never lead to zero cars
+    const base = CARS.filter(c=>Object.entries(state.f).every(([k2,v])=>k2===k||!v||fval(c,k2)===v));
+    const cnt={}; base.forEach(c=>{ const v=fval(c,k); if(v) cnt[v]=(cnt[v]||0)+1; });
+    let keys=Object.keys(cnt); keys = k==="era" ? ERA_ORDER.filter(e=>cnt[e]) : keys.sort((a,b)=>a.localeCompare(b));
+    if(state.f[k] && !cnt[state.f[k]]) keys.unshift(state.f[k]);
+    sel.innerHTML = `<option value="">${FLAB[k]}</option>` + keys.map(v=>`<option value="${esc(v)}" ${v===state.f[k]?"selected":""}>${esc(v)} (${cnt[v]||0})</option>`).join("");
+    sel.classList.toggle("set", !!state.f[k]);
+  });
+  document.getElementById("clearf").hidden = !Object.values(state.f).some(Boolean);
+}
+document.getElementById("filters").addEventListener("change",e=>{ const sel=e.target.closest("select"); if(!sel) return; state.f[sel.dataset.f]=sel.value; state.limit=20; fillFilters(); renderCards(); });
+document.getElementById("clearf").addEventListener("click",()=>{ Object.keys(state.f).forEach(k=>state.f[k]=""); state.limit=20; fillFilters(); renderCards(); });
 const present = CLASSES.filter(k=>CARS.some(c=>c.sc===k));
 document.getElementById("chips").innerHTML = `<button class="chip on" data-c="all">All</button>` + present.map(k=>`<button class="chip" data-c="${k}" style="--c:${CCOL[k]}"><span class="sw"></span>${k}</button>`).join("");
 document.getElementById("chips").addEventListener("click",e=>{
   const b=e.target.closest(".chip"); if(!b) return; const k=b.dataset.c;
-  state.limit=60; if(k==="all") state.cls.clear(); else state.cls.has(k)?state.cls.delete(k):state.cls.add(k);
+  state.limit=20; if(k==="all") state.cls.clear(); else state.cls.has(k)?state.cls.delete(k):state.cls.add(k);
   document.querySelectorAll("#chips .chip").forEach(x=>x.classList.toggle("on", x.dataset.c==="all"? state.cls.size===0 : state.cls.has(x.dataset.c)));
   renderCards();
 });
-document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.toLowerCase(); state.limit=60; renderCards();});
-document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value; state.limit=60; renderCards();});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.toLowerCase(); state.limit=20; renderCards();});
+document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value; state.limit=20; renderCards();});
 
 function sortFn(k){
   const nullLast=(a,b,f)=>{ const x=f(a),y=f(b); if(x==null&&y==null) return 0; if(x==null) return 1; if(y==null) return -1; return x-y; };
   return {
     hok:(a,b)=>nullLast(a,b,c=>c.hokS), sf:(a,b)=>nullLast(a,b,c=>c.sfS), li7:(a,b)=>nullLast(a,b,c=>c.li7S),
+    z60:(a,b)=>nullLast(a,b,c=>c.z60), z100:(a,b)=>nullLast(a,b,c=>c.z100), top:(a,b)=>nullLast(a,b,c=>c.top==null?null:-c.top), hp:(a,b)=>nullLast(a,b,c=>c.hp==null?null:-c.hp),
     pi:(a,b)=>b.sp-a.sp, gain:(a,b)=>nullLast(a,b,c=>c.gain==null?null:-c.gain),
     year:(a,b)=>a.y-b.y, name:(a,b)=>a.name.localeCompare(b.name)
   }[k];
@@ -457,43 +566,61 @@ function card(c){
   </button>`;
 }
 function renderCards(){
-  let list = CARS.filter(c=>(state.cls.size===0||state.cls.has(c.sc)) && (!state.q || (c.name+" "+c.ty+" "+c.co).toLowerCase().includes(state.q)));
+  let list = CARS.filter(c=>(state.cls.size===0||state.cls.has(c.sc)) && Object.entries(state.f).every(([k,v])=>!v||fval(c,k)===v) && (!state.q || (c.name+" "+c.ty+" "+c.co).toLowerCase().includes(state.q)));
   list.sort(sortFn(state.sort));
   const shown = list.slice(0, state.limit);
   document.getElementById("grid").innerHTML = (shown.map(card).join("") || `<p style="color:var(--ink3)">No cars match. Try another search.</p>`)
     + (list.length > shown.length ? `<button class="more" id="more">Show more cars <span>(${list.length - shown.length} left)</span></button>` : "");
   document.getElementById("count").textContent = `${list.length} of ${CARS.length} cars`;
 }
-document.getElementById("grid").addEventListener("click",e=>{ if(e.target.closest("#more")){ state.limit+=60; renderCards(); return; } const b=e.target.closest(".card"); if(b) openCar(+b.dataset.id); });
+fillFilters();
+document.getElementById("grid").addEventListener("click",e=>{ if(e.target.closest("#more")){ state.limit+=20; renderCards(); return; } const b=e.target.closest(".card"); if(b) openCar(+b.dataset.id); });
 renderCards();
 
 // ===== MODAL =====
 const modal=document.getElementById("modal"), sheet=document.getElementById("sheet");
 function openCar(id){
-  const c=CARS[id];
-  const rb = c.rS ? RLAB.map((l,i)=>{ const s=c.rS[i], t=c.rT?c.rT[i]:null; const d=t!=null?+(t-s).toFixed(1):null;
-    return `<div class="rbar"><span>${l}</span><div class="tr"><i class="s" style="width:${s*10}%"></i>${t!=null?`<i class="t" style="width:${t*10}%"></i>`:""}</div><span class="n">${s.toFixed(1)}${t!=null?` → ${t.toFixed(1)}`:""}${d?` <span class="up">+${d}</span>`:""}</span></div>`; }).join("")
-    : `<p style="color:var(--ink3)">Ratings screenshots not logged yet.</p>`;
-  const spec = [["Stock tire",c.tire],["Power",c.hp&&c.hp+" hp"],["Torque",c.tq&&c.tq+" lb-ft"],["Weight",c.wt&&c.wt.toLocaleString()+" lb"],["Front weight",c.fw&&c.fw+"%"],["Displacement",c.cc&&c.cc.toLocaleString()+" cc"],["0-60 mph",c.z60&&c.z60.toFixed(3)+" s"],["0-100 mph",c.z100&&c.z100.toFixed(3)+" s"],["Top speed",c.top&&c.top+" mph"]].filter(r=>r[1]);
-  sheet.innerHTML = `<div class="hd" style="--cc:${CHEX[c.lc||c.sc]}"><button class="x" aria-label="Close">×</button>
-      <div class="mono" style="font-size:11px;color:var(--ink3);letter-spacing:.12em">${c.tag} · LAB REPORT · ${esc(c.ty).toUpperCase()}</div>
-      <div class="mk" style="font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-top:8px">${c.y} · ${esc(c.mk)}</div>
-      <div style="font-family:var(--disp);font-size:34px;font-weight:700;text-transform:uppercase;line-height:1">${esc(c.md)}</div>
-      <div class="clsrow" style="margin-top:12px">${cls(c.sc,c.sp)}${c.lp?`<span class="arrow">→</span>${cls(c.lc,c.lp)}<span class="gain" style="margin-left:8px">+${c.gain} PI on semi-slicks</span>`:""}</div>
+  const c=CARS[id], cc=CHEX[c.lc||c.sc], hasSemi=!!c.lp;
+  const td = (when,name,tire,k,ck,unit) => `<div class="td">
+      <div class="w">${when}</div><div class="n">${name}</div>
+      ${c[k]?`<div class="t">${fmt(c[k])}</div><div class="r">#${c[k+"R"]} in class ${c[ck]}</div>`:`<div class="t p">In the lab</div><div class="r">&nbsp;</div>`}
+      <div class="tire ${tire==="Semi-slicks"?"semi":""}">${tire}</div></div>`;
+  // stock vs semi rows
+  const num = (lab,s,t,dec,unit,lowerBetter) => {
+    if(s==null && t==null) return "";
+    const d = (s!=null&&t!=null) ? t-s : null; const better = d==null||Math.abs(d)<1e-9 ? 0 : (lowerBetter? (d<0?1:-1) : (d>0?1:-1));
+    const ds = d==null ? "" : Math.abs(d)<1e-9 ? `<span class="same">same</span>` : `<span class="${better>0?"inc":"dec"}">${better>0?"▲":"▼"} ${(d>0?"+":"")+d.toFixed(dec)}${unit}</span>`;
+    return `<tr><td>${lab}</td><td class="v">${s!=null?s.toFixed(dec)+unit:"n/a"}</td>${hasSemi?`<td class="v sv">${t!=null?t.toFixed(dec)+unit:"n/a"}</td><td class="d">${ds}</td>`:""}</tr>`; };
+  const piRow = `<tr><td>Class</td><td class="v">${c.sc} ${c.sp}</td>${hasSemi?`<td class="v sv">${c.lc} ${c.lp}</td><td class="d">${c.gain?`<span class="inc">▲ +${c.gain} PI</span>`:`<span class="same">same</span>`}</td>`:""}</tr>`;
+  const perf = piRow + num("0-60 mph",c.z60,c.z60s,3," s",true) + num("0-100 mph",c.z100,c.z100s,3," s",true) + num("Top speed",c.top,c.tops,1," mph",false);
+  const rat = c.rS||c.rT ? RLAB.map((l,i)=>{ const s0=c.rS?c.rS[i]:null, t0=c.rT?c.rT[i]:null;
+      const lo=Math.min(s0??t0,t0??s0), hi=Math.max(s0??t0,t0??s0); const d=(s0!=null&&t0!=null)?+(t0-s0).toFixed(1):null;
+      return `<div class="db"><span class="l">${l}</span>
+        <div class="trk" aria-hidden="true">${[2.5,5,7.5].map(g=>`<span class="g" style="left:${g*10}%"></span>`).join("")}
+          ${s0!=null&&t0!=null?`<span class="seg" style="left:${lo*10}%;width:${(hi-lo)*10}%"></span>`:""}
+          ${s0!=null?`<span class="dot s" style="left:${s0*10}%"></span>`:""}${t0!=null?`<span class="dot t" style="left:${t0*10}%"></span>`:""}</div>
+        <span class="v">${s0!=null?s0.toFixed(1):"n/a"}</span>${hasSemi?`<span class="v sv">${t0!=null?t0.toFixed(1):"n/a"}</span><span class="d">${d==null?"":d===0?`<span class="same">same</span>`:`<span class="${d>0?"inc":"dec"}">${d>0?"+":""}${d}</span>`}</span>`:""}</div>`; }).join("")
+    : `<p class="empty">Ratings not logged yet.</p>`;
+  const spec = [["Drivetrain",c.dt],["Stock tire",c.tire],["Power",c.hp&&c.hp+" hp"],["Torque",c.tq&&c.tq+" lb-ft"],["Weight",c.wt&&c.wt.toLocaleString()+" lb"],["Front weight",c.fw&&c.fw+"%"],["Displacement",c.cc&&c.cc.toLocaleString()+" cc"],["Body",c.body]].filter(r=>r[1]);
+  sheet.innerHTML = `<div class="hd" style="--cc:${cc}"><button class="x" aria-label="Close">×</button>
+      <div class="mono" style="font-size:11px;color:var(--ink3);letter-spacing:.12em">${c.tag} · ${esc(c.co).toUpperCase()} · ${esc(c.ty||"").toUpperCase()}</div>
+      <div style="font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-top:8px">${c.y} · ${esc(c.mk)}</div>
+      <div style="font-family:var(--disp);font-size:36px;font-weight:700;text-transform:uppercase;line-height:1">${esc(c.md)}</div>
+      ${c.ep?`<div style="margin-top:10px"><span class="etag ep">S1 · ${esc(c.ep)}</span></div>`:""}
     </div>
-    <div class="bd">
-      <div>
-        <div class="read" style="margin-bottom:8px"><div class="l"><span>SUNRISE SPRINT · TIME</span>${c.sfS?`<span>#${c.sfSR} in ${c.sc}</span>`:""}</div>${c.sfS?`<div class="t">${fmt(c.sfS)}</div>`:pend()}</div>
-        <div class="read" style="margin-bottom:8px"><div class="l"><span>GOLDEN HOUR · FASTEST LAP</span>${c.hokS?`<span>#${c.hokSR} in ${c.sc}</span>`:""}</div>${c.hokS?`<div class="t">${fmt(c.hokS)}</div>`:pend()}${c.body?`<div class="l" style="margin-top:4px"><span>BODY: ${esc(c.body).toUpperCase()}</span></div>`:""}</div>
-        <div class="read"><div class="l"><span>7 LAPS IN HEAVEN · 7-LAP TOTAL</span>${c.li7S?`<span>#${c.li7SR} in ${c.lc}</span>`:""}</div>${c.li7S?`<div class="t">${fmt(c.li7S)}</div>`:pend()}</div>
-        ${spec.length?`<table class="spec" style="margin-top:14px">${spec.map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join("")}</table>`:""}
-      </div>
-      <div>
-        <div class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--ink3);margin-bottom:10px">RATINGS · <span style="color:var(--ink2)">GRAY STOCK</span>${c.rT?` · <span style="color:${CHEX[c.lc||c.sc]}">COLOR SEMI-SLICK</span>`:""}</div>
-        ${rb}
-        ${c.rS?`<div style="display:flex;justify-content:center;margin-top:10px">${radar(c,180)}</div>`:""}
-        ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
-      </div>
+    <div class="rp">
+      <div class="rh">Test day</div>
+      <div class="tds">${td("Sunrise","Sunrise Sprint","Stock tires","sfS","sc")}${td("Sunset","Golden Hour","Stock tires","hokS","sc")}${td("Night","7 Laps in Heaven","Semi-slicks","li7S","lc")}</div>
+
+      <div class="rh">${hasSemi?"Stock vs semi-slicks":"Performance"}</div>
+      ${hasSemi?`<p class="sub">What bolting on Horizon semi-slicks does to this car.</p>`:""}
+      <table class="cmp"><thead><tr><th></th><th>Stock</th>${hasSemi?`<th class="sv">Semi-slicks</th><th>Change</th>`:""}</tr></thead><tbody>${perf}</tbody></table>
+
+      <div class="rh">Forza ratings ${c.rS||c.rT?`<span class="key"><i class="dot s"></i>Stock${hasSemi?` <i class="dot t"></i>Semi-slicks`:""}</span>`:""}</div>
+      <div class="dbs ${hasSemi?"":"one"}">${rat}</div>
+
+      ${spec.length?`<div class="rh">Spec sheet</div><div class="specs">${spec.map(r=>`<div><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join("")}</div>`:""}
+      ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
     </div>`;
   modal.classList.add("open");
   sheet.querySelector(".x").focus();
@@ -502,30 +629,70 @@ modal.addEventListener("click",e=>{ if(e.target===modal || e.target.closest(".x"
 addEventListener("keydown",e=>{ if(e.key==="Escape") modal.classList.remove("open"); });
 
 // ===== LEADERBOARDS =====
-let lbMode="sf";
+let lbMode="sf", lbView="class";
 document.getElementById("lbseg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; lbMode=b.dataset.v;
   document.querySelectorAll("#lbseg button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
+document.getElementById("lbview").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; lbView=b.dataset.v;
+  document.querySelectorAll("#lbview button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
+const cbadge = k => `<span class="cb" style="--c:${CCOL[k]}">${k}</span>`;
 function renderLB(){
   const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="li7"?"lc":"sc";
-  document.getElementById("lbnote").textContent = {
-    sf:"Sunflower Charge route, Hokubu region. Time for a standing-start sprint at sunrise on stock tires, grouped by stock class. Bars show the gap to the class leader.",
-    hok:"Hokubu Circuit. Fastest lap of five at sunset on stock tires, grouped by stock class. Bars show the gap to the class leader.",
-    li7:"Legend Island Circuit. 7-lap total at night on semi-slicks, grouped by semi-slick class. Bars show the gap to the class leader."}[lbMode];
-  const groups={}; CARS.filter(c=>c[key]!=null).forEach(c=>(groups[c[ck]] ||= []).push(c));
+  const place = {sf:"Sunflower Charge route, Hokubu region. Time for a standing-start sprint at sunrise on stock tires",
+    hok:"Hokubu Circuit. Fastest lap of five at sunset on stock tires",
+    li7:"Legend Island Circuit. 7-lap total at night on semi-slicks"}[lbMode];
+  const clsWord = ck==="sc" ? "stock class" : "semi-slick class";
+  document.getElementById("lbnote").textContent = lbView==="class"
+    ? `${place}, grouped by ${clsWord}. Bars show the gap to the class leader.`
+    : `${place}. Every class on one board, ranked by time against each other. R class is left out. Bars show the gap to the overall leader.`;
+  const timed = CARS.filter(c=>c[key]!=null);
+  // upsets: a car beats a slower car from a higher class (R excluded)
+  const ranked = timed.filter(c=>c[ck]!=="R");
+  const ci = k => CLASSES.indexOf(k);
+  const pairs=[];
+  ranked.forEach(c=>{ c._beats = ranked.filter(o=>ci(o[ck])>ci(c[ck]) && o[key]>c[key]);
+    c._beats.forEach(o=>pairs.push({w:c,l:o,jump:ci(o[ck])-ci(c[ck]),m:o[key]-c[key]})); });
+  timed.filter(c=>c[ck]==="R").forEach(c=>c._beats=[]);
+  const utag = c => !(c._beats && c._beats.length) ? "" : lbView==="all" ? ` · <span class="ut">▲ BEATS ${c._beats.length} HIGHER-CLASS CAR${c._beats.length>1?"S":""}</span>` : "";
+  const upre = c => lbView==="class" && c._beats && c._beats.length ? `<span class="ut">▲ UPSET</span> · ` : "";
+  const up = document.getElementById("upsets");
+  if(lbView==="all" && ranked.length){
+    pairs.sort((a,b)=>b.jump-a.jump || b.m-a.m);
+    up.innerHTML = pairs.length
+      ? `<div class="ups">${pairs.slice(0,3).map(p=>`<button type="button" class="up" data-id="${p.w.id}">
+          <div class="k">Upset${p.jump>1?` · ${p.jump} classes up`:""}</div>
+          <div class="m">${cbadge(p.w[ck])}<b>${p.w.y} ${esc(p.w.mk)} ${esc(p.w.md)}</b><span class="vs">BEAT</span>${cbadge(p.l[ck])}<span>${p.l.y} ${esc(p.l.mk)} ${esc(p.l.md)}</span></div>
+          <div class="d">${fmt(p.w[key])} vs ${fmt(p.l[key])} · by ${p.m.toFixed(3)}s</div></button>`).join("")}</div>`
+      : `<div class="upnone"><b>Upset watch</b>No upsets in this test yet. When a lower-class car beats a higher-class one, it lands here.</div>`;
+  } else up.innerHTML = "";
+  if(!timed.length){ document.getElementById("lbgrid").innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;padding:40px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">First results land here soon.</p></div>`; return; }
+  if(lbView==="all"){
+    const g=[...ranked].sort((a,b)=>a[key]-b[key]);
+    if(!g.length){ document.getElementById("lbgrid").innerHTML=""; return; }
+    const lead=g[0][key]; const maxGap=Math.max(...g.map(c=>c[key]-lead), lbMode==="li7"?10:1);
+    document.getElementById("lbgrid").innerHTML = `<div class="lb wide" style="--c:var(--acid)"><h3>All Classes<span class="n">${g.length} CAR${g.length>1?"S":""}</span></h3>
+      ${g.map((c,i)=>{ const gap=c[key]-lead; return `<div class="row ${i===0?"first":""}" data-id="${c.id}">
+        <span class="rk">${i+1}</span>
+        <span class="cn">${cbadge(c[ck])}${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${ck==="sc"?c.sp:c.lp}${utag(c)}</small></span>
+        <span class="tm">${fmt(c[key])}</span>
+        <span class="gapbar">${i===0?`<span class="crown">OVERALL LEADER</span>`:`<i style="width:${Math.max(4,gap/maxGap*44)}%"></i><b>+${gap.toFixed(3)}</b>`}</span>
+      </div>`; }).join("")}</div>`;
+    return;
+  }
+  const groups={}; timed.forEach(c=>(groups[c[ck]] ||= []).push(c));
   const order = CLASSES.filter(k=>groups[k]).reverse();
-  if(!order.length){ document.getElementById("lbgrid").innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;padding:40px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">The method was just rebuilt, so every car is being re-run. First v2 results land here soon.</p></div>`; return; }
   document.getElementById("lbgrid").innerHTML = order.map(k=>{
     const g=groups[k].sort((a,b)=>a[key]-b[key]); const lead=g[0][key]; const maxGap=Math.max(...g.map(c=>c[key]-lead), lbMode==="li7"?10:1);
     return `<div class="lb" style="--c:${CCOL[k]}"><h3><span class="big">${k}</span>Class ${k}${k==="R"?" · reference":""}<span class="n">${g.length} CAR${g.length>1?"S":""}</span></h3>
       ${g.map((c,i)=>{ const gap=c[key]-lead; return `<div class="row ${i===0?"first":""}" data-id="${c.id}">
         <span class="rk">${i+1}</span>
-        <span class="cn">${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${ck==="sc"?c.sp:c.lp}</small></span>
+        <span class="cn">${esc(c.mk)} ${esc(c.md)}<small>${upre(c)}${c.y} · PI ${ck==="sc"?c.sp:c.lp}</small></span>
         <span class="tm">${fmt(c[key])}</span>
         <span class="gapbar">${i===0?`<span class="crown">CLASS LEADER</span>`:`<i style="width:${Math.max(4,gap/maxGap*44)}%"></i><b>+${gap.toFixed(3)}</b>`}</span>
       </div>`; }).join("")}
     </div>`; }).join("");
 }
 document.getElementById("lbgrid").addEventListener("click",e=>{ const r=e.target.closest(".row"); if(r) openCar(+r.dataset.id); });
+document.getElementById("upsets").addEventListener("click",e=>{ const r=e.target.closest(".up"); if(r) openCar(+r.dataset.id); });
 renderLB();
 
 // ===== TIRE EFFECT (dumbbell) =====
@@ -543,9 +710,9 @@ renderLB();
     s+=`<g class="db" data-id="${c.id}" style="cursor:pointer">
       <rect x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>
       <text x="${left-12}" y="${y+4}" text-anchor="end" font-size="11.5" fill="#A9B6B7">${esc((c.mk+" "+c.md).length>26?(c.mk+" "+c.md).slice(0,25)+"…":c.mk+" "+c.md)}</text>
-      <line x1="${X(c.sp)}" x2="${X(c.lp)}" y1="${y}" y2="${y}" stroke="#98CE00" stroke-opacity=".5" stroke-width="2"/>
+      <line x1="${X(c.sp)}" x2="${X(c.lp)}" y1="${y}" y2="${y}" stroke="#1AB5C0" stroke-opacity=".5" stroke-width="2"/>
       <circle cx="${X(c.sp)}" cy="${y}" r="5" fill="#748A8C" stroke="#1E2E30" stroke-width="2"/>
-      <circle cx="${X(c.lp)}" cy="${y}" r="5.5" fill="#98CE00" stroke="#1E2E30" stroke-width="2"/>
+      <circle cx="${X(c.lp)}" cy="${y}" r="5.5" fill="#1AB5C0" stroke="#1E2E30" stroke-width="2"/>
       <text x="${X(c.lp)+10}" y="${y+4}" font-size="11" fill="#E1DEE3" font-weight="700">+${c.gain}</text>
     </g>`; });
   s+=`</svg>`;
@@ -580,15 +747,15 @@ renderLB();
   const xmin=480,xmax=890; const lim=Math.ceil(Math.max(...pts.map(c=>Math.abs(c.res)))+0.5);
   const X=v=>L+(v-xmin)/(xmax-xmin)*(W-L-R), Y=v=>T+(lim-v)/(2*lim)*(H-T-B);
   let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Seconds faster or slower than PI predicts, by PI">`;
-  s+=`<rect x="${L}" y="${T}" width="${W-L-R}" height="${Y(0)-T}" fill="#98CE00" opacity=".04"/><rect x="${L}" y="${Y(0)}" width="${W-L-R}" height="${H-B-Y(0)}" fill="#D97757" opacity=".035"/>`;
+  s+=`<rect x="${L}" y="${T}" width="${W-L-R}" height="${Y(0)-T}" fill="#1AB5C0" opacity=".04"/><rect x="${L}" y="${Y(0)}" width="${W-L-R}" height="${H-B-Y(0)}" fill="#D97757" opacity=".035"/>`;
   s+=`<g class="axis">`;
   const stp=lim>12?5:(lim>6?2:1); for(let v=-lim+(lim%stp); v<=lim; v+=stp){ if(v===0) continue; s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke-dasharray="2 4"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end">${v>0?"−":"+"}${Math.abs(v)}s</text>`; }
   [["C",400,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900]].forEach(([k,a2,b2])=>{ const xa=X(Math.max(a2,xmin)), xb=X(Math.min(b2,xmax)); s+=`<text x="${(xa+xb)/2}" y="${H-B+20}" text-anchor="middle" fill="${CHEX[k]}" font-weight="700">${k}</text>`; if(a2>xmin) s+=`<line x1="${xa}" x2="${xa}" y1="${T}" y2="${H-B}" stroke-dasharray="1 4"/>`; });
   s+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">PI ON SEMI-SLICKS →</text>
-      <text x="${L+8}" y="${T+16}" fill="#98CE00" font-size="10" font-weight="700">FASTER THAN PI SAYS ↑</text>
+      <text x="${L+8}" y="${T+16}" fill="#1AB5C0" font-size="10" font-weight="700">FASTER THAN PI SAYS ↑</text>
       <text x="${L+8}" y="${H-B-8}" fill="#D97757" font-size="10" font-weight="700">SLOWER THAN PI SAYS ↓</text></g>`;
-  s+=`<line x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#98CE00" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
-      <text x="${W-R-4}" y="${Y(0)-8}" text-anchor="end" font-size="10" fill="#98CE00">EXPECTED FOR ITS PI</text>`;
+  s+=`<line x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#1AB5C0" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
+      <text x="${W-R-4}" y="${Y(0)-8}" text-anchor="end" font-size="10" fill="#1AB5C0">EXPECTED FOR ITS PI</text>`;
   const sorted=[...pts].sort((p,q)=>q.res-p.res);
   const labelIds=new Set([...sorted.slice(0,3),...sorted.slice(-3)].map(c=>c.id));
   const flip=new Set(); [...pts].filter(c=>labelIds.has(c.id)&&c.res<0).sort((p,q)=>p.lp-q.lp).forEach((c,i,arr)=>{ if(i<arr.length-1 && arr[i+1].lp-c.lp<40) flip.add(c.id); });
@@ -609,32 +776,60 @@ renderLB();
   document.querySelectorAll(".list").forEach(l=>l.addEventListener("click",e=>{ const it=e.target.closest(".it"); if(it) openCar(+it.dataset.id); }));
 })();
 
-// ===== SHOWDOWN =====
+// ===== COMPARISON =====
 (function(){
   const pick=document.getElementById("sdpick");
   const opts = [...CARS].sort((a,b)=>a.name.localeCompare(b.name));
-  const def = ["Mustang Dark Horse","Mustang GT","Mustang GTD"].map(m=>CARS.find(c=>c.md===m).id);
-  pick.innerHTML = [0,1,2].map(i=>`<div><label><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select data-i="${i}" aria-label="Car ${i+1}"><option value="">None</option>${opts.map(c=>`<option value="${c.id}" ${c.id===def[i]?"selected":""}>${esc(c.name)}</option>`).join("")}</select></div>`).join("");
+  const def = ["Mustang Dark Horse","Mustang GT","Mustang GTD"].map(m=>{ const c=CARS.find(c=>c.md===m); return c?c.id:""; });
+  const tire = ["stock","stock","stock"];
+  pick.innerHTML = [0,1,2].map(i=>`<div><label for="sd${i}"><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select id="sd${i}" data-i="${i}"><option value="">None</option>${opts.map(c=>`<option value="${c.id}" ${c.id===def[i]?"selected":""}>${esc(c.name)}</option>`).join("")}</select>
+    <div class="tseg" data-i="${i}" role="group" aria-label="Car ${i+1} tires"><button type="button" data-t="stock" class="on">Stock tires</button><button type="button" data-t="semi">Semi-slicks</button></div></div>`).join("");
   pick.addEventListener("change",render);
+  pick.addEventListener("click",e=>{ const b=e.target.closest(".tseg button"); if(!b||b.disabled) return; const i=+b.parentNode.dataset.i; tire[i]=b.dataset.t; render(); });
+  const TL = {stock:"STOCK", semi:"SEMI-SLICKS"};
+  // per-car, per-tire view of the numbers
+  const view = (c,t) => t==="semi"
+    ? {cls:c.lc, pi:c.lp, z60:c.z60s, z100:c.z100s, top:c.tops, rat:c.rT, tireName:"Horizon semi-slick"}
+    : {cls:c.sc, pi:c.sp, z60:c.z60, z100:c.z100, top:c.top, rat:c.rS, tireName:c.tire||"Stock"};
   function render(){
-    const sel=[...pick.querySelectorAll("select")].map((s,i)=>({i, c: s.value===""?null:CARS[+s.value]})).filter(x=>x.c);
-    const metric=(title,key,fmtf)=>{ const have=sel.filter(x=>x.c[key]!=null); if(!have.length) return "";
-      const best=Math.min(...have.map(x=>x.c[key])), worst=Math.max(...have.map(x=>x.c[key])); const span=Math.max(worst-best,0.5);
-      return `<div class="metric"><h4>${title}</h4>${sel.map(x=>{ const v=x.c[key]; if(v==null) return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><span>${pend()}</span><span></span></div>`;
-        const gap=v-best; return `<div class="mrow"><span class="nm">${esc(x.c.md)}</span><div class="track"><i style="background:${PCOL[x.i]};width:${gap===0?100:Math.max(8,100-gap/span*70)}%"></i></div><span class="val">${fmtf(v)}<br><small>${gap===0?"FASTEST":"+"+gap.toFixed(3)+"s"}</small></span></div>`; }).join("")}</div>`; };
-    document.getElementById("sdtimes").innerHTML = metric("Sunrise Sprint · time","sfS",fmt)+metric("Golden Hour · fastest lap","hokS",fmt)+metric("7 Laps in Heaven · 7-lap total","li7S",fmt);
-    const rat = sel.some(x=>x.c.rS) ? `<div class="metric"><h4>Stock ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.c.rS?x.c.rS[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars yet.</p>`;
+    const sels=[...pick.querySelectorAll("select")];
+    sels.forEach((s,i)=>{ const c=s.value===""?null:CARS[+s.value]; const seg=pick.querySelector(`.tseg[data-i="${i}"]`);
+      const semiOk = !!(c && c.lp); if(!semiOk && tire[i]==="semi") tire[i]="stock";
+      seg.querySelectorAll("button").forEach(b=>{ b.classList.toggle("on",b.dataset.t===tire[i]); if(b.dataset.t==="semi") b.disabled=!semiOk; }); });
+    const sel=sels.map((s,i)=>({i, t:tire[i], c: s.value===""?null:CARS[+s.value]})).filter(x=>x.c).map(x=>({...x, v:view(x.c,x.t)}));
+    const nm = x => `<span class="nm">${esc(x.c.md)}<small>${TL[x.t]}</small></span>`;
+    // bar metric. get(x) returns a number or null; lowerBetter flips the scale
+    const metric=(title,get,fmtf,unit,lowerBetter,opt={})=>{ const have=sel.filter(x=>get(x)!=null); if(!have.length && !opt.always) return "";
+      const vals=have.map(get); const best=lowerBetter?Math.min(...vals):Math.max(...vals), worst=lowerBetter?Math.max(...vals):Math.min(...vals); const span=Math.max(Math.abs(worst-best), opt.minSpan||0.5);
+      return `<div class="metric ${opt.hero?"hm":""}"><h4>${title}</h4>${sel.map(x=>{ const v=get(x);
+        if(v==null) return `<div class="mrow">${nm(x)}<span class="na">${opt.na?opt.na(x):"NOT LOGGED"}</span><span></span></div>`;
+        const gap=Math.abs(v-best); const tag = have.length<2 ? "" : gap===0 ? (lowerBetter?"QUICKEST":"FASTEST") : (lowerBetter?"+":"-")+gap.toFixed(lowerBetter?3:1)+unit;
+        return `<div class="mrow">${nm(x)}<div class="track"><i style="background:${PCOL[x.i]};width:${gap===0?100:Math.max(8,100-gap/span*70)}%"></i></div><span class="val">${fmtf(v)}<br><small>${tag}</small></span></div>`; }).join("")}</div>`; };
+    const sec3 = v => v.toFixed(3)+" s";
+    let left = metric("0-60 mph", x=>x.v.z60, sec3, "s", true, {hero:true})
+             + metric("0-100 mph", x=>x.v.z100, sec3, "s", true, {hero:true})
+             + metric("Top speed", x=>x.v.top, v=>v.toFixed(1)+" mph", " mph", false, {minSpan:5});
+    if(!sel.some(x=>x.v.z60!=null||x.v.z100!=null)) left = `<p style="color:var(--ink3)">No acceleration numbers logged for these cars on these tires yet.</p>` + left;
+    const onStock = x => x.t==="stock" ? null : "RUN ON STOCK TIRES";
+    const onSemi = x => x.t==="semi" ? null : "RUN ON SEMI-SLICKS";
+    left += metric("Sunrise Sprint · time", x=>x.t==="stock"?x.c.sfS:null, fmt, "s", true, {na:x=>onStock(x)||"IN THE LAB"})
+          + metric("Golden Hour · fastest lap", x=>x.t==="stock"?x.c.hokS:null, fmt, "s", true, {na:x=>onStock(x)||"IN THE LAB"})
+          + metric("7 Laps in Heaven · 7-lap total", x=>x.t==="semi"?x.c.li7S:null, fmt, "s", true, {na:x=>onSemi(x)||"IN THE LAB"});
+    document.getElementById("sdtimes").innerHTML = left;
+    const rat = sel.some(x=>x.v.rat) ? `<div class="metric"><h4>Forza ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.v.rat?x.v.rat[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars on these tires yet.</p>`;
     document.getElementById("sdrat").innerHTML = rat;
-    const rows=[["Year","y",v=>v],["Stock class","sp",(v,c)=>c.sc+" "+v],["Semi-slick class","lp",(v,c)=>v?c.lc+" "+v:"n/a"],["Drivetrain","dt",v=>v||"n/a"],["Power","hp",v=>v?v+" hp":"n/a"],["Weight","wt",v=>v?v.toLocaleString()+" lb":"n/a"],["0-60 mph","z60",v=>v?v.toFixed(3)+" s":"n/a"],["Top speed","top",v=>v?v+" mph":"n/a"]];
-    document.getElementById("sdspec").innerHTML = `<tr><th></th>${sel.map(x=>`<th style="color:${PCOL[x.i]}">${esc(x.c.md)}</th>`).join("")}</tr>` + rows.map(r=>`<tr><td>${r[0]}</td>${sel.map(x=>`<td>${esc(r[2](x.c[r[1]],x.c))}</td>`).join("")}</tr>`).join("");
+    const rows=[["Year",x=>x.c.y],["Tires",x=>x.v.tireName],["Class",x=>x.v.pi?x.v.cls+" "+x.v.pi:"n/a"],["Drivetrain",x=>x.c.dt||"n/a"],["Power",x=>x.c.hp?x.c.hp+" hp":"n/a"],["Weight",x=>x.c.wt?x.c.wt.toLocaleString()+" lb":"n/a"],
+      ["0-60 mph",x=>x.v.z60!=null?x.v.z60.toFixed(3)+" s":"n/a"],["0-100 mph",x=>x.v.z100!=null?x.v.z100.toFixed(3)+" s":"n/a"],["Top speed",x=>x.v.top!=null?x.v.top+" mph":"n/a"]];
+    document.getElementById("sdspec").innerHTML = `<tr><th></th>${sel.map(x=>`<th style="color:${PCOL[x.i]}">${esc(x.c.md)}<br><small style="color:var(--ink3);font-weight:400">${TL[x.t]}</small></th>`).join("")}</tr>` + rows.map(r=>`<tr><td>${r[0]}</td>${sel.map(x=>`<td>${esc(r[1](x))}</td>`).join("")}</tr>`).join("");
     // verdict
     const v=document.getElementById("verdict");
-    if(sel.length<2){ v.innerHTML="Pick at least two cars to start a showdown."; return; }
-    const win=(k)=>{ const h=sel.filter(x=>x.c[k]!=null); if(h.length<2) return null; return h.sort((p,q)=>p.c[k]-q.c[k])[0].c; };
-    const ws=[["sfS","the Sunrise Sprint"],["hokS","Golden Hour"],["li7S","7 Laps in Heaven"]].map(([k,n])=>({w:win(k),n})).filter(x=>x.w);
-    const parts=ws.map(x=>`<b>${esc(x.w.md)}</b> takes ${x.n}`);
-    const sweep = ws.length===3 && ws.every(x=>x.w.id===ws[0].w.id);
-    v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared tests between these cars yet. Check back soon.";
+    if(sel.length<2){ v.innerHTML="Pick at least two cars to compare."; return; }
+    const label = x => `<b>${esc(x.c.md)}</b>${sel.filter(y=>y.c.id===x.c.id).length>1||sel.some(y=>y.t!==x.t)?` (${x.t==="semi"?"semis":"stock"})`:""}`;
+    const win=(get)=>{ const h=sel.filter(x=>get(x)!=null); if(h.length<2) return null; return h.sort((p,q)=>get(p)-get(q))[0]; };
+    const ws=[[x=>x.v.z60,"the sprint to 60"],[x=>x.v.z100,"the run to 100"],[x=>x.t==="stock"?x.c.sfS:null,"the Sunrise Sprint"],[x=>x.t==="stock"?x.c.hokS:null,"Golden Hour"],[x=>x.t==="semi"?x.c.li7S:null,"7 Laps in Heaven"]].map(([g,n])=>({w:win(g),n})).filter(x=>x.w);
+    const parts=ws.map(x=>`${label(x.w)} takes ${x.n}`);
+    const sweep = ws.length>=3 && ws.every(x=>x.w.i===ws[0].w.i);
+    v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared numbers between these picks yet. Check back soon.";
   }
   render();
 })();

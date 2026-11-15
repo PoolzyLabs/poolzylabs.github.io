@@ -45,7 +45,9 @@ def build(benchmarks, tracker):
             if str(r[i]).strip():
                 o[key] = str(r[i]).strip()
         for key, i in (("sp", 6), ("lp", 13), ("hp", 21), ("tq", 22), ("wt", 23), ("fw", 24),
-                       ("cc", 26), ("z60", 27), ("z100", 28), ("top", 29)):
+                       ("cc", 26), ("z60", 27), ("z100", 28), ("top", 29),
+                       # semi-slick acceleration (columns AO-AQ), used by the car report and Comparison tire picker
+                       ("z60s", 40), ("z100s", 41), ("tops", 42)):
             v = num(r[i])
             if v is not None:
                 o[key] = v
