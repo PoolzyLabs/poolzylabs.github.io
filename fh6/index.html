@@ -198,6 +198,70 @@ svg text{font-family:var(--mono)}
 .spec th{font-weight:500;color:var(--ink2);font-size:12px}
 
 /* METHOD */
+.tdays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tday{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tph{position:relative;aspect-ratio:16/9;background:var(--s2);overflow:hidden}
+.tph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.tph-ph{position:absolute;inset:0;padding-right:34%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:repeating-linear-gradient(135deg,var(--s2) 0 10px,var(--s3) 10px 11px)}
+.tph-ph span{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--ink2)}
+.tph-ph small{font-family:var(--mono);font-size:10px;color:var(--ink3)}
+.tstep{position:absolute;left:12px;top:12px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:rgba(23,36,38,.82);color:var(--ink);padding:5px 8px;border-radius:5px}
+.tmap{position:absolute;right:12px;bottom:12px;z-index:2;width:30%;aspect-ratio:1;background:rgba(23,36,38,.82);border:1px solid var(--line2);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tmap img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;z-index:1}
+.tmap-ph{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink3);text-align:center;line-height:1.5}
+.tbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tbody h3{margin:0;font-family:var(--disp);font-size:22px;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.tplace{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink3);text-transform:uppercase}
+.tbody p{margin:2px 0 0;color:var(--ink2);font-size:14px;line-height:1.5}
+.tfacts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 0}
+.tfacts div{background:var(--s2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.tfacts dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.tfacts dd{margin:2px 0 0;font-size:13px}
+.ttags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.tt{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:5px;border:1px solid var(--line2);color:var(--ink2)}
+.tt.semi{border-color:var(--acid);color:var(--acid)}
+.tt i{display:inline-block;width:6px;height:10px;border-radius:1px;background:var(--line2)}
+.tt i+i{margin-left:-3px}
+.tt.a3 i{background:var(--ink2)}
+.tt.a1 i:first-child{background:var(--ink2)}
+.tt.a0{border-color:var(--p2);color:var(--p2)}
+@media (max-width:900px){.tdays{grid-template-columns:1fr}}
+.eps{display:flex;flex-direction:column;gap:14px}
+.ep{background:var(--s1);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;scroll-margin-top:72px;transition:border-color .3s}
+.ep.flash{border-color:var(--acid)}
+.ep .el{padding:20px 22px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--line)}
+.ep .ek{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.ep .est{color:var(--p2);border:1px solid var(--p2);border-radius:4px;padding:2px 6px}
+.ep h3{margin:0;font-family:var(--disp);font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.ep p{margin:0;color:var(--ink2);font-size:14px;line-height:1.5}
+.ep .eb{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.ep .eb button,.ep .eb a{background:var(--s3);border:1px solid var(--line2);color:var(--ink);border-radius:8px;padding:9px 12px;min-height:40px;font-family:var(--disp);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.ep .eb button:hover,.ep .eb a:hover{border-color:var(--acid)}
+.ep .er{padding:10px 0}
+.ep .erh,.ep .err{display:grid;grid-template-columns:minmax(0,1fr) 72px 78px 78px 86px;gap:10px;align-items:center;padding:8px 20px}
+.ep .erh{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;border-bottom:1px solid var(--line)}
+.ep .erh span:not(:first-child),.ep .err span:not(:first-child){text-align:right}
+.ep .err{border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;color:inherit;font:inherit;text-align:left;width:100%}
+.ep .err:last-child{border-bottom:0}
+.ep .err:hover{background:var(--s2)}
+.ep .err .cn{font-size:14px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ep .err .cn small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink3)}
+.ep .err .tv{font-family:var(--mono);font-size:13px}
+.ep .err .tv.na{color:var(--ink3);font-size:11px}
+@media (max-width:860px){.ep{grid-template-columns:1fr}.ep .el{border-right:0;border-bottom:1px solid var(--line)}.ep .erh,.ep .err{grid-template-columns:minmax(0,1fr) 64px 70px;}.ep .erh span:nth-child(n+4),.ep .err span:nth-child(n+4){display:none}}
+.tile .v small{font-size:18px;color:var(--ink3);font-weight:500}
+.coll{margin:0 0 16px;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.coll .ch{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.coll .ch b{color:var(--ink);font-weight:700}
+.coll .cg{display:grid;grid-template-columns:repeat(var(--n,8),minmax(0,1fr));gap:10px}
+.coll .cc{display:flex;flex-direction:column;gap:5px}
+.coll .cl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.coll .cl span:first-child{font-weight:700;color:var(--c)}
+.coll .cb2{height:6px;background:var(--s3);border-radius:3px;position:relative;overflow:hidden}
+.coll .cb2 i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
+.coll .cb2 i.st{background:var(--c);opacity:.35}
+.coll .cb2 i.dn{background:var(--c)}
+@media (max-width:700px){.coll .cg{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .mcard{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px}
 .mcard .n{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--acid);line-height:1}
@@ -289,12 +353,14 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
       POOLZY <b>LABS</b>
     </div>
     <ul id="navl">
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#testday">Test Day Tracks</a></li>
       <li><a href="#leaderboards">Leaderboards</a></li>
-      <li><a href="#compare">Comparison</a></li>
-      <li><a href="#garage">Garage</a></li>
+      <li><a href="#compare">Comparison Tool</a></li>
+      <li><a href="#garage">Full Garage</a></li>
       <li><a href="#tires">Tire Effect</a></li>
       <li><a href="#overachievers">Overachievers</a></li>
-      <li><a href="#method">Method</a></li>
+      <li><a href="#method">Methodology</a></li>
     </ul>
   </div>
 </nav>
@@ -302,18 +368,98 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 <header class="hero">
   <div class="ghost">0:00.000</div>
   <div class="wrap">
-    <div class="tag"><span class="dot"></span>The Data Garage · Forza Horizon 6</div>
-    <h1>One car.<br><em>One day.</em><br>Sunrise to lights out.</h1>
-    <p class="lede">Every car gets the same test day. It rolls out at sunrise exactly as the factory built it for the Sunrise Sprint, laps Hokubu at Golden Hour, then bolts on semi-slicks for 7 Laps in Heaven around Legend Island under the lights. Same driver, same rules, every time. Fresh results are rolling in.</p>
+    <div class="tag"><span class="dot"></span>Poolzy Labs · Forza Horizon 6</div>
+    <h1>The Data<br><em>Garage</em></h1>
+    <p class="lede">Every car in Forza Horizon 6 gets the same test day, from sunrise to lights out. Same driver, same rules, no tuning. As the day goes on, the safety net comes off: every assist on in the morning, fewer by sunset, and by nightfall it's semi-slicks with nothing to catch it. The goal is simple: a fair, repeatable way to see how every car really stacks up. Fresh results are rolling in.</p>
     <div class="tiles" id="tiles"></div>
   </div>
 </header>
 
 <main class="wrap">
 
+<section id="episodes">
+  <div class="sh">
+    <div><div class="num">01</div><h2>Episodes</h2></div>
+    <p>Watched a video? Every car from each episode, in one place. Tap a car for its full report.</p>
+  </div>
+  <div class="eps" id="eps"></div>
+</section>
+
+<section id="testday">
+  <div class="sh">
+    <div><div class="num">02</div><h2>Test Day Tracks</h2></div>
+    <p>Three tests, in time order. Each one takes a little more of the safety net away.</p>
+  </div>
+  <div class="tdays">
+    <article class="tday">
+      <div class="tph">
+        <img src="img/tracks/sunrise.webp" alt="Sunrise Sprint event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
+        <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>Sunrise Sprint event shot</small></div>
+        <span class="tstep">01 · Sunrise</span>
+        <div class="tmap">
+          <img src="img/tracks/sunrise-outline.svg" alt="Sunrise Sprint track outline" loading="lazy" onerror="this.remove()">
+          <span class="tmap-ph" aria-hidden="true">TRACK<br>OUTLINE</span>
+        </div>
+      </div>
+      <div class="tbody">
+        <h3>Sunrise Sprint</h3>
+        <div class="tplace">Sunflower Charge route, Hokubu</div>
+        <p>The car the way its owner would drive it: factory tires and every safety system switched on. A sprint, so its times aren't comparable to lap times.</p>
+        <dl class="tfacts">
+          <div><dt>Format</dt><dd>Solo standing-start sprint</dd></div>
+          <div><dt>Result</dt><dd>Time</dd></div>
+        </dl>
+        <div class="ttags"><span class="tt ">Stock tires</span><span class="tt a3"><i></i><i></i><i></i>All assists on</span></div>
+      </div>
+    </article>
+    <article class="tday">
+      <div class="tph">
+        <img src="img/tracks/golden-hour.webp" alt="Golden Hour event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
+        <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>Golden Hour event shot</small></div>
+        <span class="tstep">02 · Sunset</span>
+        <div class="tmap">
+          <img src="img/tracks/golden-hour-outline.svg" alt="Golden Hour track outline" loading="lazy" onerror="this.remove()">
+          <span class="tmap-ph" aria-hidden="true">TRACK<br>OUTLINE</span>
+        </div>
+      </div>
+      <div class="tbody">
+        <h3>Golden Hour</h3>
+        <div class="tplace">Hokubu Circuit</div>
+        <p>Traction and stability control come off, and the first laps bring the tires up to temperature. This is where the chassis starts to show.</p>
+        <dl class="tfacts">
+          <div><dt>Format</dt><dd>5 solo laps</dd></div>
+          <div><dt>Result</dt><dd>Fastest lap</dd></div>
+        </dl>
+        <div class="ttags"><span class="tt ">Stock tires</span><span class="tt a1"><i></i><i></i><i></i>ABS only</span></div>
+      </div>
+    </article>
+    <article class="tday">
+      <div class="tph">
+        <img src="img/tracks/heaven.webp" alt="7 Laps in Heaven event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
+        <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>7 Laps in Heaven event shot</small></div>
+        <span class="tstep">03 · Night</span>
+        <div class="tmap">
+          <img src="img/tracks/heaven-outline.svg" alt="7 Laps in Heaven track outline" loading="lazy" onerror="this.remove()">
+          <span class="tmap-ph" aria-hidden="true">TRACK<br>OUTLINE</span>
+        </div>
+      </div>
+      <div class="tbody">
+        <h3>7 Laps in Heaven</h3>
+        <div class="tplace">Legend Island Circuit</div>
+        <p>Grippier rubber, zero electronic help and seven laps under the lights. Nowhere to hide.</p>
+        <dl class="tfacts">
+          <div><dt>Format</dt><dd>7-lap solo race</dd></div>
+          <div><dt>Result</dt><dd>7-lap total</dd></div>
+        </dl>
+        <div class="ttags"><span class="tt semi">Semi-slicks</span><span class="tt a0"><i></i><i></i><i></i>All assists off</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section id="leaderboards">
   <div class="sh">
-    <div><div class="num">01</div><h2>Leaderboards</h2></div>
+    <div><div class="num">03</div><h2>Leaderboards</h2></div>
     <div class="lbctl">
     <div class="seg" id="lbview" aria-label="Leaderboard view">
       <button data-v="class" class="on">By Class</button>
@@ -333,7 +479,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 
 <section id="compare">
   <div class="sh">
-    <div><div class="num">02</div><h2>Comparison</h2></div>
+    <div><div class="num">04</div><h2>Comparison Tool</h2></div>
     <p>Pick up to three cars and the tires each one runs on. Stock Diablo against a semi-slick Civic? Go for it.</p>
   </div>
   <div class="panel">
@@ -349,9 +495,10 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 
 <section id="garage">
   <div class="sh">
-    <div><div class="num">03</div><h2>The Garage</h2></div>
+    <div><div class="num">05</div><h2>Full Garage</h2></div>
     <p>Every car on the bench. Click any card to open its full lab report. "In the lab" means that test hasn't been run yet.</p>
   </div>
+  <div class="coll" id="coll"></div>
   <div class="controls">
     <input class="search" id="q" type="search" placeholder="Search make, model, year..." aria-label="Search cars">
     <div class="chips" id="chips"></div>
@@ -375,6 +522,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
     <label><span>Car type</span><select data-f="ty"></select></label>
     <label><span>Country</span><select data-f="co"></select></label>
     <label><span>Era</span><select data-f="era"></select></label>
+    <label><span>Episode</span><select data-f="ep"></select></label>
     <button type="button" class="clearf" id="clearf" hidden>Clear filters</button>
   </div>
   <div class="grid" id="grid"></div>
@@ -382,7 +530,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 
 <section id="tires">
   <div class="sh">
-    <div><div class="num">04</div><h2>Tire Effect</h2></div>
+    <div><div class="num">06</div><h2>Tire Effect</h2></div>
     <p>Who grows on semi-slicks? Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
   </div>
   <div class="two">
@@ -395,7 +543,7 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 
 <section id="overachievers">
   <div class="sh">
-    <div><div class="num">05</div><h2>Overachievers</h2></div>
+    <div><div class="num">07</div><h2>Overachievers</h2></div>
     <p>PI is Forza's prediction of how fast a car is. The line is what the data expects at each PI. Above it, the car finishes 7 Laps in Heaven faster than its rating says it should.</p>
   </div>
   <div class="two">
@@ -411,13 +559,10 @@ table.cmp td.sv{color:var(--ink);font-weight:700}
 
 <section id="method">
   <div class="sh">
-    <div><div class="num">06</div><h2>Method</h2></div>
-    <p>Anyone with FH6 can replicate every number on this page. That's the point.</p>
+    <div><div class="num">08</div><h2>Methodology</h2></div>
+    <p>The fine print behind every test. Anyone with FH6 can replicate every number on this page. That's the point.</p>
   </div>
   <div class="mgrid">
-    <div class="mcard"><div class="n">01</div><h3>Sunrise Sprint</h3><p>Sunflower Charge route, Hokubu region. A solo standing-start sprint on the car's stock tires with every assist on, like the owner would drive it. Result: time. A sprint, so it isn't comparable to lap times.</p></div>
-    <div class="mcard"><div class="n">02</div><h3>Golden Hour</h3><p>Hokubu Circuit at sunset. Five solo laps on stock tires with ABS on and traction and stability off, like a sport mode. The first laps warm the tires. Result: fastest lap.</p></div>
-    <div class="mcard"><div class="n">03</div><h3>7 Laps in Heaven</h3><p>Legend Island Circuit at night. The final test: semi-slicks go on and every assist comes off for a solo seven-lap race. Result: 7-lap total.</p></div>
     <div class="mcard"><div class="n">AI</div><h3>Same Driver Every Time</h3><p>Every lap is driven by ANNA at Unbeatable, so the times show the car, not the driver. Manual gearbox, launch control on, simulation steering, damage off, fall, dry, no traffic. Body changes, like a removed wing, are logged and apply to all three tests.</p></div>
     <div class="mcard"><div class="n">±.017</div><h3>Timing Precision</h3><p>Times are accurate to about 0.017s, one 60 Hz frame. Gaps smaller than that are a tie.</p></div>
     <div class="mcard"><div class="n">R</div><h3>What's Left Out</h3><p>R class is mostly purpose-built track cars, so it isn't ranked yet. Listed R cars are for reference.</p></div>
@@ -483,7 +628,7 @@ function hideTip(){ tip.style.opacity=0; }
   const runs = ["sfS","hokS","li7S"].reduce((a,k)=>a+CARS.filter(c=>c[k]!=null).length,0);
   const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First runs coming soon",a:"var(--ink3)"}; };
   const T = [
-    {k:"Cars on the bench",v:tested,s:`${runs} completed test runs`,a:"var(--acid)"},
+    {k:"Collection",v:`${CARS.filter(c=>c.sfS!=null&&c.hokS!=null&&c.li7S!=null).length}<small> / ${tested}</small>`,s:`cars fully benchmarked · ${CARS.filter(c=>c.sfS!=null||c.hokS!=null||c.li7S!=null).length} started`,a:"var(--acid)"},
     rec("Sunrise Sprint record","sfS","sc"),
     rec("Golden Hour record","hokS","sc"),
     rec("7 Laps in Heaven record","li7S","lc"),
@@ -509,10 +654,10 @@ function radar(c, size=104){
 }
 
 // ===== CARDS =====
-const state = {q:"", cls:new Set(), sort:"sf", limit:20, f:{mk:"",ty:"",co:"",era:""}};
+const state = {q:"", cls:new Set(), sort:"sf", limit:20, f:{mk:"",ty:"",co:"",era:"",ep:""}};
 const era = c => c.y<1970 ? "Pre-1970" : c.y>=2020 ? "2020s" : Math.floor(c.y/10)*10+"s";
 const fval = (c,k) => k==="era" ? era(c) : (c[k]||"");
-const FLAB = {mk:"All makes",ty:"All car types",co:"All countries",era:"All eras",dt:"All drivetrains"};
+const FLAB = {mk:"All makes",ty:"All car types",co:"All countries",era:"All eras",dt:"All drivetrains",ep:"All episodes"};
 const ERA_ORDER = ["Pre-1970","1970s","1980s","1990s","2000s","2010s","2020s"];
 function fillFilters(){
   document.querySelectorAll("#filters select").forEach(sel=>{
@@ -637,13 +782,13 @@ document.getElementById("lbview").addEventListener("click",e=>{ const b=e.target
 const cbadge = k => `<span class="cb" style="--c:${CCOL[k]}">${k}</span>`;
 function renderLB(){
   const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="li7"?"lc":"sc";
-  const place = {sf:"Sunflower Charge route, Hokubu region. Time for a standing-start sprint at sunrise on stock tires",
-    hok:"Hokubu Circuit. Fastest lap of five at sunset on stock tires",
-    li7:"Legend Island Circuit. 7-lap total at night on semi-slicks"}[lbMode];
+  const place = {sf:"Sprint time on stock tires",
+    hok:"Fastest lap on stock tires",
+    li7:"7-lap total on semi-slicks"}[lbMode];
   const clsWord = ck==="sc" ? "stock class" : "semi-slick class";
   document.getElementById("lbnote").textContent = lbView==="class"
     ? `${place}, grouped by ${clsWord}. Bars show the gap to the class leader.`
-    : `${place}. Every class on one board, ranked by time against each other. R class is left out. Bars show the gap to the overall leader.`;
+    : `${place}. Every class on one board. R class is left out. Bars show the gap to the overall leader.`;
   const timed = CARS.filter(c=>c[key]!=null);
   // upsets: a car beats a slower car from a higher class (R excluded)
   const ranked = timed.filter(c=>c[ck]!=="R");
@@ -785,6 +930,7 @@ renderLB();
   pick.innerHTML = [0,1,2].map(i=>`<div><label for="sd${i}"><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select id="sd${i}" data-i="${i}"><option value="">None</option>${opts.map(c=>`<option value="${c.id}" ${c.id===def[i]?"selected":""}>${esc(c.name)}</option>`).join("")}</select>
     <div class="tseg" data-i="${i}" role="group" aria-label="Car ${i+1} tires"><button type="button" data-t="stock" class="on">Stock tires</button><button type="button" data-t="semi">Semi-slicks</button></div></div>`).join("");
   pick.addEventListener("change",render);
+  window.loadCompare = ids => { const sels=[...pick.querySelectorAll("select")]; sels.forEach((s,i)=>{ s.value = ids[i]!=null ? String(ids[i]) : ""; tire[i]="stock"; }); render(); };
   pick.addEventListener("click",e=>{ const b=e.target.closest(".tseg button"); if(!b||b.disabled) return; const i=+b.parentNode.dataset.i; tire[i]=b.dataset.t; render(); });
   const TL = {stock:"STOCK", semi:"SEMI-SLICKS"};
   // per-car, per-tire view of the numbers
@@ -832,6 +978,66 @@ renderLB();
     v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared numbers between these picks yet. Check back soon.";
   }
   render();
+})();
+
+
+// ===== EPISODES =====
+// Episode tags come from the sheet (Launch Tracker, locked episodes). Copy and video links live here.
+const EPISODE_INFO = {
+  "1997": {blurb:"A hot hatch, a sport sedan and a V12 supercar, all from the same model year. Three very different answers to the same question.", video:""},
+  "The Holy Trinity": {blurb:"The three hybrid hypercars that arrived together and rewrote the rules: McLaren P1, Porsche 918 Spyder and LaFerrari.", video:""}
+};
+const epSlug = n => "episode-" + n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+(function(){
+  const order=[]; const groups={};
+  CARS.forEach(c=>{ if(!c.ep) return; if(!groups[c.ep]){ groups[c.ep]=[]; order.push(c.ep); } groups[c.ep].push(c); });
+  const box=document.getElementById("eps");
+  if(!order.length){ box.innerHTML=`<div class="panel" style="text-align:center;padding:30px">Episodes land here as they're announced.</div>`; return; }
+  const tv = v => v!=null ? `<span class="tv">${fmt(v)}</span>` : `<span class="tv na">IN THE LAB</span>`;
+  box.innerHTML = order.map(name=>{ const cars=groups[name].sort((a,b)=>b.sp-a.sp); const info=EPISODE_INFO[name]||{};
+    return `<article class="ep" id="${epSlug(name)}">
+      <div class="el">
+        <div class="ek"><span>Season 1</span>${info.video?"":`<span class="est">Video coming soon</span>`}</div>
+        <h3>${esc(name)}</h3>
+        ${info.blurb?`<p>${esc(info.blurb)}</p>`:""}
+        <div class="eb">
+          ${info.video?`<a href="${esc(info.video)}" target="_blank" rel="noopener">Watch the episode</a>`:""}
+          <button type="button" data-cmp="${cars.slice(0,3).map(c=>c.id).join(",")}">Compare these cars</button>
+          <button type="button" data-gar="${esc(name)}">Show in garage</button>
+        </div>
+      </div>
+      <div class="er">
+        <div class="erh"><span>Car</span><span>0-60</span><span>Sprint</span><span>Golden Hr</span><span>Heaven</span></div>
+        ${cars.map(c=>`<button type="button" class="err" data-id="${c.id}">
+          <span class="cn">${cbadge(c.sc)}${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${c.sp}</small></span>
+          ${c.z60!=null?`<span class="tv">${c.z60.toFixed(3)}s</span>`:`<span class="tv na">n/a</span>`}
+          ${tv(c.sfS)}${tv(c.hokS)}${tv(c.li7S)}
+        </button>`).join("")}
+      </div>
+    </article>`; }).join("");
+  box.addEventListener("click",e=>{
+    const row=e.target.closest(".err"); if(row){ openCar(+row.dataset.id); return; }
+    const cb=e.target.closest("[data-cmp]"); if(cb){ window.loadCompare(cb.dataset.cmp.split(",").map(Number)); document.getElementById("compare").scrollIntoView({behavior:"smooth"}); return; }
+    const gb=e.target.closest("[data-gar]"); if(gb){ Object.keys(state.f).forEach(k=>state.f[k]=""); state.f.ep=gb.dataset.gar; state.cls.clear(); state.q=""; document.getElementById("q").value="";
+      document.querySelectorAll("#chips .chip").forEach(x=>x.classList.toggle("on",x.dataset.c==="all")); state.limit=20; fillFilters(); renderCards(); document.getElementById("garage").scrollIntoView({behavior:"smooth"}); }
+  });
+  // deep link from a video description, e.g. .../fh6/#episode-1997
+  const h=decodeURIComponent(location.hash.slice(1)); const t=h && document.getElementById(h);
+  if(t && t.classList.contains("ep")){ setTimeout(()=>{ t.scrollIntoView({block:"start"}); t.classList.add("flash"); setTimeout(()=>t.classList.remove("flash"),2400); },150); }
+})();
+
+
+// ===== COLLECTION PROGRESS =====
+(function(){
+  const done = c => c.sfS!=null && c.hokS!=null && c.li7S!=null;
+  const started = c => c.sfS!=null || c.hokS!=null || c.li7S!=null;
+  const all=CARS.length, d=CARS.filter(done).length, st=CARS.filter(started).length;
+  const pct = n => all ? (n/all*100) : 0;
+  const present2 = CLASSES.filter(k=>CARS.some(c=>c.sc===k));
+  const cells = present2.map(k=>{ const g=CARS.filter(c=>c.sc===k); const gd=g.filter(done).length, gs=g.filter(started).length;
+    return `<div class="cc" style="--c:${CCOL[k]}"><div class="cl"><span>${k}</span><span>${gd}/${g.length}</span></div>
+      <div class="cb2" role="img" aria-label="Class ${k}: ${gd} of ${g.length} fully benchmarked, ${gs} started"><i class="st" style="width:${gs/g.length*100}%"></i><i class="dn" style="width:${gd/g.length*100}%"></i></div></div>`; }).join("");
+  document.getElementById("coll").innerHTML = `<div class="ch"><span>The collection · every car in FH6</span><span><b>${pct(d).toFixed(1)}%</b> complete · ${st} started</span></div><div class="cg" style="--n:${present2.length}">${cells}</div>`;
 })();
 
 // ===== NAV highlight =====
