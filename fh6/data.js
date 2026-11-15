@@ -102,7 +102,7 @@ window.FH6_RAW = [
  {"y":2012,"mk":"Nissan","md":"GT-R Black Edition (R35)","co":"Japan","ty":"Modern Supercars","sc":"S1","sp":703},
  {"y":1968,"mk":"Abarth","md":"595 esseesse","co":"Italy","ty":"Cult Cars","sc":"D","sp":100},
  {"y":2016,"mk":"Abarth","md":"695 Biposto","co":"Italy","ty":"Hot Hatch","dt":"FWD","sc":"B","sf":"2:03.011","sp":540},
- {"y":1980,"mk":"Abarth","md":"Fiat 131","co":"Italy","ty":"Classic Rally","sc":"D","sp":399},
+ {"y":1980,"mk":"Abarth","md":"Fiat 131","co":"Italy","ty":"Classic Rally","dt":"RWD","sc":"D","lc":"C","tire":"Standard","sp":399,"lp":472,"hp":140,"tq":130,"wt":2161,"fw":54,"cc":1995,"z60":7.183,"z100":22.45,"top":119,"rS":[4.3,4.1,4.1,3.9,3.2,5.8],"rT":[4.3,4.8,4.1,3.9,3.9,6.1]},
  {"y":2001,"mk":"Acura","md":"Integra Type R","co":"USA","ty":"Retro Hot Hatch","sc":"C","sp":471},
  {"y":2022,"mk":"Acura","md":"NSX Type S","co":"USA","ty":"Modern Supercars","sc":"S1","sp":734},
  {"y":2002,"mk":"Acura","md":"RSX Type S","co":"USA","ty":"Retro Hot Hatch","sc":"C","sp":462},
