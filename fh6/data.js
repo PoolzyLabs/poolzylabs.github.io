@@ -1,7 +1,7 @@
 window.FH6_UPDATED = "2026-11-14";
 window.FH6_RAW = [
- {"y":2024,"mk":"Ford","md":"Mustang Dark Horse","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","lc":"A","tire":"Sport","sp":669,"lp":685,"hp":500,"tq":418,"wt":3949,"fw":54,"cc":5038,"z60":3.733,"z100":8.367,"top":182.3,"rS":[7,5.7,5.6,4.9,5,5.3],"ep":"Modern Mustang"},
- {"y":2024,"mk":"Ford","md":"Mustang GT","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","body":"Rear wing removed","lc":"A","tire":"Sport","sp":631,"lp":666,"hp":486,"tq":418,"wt":3823,"fw":53,"cc":5038,"z60":3.967,"z100":8.733,"top":194.2,"rS":[7.1,5.1,5.2,5.2,4.3,5.4],"ep":"Modern Mustang"},
+ {"y":2024,"mk":"Ford","md":"Mustang Dark Horse","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","lc":"A","tire":"Sport","sp":669,"lp":685,"hp":500,"tq":418,"wt":3949,"fw":54,"cc":5038,"z60":3.733,"z100":8.367,"top":182.3,"rS":[7,5.7,5.6,4.9,5,5.3]},
+ {"y":2024,"mk":"Ford","md":"Mustang GT","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","body":"Rear wing removed","lc":"A","tire":"Sport","sp":631,"lp":666,"hp":486,"tq":418,"wt":3823,"fw":53,"cc":5038,"z60":3.967,"z100":8.733,"top":194.2,"rS":[7.1,5.1,5.2,5.2,4.3,5.4]},
  {"y":1997,"mk":"BMW","md":"M3","co":"Germany","ty":"Retro Super Saloons","sc":"B","lc":"A","sp":549,"lp":612,"ep":"1997"},
  {"y":1997,"mk":"Lamborghini","md":"Diablo SV","co":"Italy","ty":"Retro Supercars","dt":"RWD","sc":"A","lc":"S1","tire":"Street","sp":649,"lp":702,"hp":530,"tq":446,"wt":3474,"fw":41,"cc":5707,"z60":3.833,"z100":8,"top":208.2,"rS":[7.7,5.5,5.2,4.2,4.9,5.1],"rT":[7.7,6.2,5.2,4.2,5.2,5.3],"ep":"1997"},
  {"y":2021,"mk":"BMW","md":"M4 Competition Coupé Welcome Pack","co":"Germany","ty":"Modern Super Saloons","sc":"S1","sp":800},
@@ -19,7 +19,7 @@ window.FH6_RAW = [
  {"y":2023,"mk":"Porsche","md":"911 GT3 RS","co":"Germany","ty":"Track Toys","sc":"S1","sp":758},
  {"y":2005,"mk":"Honda","md":"NSX-R GT","co":"Japan","ty":"Retro Semi-Slicks Cars","sc":"A","sp":608},
  {"y":2005,"mk":"Honda","md":"NSX-R","co":"Japan","ty":"Retro Semi-Slicks Cars","dt":"RWD","sc":"B","lc":"A","tire":"Standard","sp":570,"lp":631,"rS":[6.4,5.1,5,3.8,4.7,5.5],"rT":[6.4,5.9,5,3.8,5.4,5.6]},
- {"y":2025,"mk":"Ford","md":"Mustang GTD","co":"USA","ty":"Track Toys","dt":"RWD","sc":"S1","lc":"S1","tire":"Semi-Slick","sp":781,"lp":781,"hp":815,"tq":664,"wt":4404,"fw":51,"cc":5163,"z60":3.333,"z100":6.633,"top":207,"rS":[7.8,7.5,6,6.5,9.9,4.6],"ep":"Modern Mustang"},
+ {"y":2025,"mk":"Ford","md":"Mustang GTD","co":"USA","ty":"Track Toys","dt":"RWD","sc":"S1","lc":"S1","tire":"Semi-Slick","sp":781,"lp":781,"hp":815,"tq":664,"wt":4404,"fw":51,"cc":5163,"z60":3.333,"z100":6.633,"top":207,"rS":[7.8,7.5,6,6.5,9.9,4.6]},
  {"y":2023,"mk":"Acura","md":"Integra A-Spec","co":"USA","ty":"Hot Hatch","dt":"FWD","sc":"C","lc":"B","tire":"Standard","sp":484,"lp":540,"hp":200,"tq":192,"wt":3073,"fw":60,"cc":1498,"z60":6.3,"z100":15.783,"top":153.8,"rS":[5.7,4.7,4.2,4.2,3.7,5.5],"rT":[5.7,5.4,4.7,4.9,4.4,5.6]},
  {"y":2014,"mk":"Volkswagen","md":"Golf R","co":"Germany","ty":"Super Hot Hatch","sc":"B","lc":"B","sp":536,"lp":577},
  {"y":2013,"mk":"Mazda","md":"MX-5","co":"Japan","ty":"Modern Semi-Slicks Cars","dt":"RWD","sc":"C","lc":"C","tire":"Standard","sp":432,"lp":498,"hp":167,"tq":140,"wt":2593,"fw":51,"cc":1999,"z60":7.1,"z100":19.817,"top":129.3,"rS":[4.8,4.9,3.9,3.4,3.4,5.5],"rT":[4.8,5.8,3.9,3.4,4.2,5.8]},
