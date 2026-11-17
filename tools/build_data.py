@@ -2,7 +2,7 @@
 Build fh6/data.js for the FH6 Test Bench from the "FH6 Track Times" Google Sheet.
 
 Input: a JSON file with two keys, copied straight from the Sheets API values:
-  "benchmarks": rows of 'Video Benchmarks'!A5:CF  (one list per car; BB-CE slicks, CF race tire name)
+  "benchmarks": rows of 'Video Benchmarks'!A5:CU  (one list per car; BB-CE slicks, CF race tire name, CG-CU vintage race)
   "tracker":    rows of 'Launch Tracker'!A15:I    (for locked episode tags)
 
 Usage:
@@ -59,7 +59,8 @@ def logger_only(note):
     return out
 
 def tires(r):
-    """Every tire photographed for the car: stock, semi-slick, hard slick (two-compound cars), race slick."""
+    """Every tire photographed for the car: stock, semi-slick, hard slick (two-compound cars), race slick,
+    vintage race. Cars carry different numbers of tires; only the ones with data are shipped."""
     hard = tire("h", "Hard slicks", (r[54], r[53]), r[55:62], r[62:68])
     race_name = str(r[83]).strip() or ("Soft slicks" if hard else "Race slicks")
     out = [
@@ -67,6 +68,7 @@ def tires(r):
         tire("t", "Semi-slicks", (r[14], r[13]), r[40:47], r[47:53]),
         hard,
         tire("r", race_name, (r[69], r[68]), r[70:77], r[77:83]),
+        tire("v", "Vintage race", (r[85], r[84]), r[86:93], r[93:99]),
     ]
     return [t for t in out if t]
 
@@ -78,7 +80,7 @@ def build(benchmarks, tracker):
             episodes.append((r[0], r[1], r[2], r[8].replace("(locked)", "").strip()))
     cars = []
     for r in benchmarks:
-        r = list(r) + [""] * 84
+        r = list(r) + [""] * 99
         if not r[1] or not r[2]:
             continue
         o = {"y": num(r[0]) or r[0], "mk": r[1], "md": r[2]}
@@ -104,7 +106,7 @@ def build(benchmarks, tracker):
             o["lg"] = lg
         tt = tires(r)
         # Only ship the tire list when it adds something beyond class + ratings (the page rebuilds those from sc/sp/rS and lc/lp/rT)
-        if any("a" in t or t["k"] in ("h", "r") for t in tt):
+        if any("a" in t or t["k"] in ("h", "r", "v") for t in tt):
             o["tt"] = tt
         for y, mk, md, ep in episodes:
             if mk == r[1] and md == r[2] and (not y or str(y) == str(r[0])):
