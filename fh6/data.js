@@ -42,7 +42,7 @@ window.FH6_RAW = [
  {"y":1960,"mk":"Chevrolet","md":"Corvette","co":"USA","ty":"Classic Semi-Slicks Cars","dt":"RWD","sc":"C","lc":"B","tire":"Vintage","sp":428,"lp":542,"rS":[5.4,3.8,3.6,2.8,2.5,5.8],"rT":[5.4,4.5,3.7,2.8,3.4,6.3]},
  {"y":2015,"mk":"Mercedes-AMG","md":"GT S","co":"Germany","ty":"Super GT","dt":"RWD","sc":"A","lc":"S1","tire":"Sport","sp":691,"lp":705,"rS":[7,6,6.2,6.6,7,5.4],"rT":[7,6.1,6.6,6.6,7.1,5.4]},
  {"y":2017,"mk":"Mercedes-AMG","md":"GT R","co":"Germany","ty":"Super GT","dt":"RWD","sc":"S1","lc":"S1","tire":"Semi-Slick","sp":764,"lp":764,"rS":[7.7,6.4,6.8,7.4,7.3,4.9],"rT":[7.7,6.4,6.8,7.4,7.3,4.9]},
- {"y":2017,"mk":"Abarth","md":"124 Spider","co":"Italy","dt":"RWD","sc":"C","lc":"B","tire":"Standard","sp":450,"lp":517,"rS":[5.2,4.7,3.8,4.6,3.3,5.5],"rT":[5.2,5.6,3.8,5,4.2,5.8]},
+ {"y":2017,"mk":"Abarth","md":"124 Spider","co":"Italy","dt":"RWD","sc":"C","sf":"2:12.737","lc":"B","tire":"Standard","sp":450,"lp":517,"hp":165,"tq":184,"wt":2477,"fw":54,"cc":1368,"z60":7.167,"z100":19.017,"top":141.5,"z60s":7.083,"z100s":18.8,"tops":141.8,"rS":[5.2,4.7,3.8,4.6,3.3,5.5],"rT":[5.2,5.6,3.8,5,4.2,5.8]},
  {"y":2013,"mk":"Audi","md":"R8 Coupé V10 plus 5.2 FSI quattro","co":"Germany","ty":"Modern Supercars","dt":"AWD","sc":"A","sf":"1:43.189","lc":"S1","sp":694,"lp":723,"rT":[7.3,6.6,7.1,6.6,7.2,5.6]},
  {"y":1970,"mk":"Chevrolet","md":"Corvette ZR-1","co":"USA","ty":"Classic Muscle","dt":"RWD","sc":"C","lc":"B","sp":497,"lp":579,"rT":[4.9,5,3.9,2.9,3.8,5.9]},
  {"y":1968,"mk":"Ford","md":"Mustang GT 2+2 Fastback","co":"USA","ty":"Classic Muscle","dt":"RWD","sc":"D","lc":"B","tire":"Vintage","sp":394,"lp":529,"rS":[5.7,3.7,3.4,3.3,2.3,5.7],"rT":[5.7,4.5,4.2,3.3,3.4,6.5]},
