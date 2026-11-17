@@ -11,7 +11,7 @@ Usage:
 
 Never publishes the internal Heaven best lap (column Q).
 """
-import json, sys, datetime, pathlib
+import json, sys, datetime, pathlib, re
 
 # Public notes shown in lab reports, keyed by (make, model)
 NOTES = {
@@ -46,6 +46,17 @@ def tire(k, name, cls, stats, ratings, sub=""):
     if rt:
         t["r"] = rt
     return t
+
+def logger_only(note):
+    """Tests whose counted time came from the lap logger only (no results screen), read from Notes (column T)."""
+    out = []
+    for sent in re.split(r"\.(?:\s|$)", str(note)):
+        if "from lap logger" not in sent:
+            continue
+        for word, key in (("Sprint", "sf"), ("Golden Hour", "hok"), ("Hokubu", "hok"), ("Heaven", "li7")):
+            if word in sent and key not in out:
+                out.append(key)
+    return out
 
 def tires(r):
     """Every tire photographed for the car: stock, semi-slick, hard slick (two-compound cars), race slick."""
@@ -88,6 +99,9 @@ def build(benchmarks, tracker):
         rt = [num(x) for x in r[47:53]]
         if all(v is not None for v in rt):
             o["rT"] = rt
+        lg = logger_only(r[19])
+        if lg:
+            o["lg"] = lg
         tt = tires(r)
         # Only ship the tire list when it adds something beyond class + ratings (the page rebuilds those from sc/sp/rS and lc/lp/rT)
         if any("a" in t or t["k"] in ("h", "r") for t in tt):
