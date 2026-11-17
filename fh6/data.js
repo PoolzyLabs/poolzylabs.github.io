@@ -1,4 +1,4 @@
-window.FH6_UPDATED = "2026-11-16";
+window.FH6_UPDATED = "2026-11-17";
 window.FH6_RAW = [
  {"y":2024,"mk":"Ford","md":"Mustang Dark Horse","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","lc":"A","tire":"Sport","sp":669,"lp":685,"hp":500,"tq":418,"wt":3949,"fw":54,"cc":5038,"z60":3.733,"z100":8.367,"top":182.3,"rS":[7,5.7,5.6,4.9,5,5.3]},
  {"y":2024,"mk":"Ford","md":"Mustang GT","co":"USA","ty":"Modern Muscle","dt":"RWD","sc":"A","body":"Rear wing removed","lc":"A","tire":"Sport","sp":631,"lp":666,"hp":486,"tq":418,"wt":3823,"fw":53,"cc":5038,"z60":3.967,"z100":8.733,"top":194.2,"rS":[7.1,5.1,5.2,5.2,4.3,5.4]},
@@ -43,7 +43,7 @@ window.FH6_RAW = [
  {"y":2015,"mk":"Mercedes-AMG","md":"GT S","co":"Germany","ty":"Super GT","dt":"RWD","sc":"A","lc":"S1","tire":"Sport","sp":691,"lp":705,"rS":[7,6,6.2,6.6,7,5.4],"rT":[7,6.1,6.6,6.6,7.1,5.4]},
  {"y":2017,"mk":"Mercedes-AMG","md":"GT R","co":"Germany","ty":"Super GT","dt":"RWD","sc":"S1","lc":"S1","tire":"Semi-Slick","sp":764,"lp":764,"rS":[7.7,6.4,6.8,7.4,7.3,4.9],"rT":[7.7,6.4,6.8,7.4,7.3,4.9]},
  {"y":2017,"mk":"Abarth","md":"124 Spider","co":"Italy","dt":"RWD","sc":"C","lc":"B","tire":"Standard","sp":450,"lp":517,"rS":[5.2,4.7,3.8,4.6,3.3,5.5],"rT":[5.2,5.6,3.8,5,4.2,5.8]},
- {"y":2013,"mk":"Audi","md":"R8 Coupé V10 plus 5.2 FSI quattro","co":"Germany","ty":"Modern Supercars","dt":"AWD","sc":"A","sf":"1:41.668","lc":"S1","sp":694,"lp":723,"rT":[7.3,6.6,7.1,6.6,7.2,5.6]},
+ {"y":2013,"mk":"Audi","md":"R8 Coupé V10 plus 5.2 FSI quattro","co":"Germany","ty":"Modern Supercars","dt":"AWD","sc":"A","sf":"1:43.189","lc":"S1","sp":694,"lp":723,"rT":[7.3,6.6,7.1,6.6,7.2,5.6]},
  {"y":1970,"mk":"Chevrolet","md":"Corvette ZR-1","co":"USA","ty":"Classic Muscle","dt":"RWD","sc":"C","lc":"B","sp":497,"lp":579,"rT":[4.9,5,3.9,2.9,3.8,5.9]},
  {"y":1968,"mk":"Ford","md":"Mustang GT 2+2 Fastback","co":"USA","ty":"Classic Muscle","dt":"RWD","sc":"D","lc":"B","tire":"Vintage","sp":394,"lp":529,"rS":[5.7,3.7,3.4,3.3,2.3,5.7],"rT":[5.7,4.5,4.2,3.3,3.4,6.5]},
  {"y":1991,"mk":"Nissan","md":"Figaro","co":"Japan","ty":"Eclectic Domestics","dt":"FWD","sc":"D","lc":"D","tire":"Standard","sp":234,"lp":360,"rS":[3.4,4.1,2.6,1,2.9,6],"rT":[3.4,5.3,2.6,1,4.1,6.5]},
@@ -109,7 +109,7 @@ window.FH6_RAW = [
  {"y":1992,"mk":"Alfa Romeo","md":"155 Q4","co":"Italy","ty":"Retro Super Saloons","dt":"AWD","sc":"C","sf":"2:13.500","sp":439},
  {"y":1968,"mk":"Alfa Romeo","md":"33 Stradale","co":"Italy","ty":"Classic Racers","sc":"B","sp":593},
  {"y":2014,"mk":"Alfa Romeo","md":"4C","co":"Italy","ty":"Modern Semi-Slicks Cars","dt":"RWD","sc":"A","sf":"1:51.295","lc":"A","tire":"Sport","sp":644,"lp":670,"hp":240,"tq":238,"wt":2072,"fw":41,"cc":1742,"z60":4.25,"z100":9.967,"top":157.6,"rS":[5.9,5.7,4.8,7,5.2,5],"rT":[5.9,6.1,4.8,7.4,5.5,5.1]},
- {"y":2007,"mk":"Alfa Romeo","md":"8C Competizione","co":"Italy","ty":"GT Cars","dt":"RWD","sc":"A","sf":"1:46.507","lc":"A","tire":"Street","sp":635,"lp":687,"hp":450,"tq":354,"wt":3495,"fw":49,"cc":4691,"z60":3.817,"z100":8.333,"top":192,"z60s":3.65,"z100s":8.183,"tops":190.8,"rS":[7,5.3,5.4,5.5,4.9,5.2],"rT":[7,5.9,6.3,5.5,5.4,5.3]},
+ {"y":2007,"mk":"Alfa Romeo","md":"8C Competizione","co":"Italy","ty":"GT Cars","dt":"RWD","sc":"A","sf":"1:48.912","lc":"A","tire":"Street","sp":635,"lp":687,"hp":450,"tq":354,"wt":3495,"fw":49,"cc":4691,"z60":3.817,"z100":8.333,"top":192,"z60s":3.65,"z100s":8.183,"tops":190.8,"rS":[7,5.3,5.4,5.5,4.9,5.2],"rT":[7,5.9,6.3,5.5,5.4,5.3]},
  {"y":1968,"mk":"Alfa Romeo","md":"Autodelta Tipo 33/2 Daytona","co":"Italy","ty":"Classic Racers","dt":"RWD","sc":"A","sf":"1:42.786","sp":696},
  {"y":1965,"mk":"Alfa Romeo","md":"Giulia Sprint GTA Stradale","co":"Italy","ty":"Rare Classics","dt":"RWD","sc":"D","sf":"2:21.291","sp":379},
  {"y":1965,"mk":"Alfa Romeo","md":"Giulia TZ2","co":"Italy","ty":"Classic Racers","sc":"B","sp":532},
