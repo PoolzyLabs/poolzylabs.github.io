@@ -52,7 +52,7 @@ nav ul a:hover,nav ul a.on{color:var(--ink);background:var(--s3)}
 .tile .s{font-size:13px;color:var(--ink2)}
 
 /* SECTIONS */
-section{padding:56px 0 24px;scroll-margin-top:56px}
+section{padding:56px 0 24px;scroll-margin-top:57px}
 .sh{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px;flex-wrap:wrap}
 .sh .num{font-family:var(--mono);color:var(--acid);font-size:12px;letter-spacing:.16em}
 .sh h2{font-family:var(--disp);font-size:36px;margin:4px 0 0;text-transform:uppercase;letter-spacing:.01em;line-height:1}
@@ -76,6 +76,10 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .filters label span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 .filters select{width:100%}
 .filters select.set{border-color:var(--acid);color:var(--acid)}
+.filters .search{flex:none;max-width:none;width:100%;box-sizing:border-box;padding:8px 10px;font-size:13px}
+.filters .search.set{border-color:var(--acid)}
+#lbfilters{margin:0 0 14px}
+.lbfnone{border:1px dashed var(--line2);border-radius:12px;padding:28px 20px;color:var(--ink2);font-size:14px;text-align:center;grid-column:1/-1}
 .clearf{background:none;border:1px solid var(--line2);color:var(--ink2);border-radius:8px;padding:8px 12px;min-height:36px;font-family:var(--disp);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
 .clearf:hover{color:var(--ink);border-color:var(--ink3)}
 .count{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-left:auto}
@@ -133,18 +137,8 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 /* LEADERBOARDS */
 .lbctl{display:flex;gap:10px;flex-wrap:wrap}
 .cb{display:inline-block;font-family:var(--mono);font-weight:700;font-size:10px;background:var(--c);color:#172426;border-radius:4px;padding:1px 5px;margin-right:6px;vertical-align:1px}
-.ut{color:var(--p2);font-family:var(--mono);font-size:10px;letter-spacing:.04em}
 .lb.wide{grid-column:1/-1}
-.lb.wide .row{grid-template-columns:28px minmax(0,1fr) 80px minmax(110px,220px)}
-.ups{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:14px}
-.up{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;color:inherit;font:inherit}
-.up:hover{background:var(--s2)}
-.up .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--p2);text-transform:uppercase}
-.up .m{display:flex;align-items:center;gap:8px;margin:8px 0 4px;font-size:14px;line-height:1.3;flex-wrap:wrap}
-.up .m b,.up .m span:not(.cb):not(.vs){color:var(--ink)}
-.up .m .vs{font-family:var(--mono);font-size:11px;color:var(--ink3)}
-.up .d{font-family:var(--mono);font-size:12px;color:var(--ink2)}
-.upnone{border:1px dashed var(--line2);border-radius:12px;padding:14px 16px;color:var(--ink2);font-size:14px;margin-bottom:14px}
+.lb.wide .row{grid-template-columns:28px minmax(0,1fr) 80px 110px}
 .tcc{margin-top:22px;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:18px 18px 8px}
 .tcc .tch{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .tcc h3{margin:0;font-family:var(--disp);font-size:18px;letter-spacing:.08em;text-transform:uppercase}
@@ -163,13 +157,12 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .tcc .lgo{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--p2);border:1px solid var(--p2);border-radius:3px;padding:1px 4px;margin-left:6px;white-space:nowrap}
 .tcnone{color:var(--ink2);font-size:14px;padding:6px 0 12px}
 @media (max-width:640px){.tcr{grid-template-columns:1fr;gap:8px}.tcr .gap small{display:inline;margin-left:8px}.tcc .car .nm b{white-space:normal}}
-.upnone b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--p2);display:block;margin-bottom:4px}
 .lbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
 .lb{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .lb h3{margin:0;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);font-family:var(--disp);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
 .lb h3 .big{font-family:var(--mono);font-weight:700;background:var(--c);color:#172426;border-radius:5px;padding:2px 8px;font-size:14px}
 .lb h3 span.n{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.08em}
-.row{display:grid;grid-template-columns:22px minmax(0,1fr) 72px 104px;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr) 72px 92px;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer}
 .row:hover{background:var(--s2)}
 .row:last-child{border-bottom:0}
 .row .rk{font-family:var(--mono);font-weight:700;color:var(--ink3)}
@@ -177,9 +170,8 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .row .cn{font-size:13px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row .cn small{display:block;color:var(--ink3);font-family:var(--mono);font-size:10px}
 .row .tm{font-family:var(--mono);font-weight:700;font-size:14px;text-align:right}
-.gapbar{position:relative;height:16px}
-.gapbar i{position:absolute;left:0;top:6px;max-width:44%;height:6px;border-radius:0 3px 3px 0;background:var(--c);opacity:.85}
-.gapbar b{position:absolute;right:0;top:0;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink2)}
+.gapbar{text-align:right;white-space:nowrap}
+.gapbar b{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink2)}
 .crown{font-family:var(--mono);font-size:10px;color:var(--acid);letter-spacing:.1em}
 
 /* CHART PANELS */
@@ -192,6 +184,7 @@ select{background:var(--s1);border:1px solid var(--line);color:var(--ink);border
 .mini .r{display:grid;grid-template-columns:80px 1fr 48px;gap:10px;align-items:center;font-size:13px}
 .mini .r .bar{height:8px;background:var(--s3);border-radius:4px;overflow:hidden}
 .mini .r .bar i{display:block;height:100%;background:var(--acid);border-radius:0 4px 4px 0}
+.d.up{color:var(--acid)} .d.dn{color:#D97757}
 .mini .r .n{font-family:var(--mono);font-size:12px;text-align:right}
 svg text{font-family:var(--mono)}
 .axis text{fill:var(--ink3);font-size:11px}
@@ -202,7 +195,6 @@ svg text{font-family:var(--mono)}
 .list .it{display:grid;grid-template-columns:24px 1fr auto;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center;font-size:13px;cursor:pointer}
 .list .it:last-child{border-bottom:0}
 .list .it .d{font-family:var(--mono);font-weight:700}
-.up{color:var(--acid)} .dn{color:#D97757}
 
 /* COMPARISON */
 .sdpick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
@@ -268,7 +260,68 @@ svg text{font-family:var(--mono)}
 .assists b.off{color:var(--p2)}
 .assists-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:10px}
 @media (max-width:520px){.assists{grid-template-columns:1fr}}
-@media (max-width:900px){.tdays{grid-template-columns:1fr}}
+/* TEST DAY: ladder (tap a test) + station (its settings) */
+#leaderboards{display:block;position:relative;top:-64px;height:0;visibility:hidden}
+.tdays{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tday{cursor:pointer;position:relative;overflow:visible;transition:transform .2s,border-color .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;user-select:none}
+.tday .tph{border-radius:13px 13px 0 0}
+.tday:not(.on) .tph,.tday:not(.on) .tbody{opacity:.55;transition:opacity .2s}
+.tday:not(.on):hover .tph,.tday:not(.on):hover .tbody{opacity:.85}
+.tday.on{z-index:2;border-color:var(--acid);box-shadow:0 0 0 1px var(--acid),0 16px 40px -18px var(--acid);transform:translateY(-4px)}
+.tday.on::before{content:"";position:absolute;left:50%;bottom:-10px;width:18px;height:18px;background:var(--s1);border-right:1px solid var(--acid);border-bottom:1px solid var(--acid);transform:translateX(-50%) rotate(45deg);z-index:3}
+.tday:focus-visible{outline:2px solid var(--acid);outline-offset:4px}
+.tday:not(:last-child)::after{content:"›";position:absolute;right:-19px;top:30%;width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);color:var(--ink2);font:700 16px/22px var(--mono);text-align:center;z-index:4}
+.tday .tbody{padding:12px 16px 14px;gap:6px}
+.tday .tbody h3{font-size:20px}
+.meters{display:flex;gap:16px;flex-wrap:wrap;margin-top:4px}
+.mt{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.pips{display:flex;gap:3px}
+.pips i{width:14px;height:7px;border-radius:4px;background:var(--s3)}
+.pips.g1 i:first-child,.pips.g2 i:nth-child(-n+2),.pips.g3 i{background:var(--acid)}
+.pips.a3 i,.pips.a1 i:first-child{background:var(--p3)}
+.station{position:relative;margin:20px 0 18px;background:var(--s1);border:1px solid var(--acid);border-radius:16px;padding:20px 22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 28px;align-items:center;overflow:hidden}
+.station::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(var(--acid),transparent 70%);opacity:.1;pointer-events:none}
+.station svg{width:18px;height:18px;flex:none}
+.st-w{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acid)}
+.st-h h3{margin:6px 0 6px;font-family:var(--disp);font-size:clamp(26px,4vw,38px);line-height:1;text-transform:uppercase}
+.st-pl{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.st-pl svg{width:14px;height:14px}
+.st-prog{text-align:right;min-width:150px}
+.st-n{font-family:var(--mono);font-size:34px;font-weight:700;line-height:1}
+.st-n small{font-size:15px;color:var(--ink3);font-weight:500}
+.st-prog .st-pl{justify-content:flex-end;margin-top:4px}
+.st-bar{height:6px;background:var(--s3);border-radius:3px;margin-top:8px;overflow:hidden}
+.st-bar i{display:block;height:100%;background:var(--acid);border-radius:3px}
+.st-chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.st-chip{display:inline-flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--line2);border-radius:999px;padding:8px 14px 8px 10px;min-height:40px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.st-chip.big svg{color:var(--acid)}
+.st-chip b{font-weight:700;font-size:11px}
+.st-chip b.on{color:var(--acid)}
+.st-chip b.off{color:var(--p2)}
+.st-div{width:1px;height:26px;background:var(--line2);margin:0 4px}
+.st-tg{width:30px;height:16px;border-radius:8px;background:var(--s3);position:relative;flex:none}
+.st-tg::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--p2);transition:left .2s}
+.st-tg.on{background:rgba(26,181,192,.3)}
+.st-tg.on::after{left:16px;background:var(--acid)}
+.st-fine{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;border-top:1px dashed var(--line2);padding-top:12px}
+.st-fine-k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.st-fine-c{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.station .st-fine-c svg{width:15px;height:15px;color:var(--ink3)}
+.lbbar{display:flex;justify-content:flex-end;margin:0 0 12px}
+@media (max-width:700px){
+  .tdays{gap:10px}
+  .tday .tmap,.tday .tplace,.tday .meters,.tday .tph-ph small{display:none}
+  .tday .tph{aspect-ratio:4/3}
+  .tday .tph-ph{padding-right:0}
+  .tday .tbody{padding:8px 10px 10px}
+  .tday .tbody h3{font-size:13px;line-height:1.1}
+  .tday .tstep{font-size:9px;left:6px;top:6px;padding:3px 5px;letter-spacing:.08em}
+  .tday:not(:last-child)::after{right:-15px;width:20px;height:20px;font-size:13px;line-height:18px}
+  .station{grid-template-columns:1fr;padding:16px}
+  .st-prog{text-align:left}
+  .st-prog .st-pl{justify-content:flex-start}
+  .st-div{display:none}
+}
 .eps{display:flex;flex-direction:column;gap:14px}
 article.ep{background:var(--s1);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;scroll-margin-top:72px;transition:border-color .3s}
 article.ep.flash{border-color:var(--acid)}
@@ -305,7 +358,7 @@ article.ep .err .tv.na{color:var(--ink3);font-size:11px}
 .coll .cb2 i.st{background:var(--c);opacity:.35}
 .coll .cb2 i.dn{background:var(--c)}
 @media (max-width:700px){.coll .cg{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .mcard{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px}
 .mcard .n{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--acid);line-height:1}
 .mcard h3{font-family:var(--disp);text-transform:uppercase;margin:10px 0 6px;font-size:18px}
@@ -395,6 +448,30 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
   .lbgrid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.fdek{color:var(--ink2);font-size:14px;max-width:760px;margin:-6px 0 18px}
+.fdek b{color:var(--ink)}
+.fpane[hidden]{display:none}
+.anch{display:block;position:relative;top:-64px;height:0;visibility:hidden}
+.dbmore{display:block;margin:10px auto 0;background:var(--s2,#1E2E30);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;cursor:pointer}
+.dbmore:hover{border-color:var(--acid)}
+.tape{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:28px;align-items:start}
+.tape-t{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.tape-t th,.tape-t td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--mono);white-space:nowrap}
+.tape-t th:first-child,.tape-t td:first-child{text-align:left;font-family:var(--body);color:var(--ink2)}
+.tape-t thead th{vertical-align:bottom;border-bottom:2px solid var(--line2);padding-bottom:10px}
+.tape-t thead .cw{display:inline-flex;flex-direction:column;align-items:flex-end;gap:3px;font-family:var(--disp);text-transform:uppercase;font-size:14px;color:var(--ink);white-space:normal;line-height:1.1;max-width:100%;text-align:right}
+.tape-t thead .cw i{display:block;width:28px;height:4px;border-radius:2px;background:var(--c)}
+.tape-t thead .cw small{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.08em}
+.tape-t tr.grp td{padding:18px 10px 6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--acid);text-transform:uppercase;border-bottom:1px solid var(--line2)}
+.tape-t td small{display:block;font-size:10px;color:var(--ink3);letter-spacing:.06em}
+.tape-t td.w{color:var(--ink);font-weight:700}
+.tape-t td.w .ck{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--c);color:#172426;font-size:10px;font-weight:900;margin-right:7px;vertical-align:1px}
+.tape-t td .pic{display:inline-flex;align-items:center;gap:5px;margin-top:3px}
+.tape-t td .pic .cb{font-size:9.5px;padding:1px 5px}
+.tape-t td .lab{font-size:10.5px;letter-spacing:.1em;color:var(--ink3)}
+.tradar h4{margin:4px 0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink3);font-weight:500;text-transform:uppercase}
+.tradar svg{display:block;margin:0 auto;max-width:300px;width:100%;height:auto}
+@media (max-width:900px){.tape{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -406,13 +483,11 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
       POOLZY <b>LABS</b>
     </div>
     <ul id="navl">
+      <li><a href="#testday">Leaderboards</a></li>
       <li><a href="#episodes">Episodes</a></li>
-      <li><a href="#testday">Test Day Tracks</a></li>
-      <li><a href="#leaderboards">Leaderboards</a></li>
       <li><a href="#compare">Comparison Tool</a></li>
+      <li><a href="#findings">Lab Findings</a></li>
       <li><a href="#garage">Full Garage</a></li>
-      <li><a href="#tires">Tire Effect</a></li>
-      <li><a href="#overachievers">Overachievers</a></li>
       <li><a href="#method">Methodology</a></li>
     </ul>
   </div>
@@ -424,27 +499,18 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
     <div class="tag"><span class="dot"></span>Poolzy Labs · Forza Horizon 6</div>
     <h1>The Data<br><em>Garage</em></h1>
     <p class="lede">Every car in Forza Horizon 6 gets the same test day, from sunrise to lights out. Same driver, same rules, no tuning. As the day goes on, the grip goes up and the safety net comes off: stock tires and every assist in the morning, semi-slicks and fewer assists by sunset, and by nightfall it's race slicks with nothing to catch it. The goal is simple: a fair, repeatable way to see how every car really stacks up. Fresh results are rolling in.</p>
-    <div class="tiles" id="tiles"></div>
   </div>
 </header>
 
 <main class="wrap">
 
-<section id="episodes">
-  <div class="sh">
-    <div><div class="num">01</div><h2>Episodes</h2></div>
-    <p>Watched a video? Every car from each episode, in one place. Tap a car for its full report.</p>
-  </div>
-  <div class="eps" id="eps"></div>
-</section>
-
 <section id="testday">
+  <span id="leaderboards"></span>
   <div class="sh">
-    <div><div class="num">02</div><h2>Test Day Tracks</h2></div>
-    <p>Three tests, sunrise to night. Each one adds grip and takes a little more of the safety net away. Every test is a solo custom event with the same driver: ANNA at Unbeatable, no tuning.</p>
+    <div><div class="num">01 · LEADERBOARDS</div><h2>Test Day</h2></div>
   </div>
-  <div class="tdays">
-    <article class="tday">
+  <div class="tdays" id="ladder" role="tablist" aria-label="Pick a test">
+    <div class="tday on" role="tab" tabindex="0" aria-selected="true" data-v="sf">
       <div class="tph">
         <img src="img/tracks/sunrise.webp" alt="Sunrise Sprint event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
         <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>Sunrise Sprint event shot</small></div>
@@ -455,17 +521,11 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
       </div>
       <div class="tbody">
         <h3>Sunrise Sprint</h3>
-        <div class="tplace">Sunflower Charge route, Hokubu</div>
-        <p>The car the way its owner would drive it: factory tires and every safety system switched on. A sprint, so its times aren't comparable to lap times.</p>
-        <dl class="tfacts">
-          <div><dt>Format</dt><dd>Point to point</dd></div>
-          <div><dt>Result</dt><dd>Time</dd></div>
-        </dl>
-        <div class="assists-h">Settings</div>
-        <ul class="assists"><li><span>Tires</span><b>Stock</b></li><li><span>ABS</span><b class="on">On</b></li><li><span>Traction control</span><b class="on">On</b></li><li><span>Stability control</span><b class="on">On</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
+        <div class="tplace">Sunflower Charge route</div>
+        <div class="meters"><span class="mt">Grip<span class="pips g1"><i></i><i></i><i></i></span></span><span class="mt">Assists<span class="pips a3"><i></i><i></i><i></i></span></span></div>
       </div>
-    </article>
-    <article class="tday">
+    </div>
+    <div class="tday" role="tab" tabindex="0" aria-selected="false" data-v="hok">
       <div class="tph">
         <img src="img/tracks/golden-hour.webp" alt="Golden Hour event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
         <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>Golden Hour event shot</small></div>
@@ -477,16 +537,10 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
       <div class="tbody">
         <h3>Golden Hour</h3>
         <div class="tplace">Hokubu Circuit</div>
-        <p>Track day. Horizon semi-slicks go on, traction and stability control come off, and the first lap brings the tires up to temperature. This is where the chassis starts to show.</p>
-        <dl class="tfacts">
-          <div><dt>Format</dt><dd>7 laps</dd></div>
-          <div><dt>Result</dt><dd>Fastest lap</dd></div>
-        </dl>
-        <div class="assists-h">Settings</div>
-        <ul class="assists"><li><span>Tires</span><b>Semi-slicks</b></li><li><span>ABS</span><b class="on">On</b></li><li><span>Traction control</span><b class="off">Off</b></li><li><span>Stability control</span><b class="off">Off</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
+        <div class="meters"><span class="mt">Grip<span class="pips g2"><i></i><i></i><i></i></span></span><span class="mt">Assists<span class="pips a1"><i></i><i></i><i></i></span></span></div>
       </div>
-    </article>
-    <article class="tday">
+    </div>
+    <div class="tday" role="tab" tabindex="0" aria-selected="false" data-v="li7">
       <div class="tph">
         <img src="img/tracks/heaven.webp" alt="7 Laps in Heaven event in Forza Horizon 6" loading="lazy" onerror="this.remove()">
         <div class="tph-ph" aria-hidden="true"><span>PHOTO</span><small>7 Laps in Heaven event shot</small></div>
@@ -499,52 +553,83 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
       <div class="tbody">
         <h3>7 Laps in Heaven</h3>
         <div class="tplace">Legend Island Circuit</div>
-        <p>Race car. Full race slicks (the soft compound when there's a choice), zero electronic help and seven laps under the lights. Nowhere to hide.</p>
-        <dl class="tfacts">
-          <div><dt>Format</dt><dd>7 laps</dd></div>
-          <div><dt>Result</dt><dd>7-lap total</dd></div>
-        </dl>
-        <div class="assists-h">Settings</div>
-        <ul class="assists"><li><span>Tires</span><b>Race slicks</b></li><li><span>ABS</span><b class="off">Off</b></li><li><span>Traction control</span><b class="off">Off</b></li><li><span>Stability control</span><b class="off">Off</b></li><li><span>Launch control</span><b class="on">On</b></li><li><span>Damage &amp; tire wear</span><b class="off">Off</b></li><li><span>Shifting</span><b>Manual</b></li><li><span>Steering</span><b>Simulation</b></li></ul>
+        <div class="meters"><span class="mt">Grip<span class="pips g3"><i></i><i></i><i></i></span></span><span class="mt">Assists<span class="pips a0"><i></i><i></i><i></i></span></span></div>
       </div>
-    </article>
+    </div>
   </div>
-</section>
-
-<section id="leaderboards">
-  <div class="sh">
-    <div><div class="num">03</div><h2>Leaderboards</h2></div>
-    <div class="lbctl">
+  <div class="station" id="station" aria-live="polite"></div>
+  <div class="lbbar">
     <div class="seg" id="lbview" aria-label="Leaderboard view">
       <button data-v="class" class="on">By Class</button>
       <button data-v="all">Overall</button>
     </div>
-    <div class="seg" id="lbseg" aria-label="Test">
-      <button data-v="sf" class="on">Sunrise Sprint</button>
-      <button data-v="hok">Golden Hour</button>
-      <button data-v="li7">7 Laps in Heaven</button>
-    </div>
-    </div>
   </div>
-  <p style="color:var(--ink2);margin:-8px 0 18px;font-size:14px" id="lbnote"></p>
-  <div id="upsets"></div>
+  <div class="filters" id="lbfilters">
+    <label><span>Search</span><input class="search" id="lbq" type="search" placeholder="Make, model, year..." aria-label="Search leaderboard cars"></label>
+    <label><span>Make</span><select data-f="mk"></select></label>
+    <label><span>Car type</span><select data-f="ty"></select></label>
+    <label><span>Country</span><select data-f="co"></select></label>
+    <label><span>Era</span><select data-f="era"></select></label>
+    <label><span>Drivetrain</span><select data-f="dt"></select></label>
+    <label><span>Episode</span><select data-f="ep"></select></label>
+    <button type="button" class="clearf" id="lbclearf" hidden>Clear filters</button>
+  </div>
+  <p style="color:var(--ink2);margin:0 0 18px;font-size:14px" id="lbnote"></p>
   <div class="lbgrid" id="lbgrid"></div>
   <div id="tooclose"></div>
 </section>
 
+<section id="episodes">
+  <div class="sh">
+    <div><div class="num">02</div><h2>Episodes</h2></div>
+    <p>Watched a video? Every car from each episode, in one place. Tap a car for its full report.</p>
+  </div>
+  <div class="eps" id="eps"></div>
+</section>
+
 <section id="compare">
   <div class="sh">
-    <div><div class="num">04</div><h2>Comparison Tool</h2></div>
-    <p>Pick up to three cars and the tires each one runs on. Stock Diablo against a semi-slick Civic? Go for it.</p>
+    <div><div class="num">03</div><h2>Comparison Tool</h2></div>
+    <p>Pick up to three cars. A check marks the winner of each row, and an equals sign means a tie. Under each Test Day time is the car's class on that test's tires.</p>
   </div>
   <div class="panel">
     <div class="sdpick" id="sdpick"></div>
-    <div class="verdict" id="verdict"></div>
-    <div class="sdgrid">
-      <div id="sdtimes"></div>
-      <div id="sdrat"></div>
+    <div class="tape">
+      <div style="overflow-x:auto"><table class="tape-t" id="sdspec"></table></div>
+      <div class="tradar"><h4>Forza ratings · stock</h4><div id="sdrat"></div><div class="legend" id="sdleg"></div></div>
     </div>
-    <div style="overflow-x:auto;margin-top:8px"><table class="spec" id="sdspec"></table></div>
+  </div>
+</section>
+
+<section id="findings">
+  <span id="tires" class="anch"></span><span id="overachievers" class="anch"></span>
+  <div class="sh">
+    <div><div class="num">04</div><h2>Lab Findings</h2></div>
+    <div class="seg" id="fseg" role="tablist" aria-label="Pick a finding">
+      <button data-v="tires" class="on" role="tab" aria-selected="true">Tire Effect</button>
+      <button data-v="over" role="tab" aria-selected="false">Overachievers</button>
+    </div>
+  </div>
+  <div class="fpane" data-p="tires">
+    <p class="fdek"><b>Who grows on semi-slicks?</b> Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
+    <div class="two">
+    <div class="panel"><div id="dumb"></div>
+      <div class="legend"><span><i style="background:var(--ink3)"></i>Stock PI</span><span><i style="background:var(--acid)"></i>On semi-slicks</span><span>Shaded bands mark each class</span></div>
+    </div>
+    <div class="callout" id="tirecall"></div>
+  </div>
+  </div>
+  <div class="fpane" data-p="over" hidden>
+    <p class="fdek"><b>Who beats their number?</b> PI is Forza's prediction of how fast a car is. Each car is plotted at its PI on race slicks, the tires it runs in 7 Laps in Heaven. The line is what the data expects at each PI. Above it, the car finishes faster than its rating says it should.</p>
+    <div class="two">
+    <div class="panel"><div id="scatter"></div>
+      <div class="legend" id="scleg"></div>
+    </div>
+    <div class="callout">
+      <div><div class="k">Faster than PI predicts</div><div class="list" id="overlist"></div></div>
+      <div><div class="k">Slower than PI predicts</div><div class="list" id="underlist"></div></div>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -558,9 +643,9 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
     <input class="search" id="q" type="search" placeholder="Search make, model, year..." aria-label="Search cars">
     <div class="chips" id="chips"></div>
     <select id="sort" aria-label="Sort cars">
-      <option value="sf">Sort: Sprint time</option>
-      <option value="hok">Sort: Hokubu fastest lap</option>
-      <option value="li7">Sort: Heaven 7-lap total</option>
+      <option value="sf">Sort: Sunrise Sprint time</option>
+      <option value="hok">Sort: Golden Hour fastest lap</option>
+      <option value="li7">Sort: 7 Laps in Heaven total</option>
       <option value="z60">Sort: 0-60 (quickest)</option>
       <option value="z100">Sort: 0-100 (quickest)</option>
       <option value="top">Sort: Top speed (fastest)</option>
@@ -585,44 +670,14 @@ table.cmp td:first-child,table.cmp th:first-child{position:sticky;left:0;backgro
   <div class="grid" id="grid"></div>
 </section>
 
-<section id="tires">
-  <div class="sh">
-    <div><div class="num">06</div><h2>Tire Effect</h2></div>
-    <p>Who grows on semi-slicks? Bolting on Horizon semi-slicks raises a car's Performance Index. Some cars barely notice. Others jump an entire class.</p>
-  </div>
-  <div class="two">
-    <div class="panel"><div id="dumb"></div>
-      <div class="legend"><span><i style="background:var(--ink3)"></i>Stock PI</span><span><i style="background:var(--acid)"></i>On semi-slicks</span><span>Shaded bands mark each class</span></div>
-    </div>
-    <div class="callout" id="tirecall"></div>
-  </div>
-</section>
-
-<section id="overachievers">
-  <div class="sh">
-    <div><div class="num">07</div><h2>Overachievers</h2></div>
-    <p>PI is Forza's prediction of how fast a car is. The line is what the data expects at each PI. Above it, the car finishes 7 Laps in Heaven faster than its rating says it should.</p>
-  </div>
-  <div class="two">
-    <div class="panel"><div id="scatter"></div>
-      <div class="legend" id="scleg"></div>
-    </div>
-    <div class="callout">
-      <div><div class="k">Faster than PI predicts</div><div class="list" id="overlist"></div></div>
-      <div><div class="k">Slower than PI predicts</div><div class="list" id="underlist"></div></div>
-    </div>
-  </div>
-</section>
-
 <section id="method">
   <div class="sh">
-    <div><div class="num">08</div><h2>Methodology</h2></div>
+    <div><div class="num">06</div><h2>Methodology</h2></div>
     <p>The fine print behind every test. Anyone with FH6 can replicate every number on this page. That's the point.</p>
   </div>
   <div class="mgrid">
     <div class="mcard"><div class="n">AI</div><h3>Same Driver Every Time</h3><p>Every lap is driven by ANNA at Unbeatable, so the times show the car, not the driver. Manual gearbox, launch control on, simulation steering, damage off, fall, dry, no traffic. Body changes, like a removed wing, are logged and apply to all three tests.</p></div>
     <div class="mcard"><div class="n">±.017</div><h3>Timing Precision</h3><p>Times are accurate to about 0.017s, one 60 Hz frame. Gaps smaller than that are a tie.</p></div>
-    <div class="mcard"><div class="n">R</div><h3>What's Left Out</h3><p>R class is mostly purpose-built track cars, so it isn't ranked yet. Listed R cars are for reference.</p></div>
   </div>
 </section>
 
@@ -660,7 +715,8 @@ const pend = () => `<span class="pending">IN THE LAB</span>`;
 
 const CARS = RAW.map((c,i)=>({...c, id:i, tag:"PL-"+String(i+1).padStart(3,"0"),
   hokS:sec(c.hok), sfS:sec(c.sf), li7S:sec(c.li7),
-  gain:(c.lp&&c.sp)? c.lp-c.sp : null, name:`${c.y} ${c.mk} ${c.md}`}));
+  gain:(c.lp&&c.sp)? c.lp-c.sp : null, name:`${c.y} ${c.mk} ${c.md}`,
+  ...(()=>{ const t=(c.tt||[]).find(x=>x.k==="r"); const m=t&&t.cl?String(t.cl).trim().split(/\s+/):null; return m&&m.length===2 ? {rc:m[0], rp:+m[1]} : {rc:c.lc, rp:c.lp}; })()}));
 
 // ranks within the bench set, by class
 function rankBy(key, clsKey){
@@ -669,7 +725,7 @@ function rankBy(key, clsKey){
   Object.values(groups).forEach(g=>{ g.sort((a,b)=>a[key]-b[key]); g.forEach((c,i)=>c[key+"R"]=i+1); });
   return groups;
 }
-rankBy("hokS","lc"); rankBy("sfS","sc"); rankBy("li7S","lc");
+rankBy("hokS","lc"); rankBy("sfS","sc"); rankBy("li7S","rc");
 
 // ===== TOOLTIP =====
 const tip = document.getElementById("tip");
@@ -678,21 +734,8 @@ function moveTip(e){ const x=e.clientX+14, y=e.clientY+14; const w=tip.offsetWid
   tip.style.left=Math.min(x, innerWidth-w-8)+"px"; tip.style.top=Math.min(y, innerHeight-h-8)+"px"; }
 function hideTip(){ tip.style.opacity=0; }
 
-// ===== HERO TILES =====
-(function(){
-  const tested = CARS.length;
-  const best=(k)=>CARS.filter(c=>c[k]!=null && c.sc!=="R").sort((a,b)=>a[k]-b[k])[0];
-  const runs = ["sfS","hokS","li7S"].reduce((a,k)=>a+CARS.filter(c=>c[k]!=null).length,0);
-  const rec=(lab,k,ck)=>{ const b=best(k); return b ? {k:lab,v:fmt(b[k]),s:b.name,a:CCOL[b[ck]]} : {k:lab,v:"--:--",s:"First runs coming soon",a:"var(--ink3)"}; };
-  const T = [
-    {k:"Collection",v:`${CARS.filter(c=>c.sfS!=null&&c.hokS!=null&&c.li7S!=null).length}<small> / ${tested}</small>`,s:`cars fully benchmarked · ${CARS.filter(c=>c.sfS!=null||c.hokS!=null||c.li7S!=null).length} started`,a:"var(--acid)"},
-    rec("Sunrise Sprint record","sfS","sc"),
-    rec("Golden Hour record","hokS","lc"),
-    rec("7 Laps in Heaven record","li7S","lc"),
-  ];
-  document.getElementById("tiles").innerHTML = T.map(t=>`<div class="tile" style="--acc:${t.a}"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="s">${esc(t.s)}</div></div>`).join("");
-  document.getElementById("updated").textContent = "Last updated "+UPDATED;
-})();
+// ===== FOOTER DATE =====
+document.getElementById("updated").textContent = "Last updated "+UPDATED;
 
 // ===== RADAR =====
 function radar(c, size=104){
@@ -759,7 +802,7 @@ function card(c){
     <div class="top">${cls(c.sc,c.sp)}<span class="ty">${esc(c.ty||"")}</span></div>
     <div class="nm"><div class="mk">${c.y} · ${esc(c.mk)}</div><div class="md">${esc(c.md)}</div></div>
     <div class="qs">${q("0-60",c.z60,2,"s")}${q("0-100",c.z100,2,"s")}${q("Top speed",c.top,0,"mph")}</div>
-    <div class="tss">${t("Sunrise","sfS","sc")}${t("Golden Hour","hokS","lc")}${t("Heaven","li7S","lc")}</div>
+    <div class="tss">${t("Sunrise","sfS","sc")}${t("Golden Hour","hokS","lc")}${t("Heaven","li7S","rc")}</div>
     <div class="tags">${tags}</div>
   </button>`;
 }
@@ -804,7 +847,7 @@ function openCar(id){
     </div>
     <div class="rp">
       <div class="rh">Test day</div>
-      <div class="tds">${td("Sunrise","Sunrise Sprint","Stock tires","sfS","sc")}${td("Sunset","Golden Hour","Semi-slicks","hokS","lc")}${td("Night","7 Laps in Heaven",raceT?raceT.n:"Race slicks","li7S","lc")}</div>
+      <div class="tds">${td("Sunrise","Sunrise Sprint","Stock tires","sfS","sc")}${td("Sunset","Golden Hour","Semi-slicks","hokS","lc")}${td("Night","7 Laps in Heaven",raceT?raceT.n:"Race slicks","li7S","rc")}</div>
 
       ${spec.length?`<div class="rh">Spec sheet</div><div class="specs">${spec.map(r=>`<div><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join("")}</div>`:""}
 
@@ -814,16 +857,85 @@ function openCar(id){
 
       ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
     </div>`;
-  modal.classList.add("open");
-  sheet.querySelector(".x").focus();
+  if(!modal.classList.contains("open")) modalRet=document.activeElement;
+  modal.classList.add("open"); document.documentElement.style.overflow="hidden";
+  sheet.scrollTop=0; sheet.querySelector(".x").focus();
 }
-modal.addEventListener("click",e=>{ if(e.target===modal || e.target.closest(".x")) modal.classList.remove("open"); });
-addEventListener("keydown",e=>{ if(e.key==="Escape") modal.classList.remove("open"); });
+let modalRet=null;
+function closeCar(){ if(!modal.classList.contains("open")) return; modal.classList.remove("open"); document.documentElement.style.overflow="";
+  if(modalRet && document.contains(modalRet)) modalRet.focus({preventScroll:true}); modalRet=null; }
+modal.addEventListener("click",e=>{ if(e.target===modal || e.target.closest(".x")) closeCar(); });
+addEventListener("keydown",e=>{ if(e.key==="Escape") closeCar(); });
 
 // ===== LEADERBOARDS =====
 let lbMode="sf", lbView="class";
-document.getElementById("lbseg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; lbMode=b.dataset.v;
-  document.querySelectorAll("#lbseg button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
+const lbF={mk:"",ty:"",co:"",era:"",dt:"",ep:""}; let lbQ="";
+const lbKey = () => ({hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode]);
+const lbMatch = (c,skip) => Object.entries(lbF).every(([k,v])=>k===skip||!v||fval(c,k)===v) && (!lbQ || (c.y+" "+c.name+" "+(c.ty||"")+" "+(c.co||"")).toLowerCase().includes(lbQ));
+const lbActive = () => Object.values(lbF).some(Boolean) || !!lbQ;
+function fillLBFilters(){
+  const key=lbKey();
+  document.querySelectorAll("#lbfilters select").forEach(sel=>{
+    const k=sel.dataset.f;
+    // counts = cars with a time in the current test that pass every other filter
+    const base = CARS.filter(c=>c[key]!=null && lbMatch(c,k));
+    const cnt={}; base.forEach(c=>{ const v=fval(c,k); if(v) cnt[v]=(cnt[v]||0)+1; });
+    let keys=Object.keys(cnt); keys = k==="era" ? ERA_ORDER.filter(e=>cnt[e]) : keys.sort((a,b)=>a.localeCompare(b));
+    if(lbF[k] && !cnt[lbF[k]]) keys.unshift(lbF[k]);
+    sel.innerHTML = `<option value="">${FLAB[k]}</option>` + keys.map(v=>`<option value="${esc(v)}" ${v===lbF[k]?"selected":""}>${esc(v)} (${cnt[v]||0})</option>`).join("");
+    sel.classList.toggle("set", !!lbF[k]);
+  });
+  document.getElementById("lbq").classList.toggle("set", !!lbQ);
+  document.getElementById("lbclearf").hidden = !lbActive();
+}
+document.getElementById("lbfilters").addEventListener("change",e=>{ const sel=e.target.closest("select"); if(!sel) return; lbF[sel.dataset.f]=sel.value; renderLB(); });
+document.getElementById("lbq").addEventListener("input",e=>{ lbQ=e.target.value.trim().toLowerCase(); renderLB(); });
+document.getElementById("lbclearf").addEventListener("click",()=>{ Object.keys(lbF).forEach(k=>lbF[k]=""); lbQ=""; document.getElementById("lbq").value=""; renderLB(); });
+const ladder=document.getElementById("ladder");
+function pickTest(b){ if(!b) return; lbMode=b.dataset.v;
+  ladder.querySelectorAll(".tday").forEach(x=>{ const on=x===b; x.classList.toggle("on",on); x.setAttribute("aria-selected",on); }); renderLB(); }
+ladder.addEventListener("click",e=>pickTest(e.target.closest(".tday")));
+ladder.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pickTest(e.target.closest(".tday")); } });
+// ===== TEST DAY STATION: the selected test's settings as icons, no sentences =====
+const IC = {
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  sunset:'<path d="M3 18h18M7 18a5 5 0 0 1 10 0"/><path d="M12 9V5M5.5 11.5L4 10M18.5 11.5L20 10"/>',
+  moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+  pin:'<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+  tire:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>',
+  route:'<circle cx="5" cy="19" r="2.2"/><path d="M6.8 17.6C11 14 9 9 15 8"/><path d="M15 3v9M15 3h5l-1.5 2 1.5 2h-5"/>',
+  laps:'<path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 3.5v4h-4"/>',
+  clock:'<circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M10 2.5h4M12 2.5V6M18.5 6.5L20 5"/>',
+  bot:'<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 5v3M9.5 13h.01M14.5 13h.01M9.5 16h5"/><circle cx="12" cy="4" r="1"/>',
+  nowrench:'<path d="M14.5 5.5a4 4 0 0 0 4.9 4.9L11 18.8a2 2 0 1 1-2.8-2.8l8.4-8.4"/><path d="M4 4l16 16"/>',
+  stick:'<circle cx="6" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><path d="M6 6.6v10.8M12 6.6v10.8M18 6.6V12H6"/>',
+  rocket:'<path d="M12 3c3 2 4.5 5 4.5 9l-2 3h-5l-2-3C7.5 8 9 5 12 3z"/><path d="M10 18l-1 3M14 18l1 3"/><circle cx="12" cy="9.5" r="1.5"/>',
+  shield:'<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  wheel:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3.5 10.5H10M14 10.5h6.5M12 14v7"/>',
+  leaf:'<path d="M5 19c0-8 6-14 15-14-1 9-6 14-13 14"/><path d="M5 19l7-7"/>'
+};
+const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
+const STN = {
+  sf: {n:"Sunrise Sprint",when:"Sunrise",tod:"sun",step:1,place:"Sunflower Charge route · Hokubu",tire:"Stock tires",fmt:["route","Point to point"],res:"Time",ast:[1,1,1]},
+  hok:{n:"Golden Hour",when:"Sunset",tod:"sunset",step:2,place:"Hokubu Circuit",tire:"Semi-slicks",fmt:["laps","7 laps"],res:"Fastest lap",ast:[1,0,0]},
+  li7:{n:"7 Laps in Heaven",when:"Night",tod:"moon",step:3,place:"Legend Island Circuit",tire:"Race slicks",fmt:["laps","7 laps"],res:"7-lap total",ast:[0,0,0]}
+};
+function renderStation(key){
+  const s=STN[lbMode], n=CARS.filter(c=>c[key]!=null).length, all=CARS.length;
+  const tg=(l,on)=>`<span class="st-chip"><span class="st-tg ${on?"on":"off"}"></span>${l}<b class="${on?"on":"off"}">${on?"ON":"OFF"}</b></span>`;
+  const fine=(i,l)=>`<span class="st-fine-c">${ico(i)}${l}</span>`;
+  document.getElementById("station").innerHTML = `
+    <div class="st-h"><div class="st-w">${ico(s.tod)}${s.when} · Test ${s.step} of 3</div><h3>${s.n}</h3><div class="st-pl">${ico("pin")}${s.place}</div></div>
+    <div class="st-prog"><div class="st-n">${n}<small> / ${all}</small></div><div class="st-pl">cars tested</div><div class="st-bar"><i style="width:${all&&n?Math.max(1.5,n/all*100):0}%"></i></div></div>
+    <div class="st-chips">
+      <span class="st-chip big">${ico("tire")}${s.tire}</span>
+      <span class="st-chip big">${ico(s.fmt[0])}${s.fmt[1]}</span>
+      <span class="st-chip big">${ico("clock")}${s.res}</span>
+      <span class="st-div"></span>
+      ${tg("ABS",s.ast[0])}${tg("Traction",s.ast[1])}${tg("Stability",s.ast[2])}
+    </div>
+    <div class="st-fine"><span class="st-fine-k">Every test</span>${fine("bot","ANNA · Unbeatable")}${fine("nowrench","No tuning")}${fine("stick","Manual")}${fine("rocket","Launch on")}${fine("shield","Damage off")}${fine("wheel","Sim steering")}${fine("leaf","Fall · dry · solo")}</div>`;
+}
 document.getElementById("lbview").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; lbView=b.dataset.v;
   document.querySelectorAll("#lbview button").forEach(x=>x.classList.toggle("on",x===b)); renderLB(); });
 const cbadge = k => `<span class="cb" style="--c:${CCOL[k]}">${k}</span>`;
@@ -833,7 +945,7 @@ const TCC_GAP = 0.034;
 function renderTooClose(key, ck){
   const el = document.getElementById("tooclose");
   const tname = {sf:"Sunrise Sprint",hok:"Golden Hour",li7:"7 Laps in Heaven"}[lbMode];
-  const timed = CARS.filter(c=>c[key]!=null).sort((a,b)=>a[key]-b[key]);
+  const timed = CARS.filter(c=>c[key]!=null && lbMatch(c)).sort((a,b)=>a[key]-b[key]);
   const pairs=[];
   for(let i=0;i<timed.length;i++) for(let j=i+1;j<timed.length && timed[j][key]-timed[i][key]<=TCC_GAP+1e-9;j++) pairs.push([timed[i],timed[j],timed[j][key]-timed[i][key]]);
   pairs.sort((a,b)=>a[2]-b[2]);
@@ -847,97 +959,98 @@ function renderTooClose(key, ck){
 }
 document.getElementById("tooclose").addEventListener("click",e=>{ const b=e.target.closest(".car"); if(b) openCar(+b.dataset.id); });
 function renderLB(){
-  const key = {hok:"hokS",sf:"sfS",li7:"li7S"}[lbMode], ck = lbMode==="sf"?"sc":"lc";
+  const key = lbKey(), ck = {sf:"sc",hok:"lc",li7:"rc"}[lbMode], pk = {sf:"sp",hok:"lp",li7:"rp"}[lbMode];
+  fillLBFilters();
+  renderStation(key);
   renderTooClose(key, ck);
   const place = {sf:"Sprint time on stock tires",
-    hok:"Fastest lap on stock tires",
-    li7:"7-lap total on semi-slicks"}[lbMode];
-  const clsWord = ck==="sc" ? "stock class" : "semi-slick class";
+    hok:"Fastest of 7 laps on Horizon semi-slicks",
+    li7:"7-lap total on race slicks"}[lbMode];
+  const clsWord = {sf:"stock class",hok:"semi-slick class",li7:"race slick class"}[lbMode];
   document.getElementById("lbnote").textContent = lbView==="class"
-    ? `${place}, grouped by ${clsWord}. Bars show the gap to the class leader.`
-    : `${place}. Every class on one board. R class is left out. Bars show the gap to the overall leader.`;
-  const timed = CARS.filter(c=>c[key]!=null);
-  // upsets: a car beats a slower car from a higher class (R excluded)
+    ? `Grouped by ${clsWord}.`
+    : `Every class on one board.`;
+  const timed = CARS.filter(c=>c[key]!=null && lbMatch(c));
+  if(lbActive()){
+    const tname = {sf:"Sunrise Sprint",hok:"Golden Hour",li7:"7 Laps in Heaven"}[lbMode];
+    const parts = [lbQ?`"${lbQ}"`:"", ...["mk","ty","co","era","dt","ep"].map(k=>lbF[k])].filter(Boolean);
+    document.getElementById("lbnote").textContent += ` Filtered to ${parts.join(" · ")}: ${timed.length} car${timed.length===1?"":"s"} with a ${tname} time.`;
+  }
   const ranked = timed.filter(c=>c[ck]!=="R");
-  const ci = k => CLASSES.indexOf(k);
-  const pairs=[];
-  ranked.forEach(c=>{ c._beats = ranked.filter(o=>ci(o[ck])>ci(c[ck]) && o[key]>c[key]);
-    c._beats.forEach(o=>pairs.push({w:c,l:o,jump:ci(o[ck])-ci(c[ck]),m:o[key]-c[key]})); });
-  timed.filter(c=>c[ck]==="R").forEach(c=>c._beats=[]);
-  const utag = c => !(c._beats && c._beats.length) ? "" : lbView==="all" ? ` · <span class="ut">▲ BEATS ${c._beats.length} HIGHER-CLASS CAR${c._beats.length>1?"S":""}</span>` : "";
-  const up = document.getElementById("upsets");
-  if(lbView==="all" && ranked.length){
-    pairs.sort((a,b)=>b.jump-a.jump || b.m-a.m);
-    up.innerHTML = pairs.length
-      ? `<div class="ups">${pairs.slice(0,3).map(p=>`<button type="button" class="up" data-id="${p.w.id}">
-          <div class="k">Beat a car ${p.jump>1?`${p.jump} classes`:"one class"} up</div>
-          <div class="m">${cbadge(p.w[ck])}<b>${p.w.y} ${esc(p.w.mk)} ${esc(p.w.md)}</b><span class="vs">BEAT</span>${cbadge(p.l[ck])}<span>${p.l.y} ${esc(p.l.mk)} ${esc(p.l.md)}</span></div>
-          <div class="d">${fmt(p.w[key])} vs ${fmt(p.l[key])} · by ${p.m.toFixed(3)}s</div></button>`).join("")}</div>`
-      : `<div class="upnone"><b>Punching up</b>Nothing yet in this test. When a lower-class car beats a higher-class one, it lands here.</div>`;
-  } else up.innerHTML = "";
+  if(!timed.length && lbActive()){ document.getElementById("lbgrid").innerHTML = `<div class="lbfnone">No cars that match these filters have run this test yet. Try another test or clear a filter.</div>`; return; }
   if(!timed.length){ document.getElementById("lbgrid").innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;padding:40px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">First results land here soon.</p></div>`; return; }
   if(lbView==="all"){
     const g=[...ranked].sort((a,b)=>a[key]-b[key]);
     if(!g.length){ document.getElementById("lbgrid").innerHTML=""; return; }
-    const lead=g[0][key]; const maxGap=Math.max(...g.map(c=>c[key]-lead), lbMode==="li7"?10:1);
+    const lead=g[0][key];
     document.getElementById("lbgrid").innerHTML = `<div class="lb wide" style="--c:var(--acid)"><h3>All Classes<span class="n">${g.length} CAR${g.length>1?"S":""}</span></h3>
       ${g.map((c,i)=>{ const gap=c[key]-lead; return `<div class="row ${i===0?"first":""}" data-id="${c.id}">
         <span class="rk">${i+1}</span>
-        <span class="cn">${cbadge(c[ck])}${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${ck==="sc"?c.sp:c.lp}${utag(c)}</small></span>
+        <span class="cn">${cbadge(c[ck])}${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${c[pk]}</small></span>
         <span class="tm">${fmt(c[key])}</span>
-        <span class="gapbar">${i===0?`<span class="crown">OVERALL LEADER</span>`:`<i style="width:${Math.max(4,gap/maxGap*44)}%"></i><b>+${gap.toFixed(3)}</b>`}</span>
+        <span class="gapbar">${i===0?`<span class="crown">OVERALL LEADER</span>`:`<b>+${gap.toFixed(3)}</b>`}</span>
       </div>`; }).join("")}</div>`;
     return;
   }
   const groups={}; timed.forEach(c=>(groups[c[ck]] ||= []).push(c));
   const order = CLASSES.filter(k=>groups[k]).reverse();
   document.getElementById("lbgrid").innerHTML = order.map(k=>{
-    const g=groups[k].sort((a,b)=>a[key]-b[key]); const lead=g[0][key]; const maxGap=Math.max(...g.map(c=>c[key]-lead), lbMode==="li7"?10:1);
+    const g=groups[k].sort((a,b)=>a[key]-b[key]); const lead=g[0][key];
     return `<div class="lb" style="--c:${CCOL[k]}"><h3><span class="big">${k}</span>Class ${k}${k==="R"?" · reference":""}<span class="n">${g.length} CAR${g.length>1?"S":""}</span></h3>
       ${g.map((c,i)=>{ const gap=c[key]-lead; return `<div class="row ${i===0?"first":""}" data-id="${c.id}">
         <span class="rk">${i+1}</span>
-        <span class="cn">${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${ck==="sc"?c.sp:c.lp}</small></span>
+        <span class="cn">${esc(c.mk)} ${esc(c.md)}<small>${c.y} · PI ${c[pk]}</small></span>
         <span class="tm">${fmt(c[key])}</span>
-        <span class="gapbar">${i===0?`<span class="crown">CLASS LEADER</span>`:`<i style="width:${Math.max(4,gap/maxGap*44)}%"></i><b>+${gap.toFixed(3)}</b>`}</span>
+        <span class="gapbar">${i===0?`<span class="crown">CLASS LEADER</span>`:`<b>+${gap.toFixed(3)}</b>`}</span>
       </div>`; }).join("")}
     </div>`; }).join("");
 }
 document.getElementById("lbgrid").addEventListener("click",e=>{ const r=e.target.closest(".row"); if(r) openCar(+r.dataset.id); });
-document.getElementById("upsets").addEventListener("click",e=>{ const r=e.target.closest(".up"); if(r) openCar(+r.dataset.id); });
 renderLB();
 
 // ===== TIRE EFFECT (dumbbell) =====
 (function(){
   const list = CARS.filter(c=>c.gain!=null).sort((a,b)=>b.gain-a.gain);
-  const W=720, rowH=24, top=30, left=200, right=40, H=top+list.length*rowH+10;
+  const W=720, rowH=24, top=30, left=200, right=40, N=10;
   const lo=Math.min(...list.map(c=>c.sp)), hi=Math.max(...list.map(c=>c.lp));
   const x0=Math.max(100,Math.floor((lo-25)/50)*50), x1=Math.min(1000,Math.ceil((hi+40)/50)*50); const X=v=>left+(v-x0)/(x1-x0)*(W-left-right);
-  // class bands (FH thresholds)
   const bands=[["D",100,400],["C",401,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900],["R",901,998]].filter(([k,a,b])=>b>x0&&a<x1).map(([k,a,b])=>[k,Math.max(a,x0),Math.min(b,x1)]);
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Stock PI versus semi-slick PI for each car">`;
-  bands.forEach(([k,a,b])=>{ s+=`<rect x="${X(Math.max(a,x0))}" y="${top-14}" width="${X(b)-X(Math.max(a,x0))}" height="${H-top+4}" fill="${CHEX[k]}" opacity=".05"/>
-    <text x="${(X(Math.max(a,x0))+X(b))/2}" y="${top-18}" text-anchor="middle" font-size="11" font-weight="700" fill="${CHEX[k]}">${k}</text>`; });
-  list.forEach((c,i)=>{ const y=top+i*rowH+rowH/2;
-    s+=`<g class="db" data-id="${c.id}" style="cursor:pointer">
-      <rect x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>
-      <text x="${left-12}" y="${y+4}" text-anchor="end" font-size="11.5" fill="#A9B6B7">${esc((c.mk+" "+c.md).length>26?(c.mk+" "+c.md).slice(0,25)+"…":c.mk+" "+c.md)}</text>
-      <line x1="${X(c.sp)}" x2="${X(c.lp)}" y1="${y}" y2="${y}" stroke="#1AB5C0" stroke-opacity=".5" stroke-width="2"/>
-      <circle cx="${X(c.sp)}" cy="${y}" r="5" fill="#748A8C" stroke="#1E2E30" stroke-width="2"/>
-      <circle cx="${X(c.lp)}" cy="${y}" r="5.5" fill="#1AB5C0" stroke="#1E2E30" stroke-width="2"/>
-      <text x="${X(c.lp)+10}" y="${y+4}" font-size="11" fill="#E1DEE3" font-weight="700">+${c.gain}</text>
-    </g>`; });
-  s+=`</svg>`;
-  const d=document.getElementById("dumb"); d.innerHTML=s;
-  d.querySelectorAll(".db").forEach(g=>{ const c=CARS[+g.dataset.id];
-    g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.sc} ${c.sp} → ${c.lc} ${c.lp}<br>+${c.gain} PI${c.sc!==c.lc?" · class jump":""}</span>`));
-    g.addEventListener("mouseleave",hideTip); g.addEventListener("click",()=>openCar(c.id)); });
+  const d=document.getElementById("dumb");
+  let expanded=false;
+  function draw(){
+    const short = !expanded && list.length > N*2+2;
+    const rows = short ? [...list.slice(0,N), {gap:list.length-N*2}, ...list.slice(-N)] : list;
+    const H=top+rows.length*rowH+10;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Stock PI versus semi-slick PI for each car">`;
+    bands.forEach(([k,a,b])=>{ s+=`<rect x="${X(a)}" y="${top-14}" width="${X(b)-X(a)}" height="${H-top+4}" fill="${CHEX[k]}" opacity=".05"/>
+      <text x="${(X(a)+X(b))/2}" y="${top-18}" text-anchor="middle" font-size="11" font-weight="700" fill="${CHEX[k]}">${k}</text>`; });
+    rows.forEach((c,i)=>{ const y=top+i*rowH+rowH/2;
+      if(c.gap!=null){ s+=`<line x1="${left-180}" x2="${W-right}" y1="${y}" y2="${y}" stroke="#748A8C" stroke-dasharray="2 5" opacity=".6"/>
+        <rect x="${(W-200)/2}" y="${y-9}" width="200" height="18" rx="9" fill="#1E2E30"/>
+        <text x="${W/2}" y="${y+4}" text-anchor="middle" font-size="10.5" fill="#A9B6B7" letter-spacing=".08em">${c.gap} MORE CARS IN BETWEEN</text>`; return; }
+      s+=`<g class="db" data-id="${c.id}" style="cursor:pointer">
+        <rect x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>
+        <text x="${left-12}" y="${y+4}" text-anchor="end" font-size="11.5" fill="#A9B6B7">${esc((c.mk+" "+c.md).length>26?(c.mk+" "+c.md).slice(0,25)+"…":c.mk+" "+c.md)}</text>
+        <line x1="${X(c.sp)}" x2="${X(c.lp)}" y1="${y}" y2="${y}" stroke="#1AB5C0" stroke-opacity=".5" stroke-width="2"/>
+        <circle cx="${X(c.sp)}" cy="${y}" r="5" fill="#748A8C" stroke="#1E2E30" stroke-width="2"/>
+        <circle cx="${X(c.lp)}" cy="${y}" r="5.5" fill="#1AB5C0" stroke="#1E2E30" stroke-width="2"/>
+        <text x="${X(c.lp)+10}" y="${y+4}" font-size="11" fill="#E1DEE3" font-weight="700">+${c.gain}</text>
+      </g>`; });
+    s+=`</svg>`;
+    const btn = list.length > N*2+2 ? `<button type="button" class="dbmore">${expanded?"Show top and bottom 10":"Show all "+list.length+" cars"}</button>` : "";
+    d.innerHTML=s+btn;
+    d.querySelectorAll(".db").forEach(g=>{ const c=CARS[+g.dataset.id];
+      g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.sc} ${c.sp} → ${c.lc} ${c.lp}<br>+${c.gain} PI${c.sc!==c.lc?" · class jump":""}</span>`));
+      g.addEventListener("mouseleave",hideTip); g.addEventListener("click",()=>openCar(c.id)); });
+    const b=d.querySelector(".dbmore"); if(b) b.addEventListener("click",()=>{ expanded=!expanded; draw(); if(!expanded) d.scrollIntoView({block:"nearest"}); });
+  }
+  draw();
   const top1=list[0], jumpers=list.filter(c=>c.sc!==c.lc).length, zero=list.filter(c=>c.gain===0);
   const withBoth=CARS.filter(c=>c.rS&&c.rT);
   const avg=RLAB.map((l,i)=>({l, v:withBoth.reduce((a,c)=>a+(c.rT[i]-c.rS[i]),0)/withBoth.length}));
   const mx=Math.max(...avg.map(a=>a.v));
   document.getElementById("tirecall").innerHTML = `
-    <div><div class="k">Biggest glow-up</div><div class="v">+${top1.gain}</div><div class="big" style="margin-top:6px">${top1.y} ${esc(top1.mk)} ${esc(top1.md)}</div><div style="color:var(--ink2);font-size:13px;margin-top:4px">${top1.sc} ${top1.sp} on its stock ${esc(top1.tire||"")} tires, ${top1.lc} ${top1.lp} on semi-slicks.</div></div>
-    <div style="display:flex;gap:24px"><div><div class="k">Changed class</div><div class="mono" style="font-size:28px;font-weight:700">${jumpers}<span style="font-size:14px;color:var(--ink3)"> / ${list.length}</span></div></div>
+    <div style="display:flex;gap:24px"><div><div class="k">Changed class</div><div class="mono" style="font-size:28px;font-weight:700;white-space:nowrap">${jumpers}<span style="font-size:14px;color:var(--ink3)"> / ${list.length}</span></div></div>
       <div><div class="k">No change</div><div style="font-size:13px;color:var(--ink2);margin-top:6px">${zero.map(c=>esc(c.md)).join(", ")||"None"}</div></div></div>
     <div><div class="k" style="margin-bottom:10px">Average rating gain on semi-slicks (${withBoth.length} cars)</div>
       <div class="mini">${avg.map(a=>`<div class="r"><span>${a.l}</span><div class="bar"><i style="width:${mx?a.v/mx*100:0}%"></i></div><span class="n">+${a.v.toFixed(2)}</span></div>`).join("")}</div></div>`;
@@ -945,104 +1058,114 @@ renderLB();
 
 // ===== OVERACHIEVERS (scatter) =====
 (function(){
-  const pts=CARS.filter(c=>c.li7S && c.lp);
+  const pts=CARS.filter(c=>c.li7S && c.rp);
   if(pts.length<3){
     document.getElementById("scatter").innerHTML = `<div style="text-align:center;padding:60px 20px"><div class="pending" style="font-size:13px">IN THE LAB</div><p style="color:var(--ink2);margin-top:10px">This chart needs at least three cars with a 7 Laps in Heaven time. Check back soon.</p></div>`;
     ["overlist","underlist"].forEach(id=>document.getElementById(id).innerHTML=`<p style="color:var(--ink3);font-size:13px">Coming soon</p>`);
     return;
   }
-  const n=pts.length, mx=pts.reduce((a,c)=>a+c.lp,0)/n, my=pts.reduce((a,c)=>a+c.li7S,0)/n;
-  const b=pts.reduce((a,c)=>a+(c.lp-mx)*(c.li7S-my),0)/pts.reduce((a,c)=>a+(c.lp-mx)**2,0), a=my-b*mx;
-  pts.forEach(c=>c.res = (a+b*c.lp) - c.li7S); // positive = faster than predicted
+  const n=pts.length, mx=pts.reduce((a,c)=>a+c.rp,0)/n, my=pts.reduce((a,c)=>a+c.li7S,0)/n;
+  const b=pts.reduce((a,c)=>a+(c.rp-mx)*(c.li7S-my),0)/pts.reduce((a,c)=>a+(c.rp-mx)**2,0), a=my-b*mx;
+  pts.forEach(c=>c.res = (a+b*c.rp) - c.li7S); // positive = faster than predicted
   const W=720,H=420,L=52,R=20,T=24,B=44;
-  const xmin=480,xmax=890; const lim=Math.ceil(Math.max(...pts.map(c=>Math.abs(c.res)))+0.5);
+  const xmin=Math.min(480,Math.floor((Math.min(...pts.map(c=>c.rp))-20)/10)*10),xmax=Math.max(890,Math.ceil((Math.max(...pts.map(c=>c.rp))+20)/10)*10); const lim=Math.ceil(Math.max(...pts.map(c=>Math.abs(c.res)))+0.5);
   const X=v=>L+(v-xmin)/(xmax-xmin)*(W-L-R), Y=v=>T+(lim-v)/(2*lim)*(H-T-B);
   let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Seconds faster or slower than PI predicts, by PI">`;
   s+=`<rect x="${L}" y="${T}" width="${W-L-R}" height="${Y(0)-T}" fill="#1AB5C0" opacity=".04"/><rect x="${L}" y="${Y(0)}" width="${W-L-R}" height="${H-B-Y(0)}" fill="#D97757" opacity=".035"/>`;
   s+=`<g class="axis">`;
-  const stp=lim>12?5:(lim>6?2:1); for(let v=-lim+(lim%stp); v<=lim; v+=stp){ if(v===0) continue; s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke-dasharray="2 4"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end">${v>0?"−":"+"}${Math.abs(v)}s</text>`; }
-  [["C",400,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900]].forEach(([k,a2,b2])=>{ const xa=X(Math.max(a2,xmin)), xb=X(Math.min(b2,xmax)); s+=`<text x="${(xa+xb)/2}" y="${H-B+20}" text-anchor="middle" fill="${CHEX[k]}" font-weight="700">${k}</text>`; if(a2>xmin) s+=`<line x1="${xa}" x2="${xa}" y1="${T}" y2="${H-B}" stroke-dasharray="1 4"/>`; });
-  s+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">PI ON SEMI-SLICKS →</text>
+  const stp=lim>60?20:lim>30?10:lim>12?5:(lim>6?2:1); for(let v=-lim+(lim%stp); v<=lim; v+=stp){ if(v===0) continue; s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke-dasharray="2 4"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end">${v>0?"−":"+"}${Math.abs(v)}s</text>`; }
+  [["D",100,400],["C",401,500],["B",501,600],["A",601,700],["S1",701,800],["S2",801,900],["R",901,998]].filter(([k,a2,b2])=>b2>xmin&&a2<xmax).forEach(([k,a2,b2])=>{ const xa=X(Math.max(a2,xmin)), xb=X(Math.min(b2,xmax)); s+=`<text x="${(xa+xb)/2}" y="${H-B+20}" text-anchor="middle" fill="${CHEX[k]}" font-weight="700">${k}</text>`; if(a2>xmin) s+=`<line x1="${xa}" x2="${xa}" y1="${T}" y2="${H-B}" stroke-dasharray="1 4"/>`; });
+  s+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">PI ON RACE SLICKS →</text>
       <text x="${L+8}" y="${T+16}" fill="#1AB5C0" font-size="10" font-weight="700">FASTER THAN PI SAYS ↑</text>
       <text x="${L+8}" y="${H-B-8}" fill="#D97757" font-size="10" font-weight="700">SLOWER THAN PI SAYS ↓</text></g>`;
   s+=`<line x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#1AB5C0" stroke-width="2" stroke-dasharray="6 4" opacity=".75"/>
       <text x="${W-R-4}" y="${Y(0)-8}" text-anchor="end" font-size="10" fill="#1AB5C0">EXPECTED FOR ITS PI</text>`;
   const sorted=[...pts].sort((p,q)=>q.res-p.res);
   const labelIds=new Set([...sorted.slice(0,3),...sorted.slice(-3)].map(c=>c.id));
-  const flip=new Set(); [...pts].filter(c=>labelIds.has(c.id)&&c.res<0).sort((p,q)=>p.lp-q.lp).forEach((c,i,arr)=>{ if(i<arr.length-1 && arr[i+1].lp-c.lp<40) flip.add(c.id); });
-  pts.forEach(c=>{ const cx=X(c.lp), cy=Y(c.res);
-    s+=`<g class="pt" data-id="${c.id}" style="cursor:pointer"><line x1="${cx}" x2="${cx}" y1="${Y(0)}" y2="${cy}" stroke="${CHEX[c.lc]}" stroke-opacity=".45" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>
-      <circle cx="${cx}" cy="${cy}" r="6.5" fill="${CHEX[c.lc]}" stroke="#1E2E30" stroke-width="2"/>
+  const flip=new Set(); [...pts].filter(c=>labelIds.has(c.id)&&c.res<0).sort((p,q)=>p.rp-q.rp).forEach((c,i,arr)=>{ if(i<arr.length-1 && arr[i+1].rp-c.rp<40) flip.add(c.id); });
+  pts.forEach(c=>{ const cx=X(c.rp), cy=Y(c.res);
+    s+=`<g class="pt" data-id="${c.id}" style="cursor:pointer"><line x1="${cx}" x2="${cx}" y1="${Y(0)}" y2="${cy}" stroke="${CHEX[c.rc]}" stroke-opacity=".45" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="14" fill="transparent"/>
+      <circle cx="${cx}" cy="${cy}" r="6.5" fill="${CHEX[c.rc]}" stroke="#1E2E30" stroke-width="2"/>
       ${labelIds.has(c.id)?`<text x="${flip.has(c.id)?cx-10:cx+10}" y="${cy+(c.res>0?-6:16)}" text-anchor="${flip.has(c.id)?"end":"start"}" font-size="10.5" fill="#E1DEE3">${esc(c.md)}</text>`:""}</g>`; });
   s+=`</svg>`;
   const d=document.getElementById("scatter"); d.innerHTML=s;
   d.querySelectorAll(".pt").forEach(g=>{ const c=CARS[+g.dataset.id];
-    g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.y} · ${c.lc} ${c.lp}<br>7 laps ${fmt(c.li7S)}<br>${c.res>=0?"Faster":"Slower"} than expected by ${Math.abs(c.res).toFixed(2)}s</span>`));
+    g.addEventListener("mousemove",e=>showTip(e,`<b>${esc(c.md)}</b><span class="m">${c.y} · ${c.rc} ${c.rp} on race slicks<br>7 laps ${fmt(c.li7S)}<br>${c.res>=0?"Faster":"Slower"} than expected by ${Math.abs(c.res).toFixed(2)}s</span>`));
     g.addEventListener("mouseleave",hideTip); g.addEventListener("click",()=>openCar(c.id)); });
-  const used=CLASSES.filter(k=>pts.some(c=>c.lc===k));
+  const used=CLASSES.filter(k=>pts.some(c=>c.rc===k));
   document.getElementById("scleg").innerHTML = used.map(k=>`<span><i style="background:${CHEX[k]}"></i>Class ${k}</span>`).join("") + `<span>Hover a dot for details</span>`;
-  const item=(c,i)=>`<div class="it" data-id="${c.id}"><span class="mono" style="color:var(--ink3)">${i+1}</span><span>${c.y} ${esc(c.mk)} ${esc(c.md)} ${cls(c.lc)}</span><span class="d ${c.res>=0?"up":"dn"}">${c.res>=0?"−":"+"}${Math.abs(c.res).toFixed(2)}s</span></div>`;
-  document.getElementById("overlist").innerHTML = sorted.slice(0,4).map(item).join("");
-  document.getElementById("underlist").innerHTML = sorted.slice(-4).reverse().map(item).join("");
+  const item=(c,i)=>`<div class="it" data-id="${c.id}"><span class="mono" style="color:var(--ink3)">${i+1}</span><span>${c.y} ${esc(c.mk)} ${esc(c.md)} ${cls(c.rc)}</span><span class="d ${c.res>=0?"up":"dn"}">${c.res>=0?"−":"+"}${Math.abs(c.res).toFixed(2)}s</span></div>`;
+  const none=t=>`<p style="color:var(--ink3);font-size:13px">${t}</p>`;
+  const over=sorted.filter(c=>c.res>0), under=sorted.filter(c=>c.res<0).reverse();
+  document.getElementById("overlist").innerHTML = over.length ? over.slice(0,4).map(item).join("") : none("No car beats its PI yet.");
+  document.getElementById("underlist").innerHTML = under.length ? under.slice(0,4).map(item).join("") : none("No car trails its PI yet.");
   document.querySelectorAll(".list").forEach(l=>l.addEventListener("click",e=>{ const it=e.target.closest(".it"); if(it) openCar(+it.dataset.id); }));
 })();
 
-// ===== COMPARISON =====
+// ===== COMPARISON (tale of the tape) =====
 (function(){
   const pick=document.getElementById("sdpick");
   const opts = [...CARS].sort((a,b)=>a.mk.localeCompare(b.mk)||a.md.localeCompare(b.md)||a.y-b.y);
   const optHTML = sel => { let out="", mk=null; opts.forEach(c=>{ if(c.mk!==mk){ if(mk!==null) out+="</optgroup>"; mk=c.mk; out+=`<optgroup label="${esc(mk)}">`; } out+=`<option value="${c.id}" ${c.id===sel?"selected":""}>${esc(c.mk)} ${esc(c.md)} ${c.y}</option>`; }); return out+(mk!==null?"</optgroup>":""); };
-  const def = ["Mustang Dark Horse","Mustang GT","Mustang GTD"].map(m=>{ const c=CARS.find(c=>c.md===m); return c?c.id:""; });
-  const tire = ["stock","stock","stock"];
-  pick.innerHTML = [0,1,2].map(i=>`<div><label for="sd${i}"><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select id="sd${i}" data-i="${i}"><option value="">None</option>${optHTML(def[i])}</select>
-    <div class="tseg" data-i="${i}" role="group" aria-label="Car ${i+1} tires"><button type="button" data-t="stock" class="on">Stock tires</button><button type="button" data-t="semi">Semi-slicks</button></div></div>`).join("");
+  // default: the 1997 episode lineup (Civic Type R, M3, Diablo SV), cheapest tier first
+  let def=CARS.filter(c=>c.ep==="1997").sort((a,b)=>a.sp-b.sp).slice(0,3).map(c=>c.id);
+  if(def.length<3) def=["Civic Type R","M3","Diablo SV"].map(m=>{ const c=CARS.find(c=>c.y===1997&&c.md===m); return c?c.id:""; });
+  pick.innerHTML = [0,1,2].map(i=>`<div><label for="sd${i}"><i style="background:${PCOL[i]}"></i>CAR ${i+1}</label><select id="sd${i}" data-i="${i}"><option value="">None</option>${optHTML(def[i])}</select></div>`).join("");
   pick.addEventListener("change",render);
-  window.loadCompare = ids => { const sels=[...pick.querySelectorAll("select")]; sels.forEach((s,i)=>{ s.value = ids[i]!=null ? String(ids[i]) : ""; tire[i]="stock"; }); render(); };
-  pick.addEventListener("click",e=>{ const b=e.target.closest(".tseg button"); if(!b||b.disabled) return; const i=+b.parentNode.dataset.i; tire[i]=b.dataset.t; render(); });
-  const TL = {stock:"STOCK", semi:"SEMI-SLICKS"};
-  // per-car, per-tire view of the numbers
-  const view = (c,t) => t==="semi"
-    ? {cls:c.lc, pi:c.lp, z60:c.z60s, z100:c.z100s, top:c.tops, rat:c.rT, tireName:"Horizon semi-slick"}
-    : {cls:c.sc, pi:c.sp, z60:c.z60, z100:c.z100, top:c.top, rat:c.rS, tireName:c.tire||"Stock"};
+  window.loadCompare = ids => { [...pick.querySelectorAll("select")].forEach((s,i)=>{ s.value = ids[i]!=null ? String(ids[i]) : ""; }); render(); };
+  const TICK=0.017;
+  // [label, getter, display, better: "low"|"high"|null, tolerance, sublabel]
+  const GROUPS=[
+    ["Test Day",[
+      ["Sunrise Sprint", c=>c.sfS, fmt, "low", TICK, "stock tires", c=>[c.sc,c.sp]],
+      ["Golden Hour lap", c=>c.hokS, fmt, "low", TICK, "semi-slicks", c=>[c.lc,c.lp]],
+      ["7 Laps in Heaven", c=>c.li7S, fmt, "low", TICK, "race slicks", c=>[c.rc,c.rp]],
+    ]],
+    ["The basics",[
+      ["Year", c=>c.y, v=>v, null],
+      ["Drivetrain", c=>c.dt||null, v=>v, null],
+      ["Power", c=>c.hp, v=>v+" hp", "high", 0],
+      ["Weight", c=>c.wt, v=>v.toLocaleString()+" lb", "low", 0],
+      ["0-60 mph", c=>c.z60, v=>v.toFixed(3)+" s", "low", 0, "stock"],
+      ["0-100 mph", c=>c.z100, v=>v.toFixed(3)+" s", "low", 0, "stock"],
+      ["Top speed", c=>c.top, v=>v.toFixed(1)+" mph", "high", 0, "stock"],
+    ]],
+  ];
   function render(){
-    const sels=[...pick.querySelectorAll("select")];
-    sels.forEach((s,i)=>{ const c=s.value===""?null:CARS[+s.value]; const seg=pick.querySelector(`.tseg[data-i="${i}"]`);
-      const semiOk = !!(c && c.lp); if(!semiOk && tire[i]==="semi") tire[i]="stock";
-      seg.querySelectorAll("button").forEach(b=>{ b.classList.toggle("on",b.dataset.t===tire[i]); if(b.dataset.t==="semi") b.disabled=!semiOk; }); });
-    const sel=sels.map((s,i)=>({i, t:tire[i], c: s.value===""?null:CARS[+s.value]})).filter(x=>x.c).map(x=>({...x, v:view(x.c,x.t)}));
-    const nm = x => `<span class="nm">${esc(x.c.md)}<small>${TL[x.t]}</small></span>`;
-    // bar metric. get(x) returns a number or null; lowerBetter flips the scale
-    const metric=(title,get,fmtf,unit,lowerBetter,opt={})=>{ const have=sel.filter(x=>get(x)!=null); if(!have.length && !opt.always) return "";
-      const vals=have.map(get); const best=lowerBetter?Math.min(...vals):Math.max(...vals), worst=lowerBetter?Math.max(...vals):Math.min(...vals); const span=Math.max(Math.abs(worst-best), opt.minSpan||0.5);
-      return `<div class="metric ${opt.hero?"hm":""}"><h4>${title}</h4>${sel.map(x=>{ const v=get(x);
-        if(v==null) return `<div class="mrow">${nm(x)}<span class="na">${opt.na?opt.na(x):"NOT LOGGED"}</span><span></span></div>`;
-        const gap=Math.abs(v-best); const tag = have.length<2 ? "" : gap===0 ? (lowerBetter?"QUICKEST":"FASTEST") : (lowerBetter?"+":"-")+gap.toFixed(lowerBetter?3:1)+unit;
-        return `<div class="mrow">${nm(x)}<div class="track"><i style="background:${PCOL[x.i]};width:${gap===0?100:Math.max(8,100-gap/span*70)}%"></i></div><span class="val">${fmtf(v)}<br><small>${tag}</small></span></div>`; }).join("")}</div>`; };
-    const sec3 = v => v.toFixed(3)+" s";
-    let left = metric("0-60 mph", x=>x.v.z60, sec3, "s", true, {hero:true})
-             + metric("0-100 mph", x=>x.v.z100, sec3, "s", true, {hero:true})
-             + metric("Top speed", x=>x.v.top, v=>v.toFixed(1)+" mph", " mph", false, {minSpan:5});
-    if(!sel.some(x=>x.v.z60!=null||x.v.z100!=null)) left = `<p style="color:var(--ink3)">No acceleration numbers logged for these cars on these tires yet.</p>` + left;
-    const onStock = x => x.t==="stock" ? null : "RUN ON STOCK TIRES";
-    const onSemi = x => x.t==="semi" ? null : "RUN ON SEMI-SLICKS";
-    left += metric("Sunrise Sprint · time", x=>x.t==="stock"?x.c.sfS:null, fmt, "s", true, {na:x=>onStock(x)||"IN THE LAB"})
-          + metric("Golden Hour · fastest lap", x=>x.t==="semi"?x.c.hokS:null, fmt, "s", true, {na:x=>onSemi(x)||"IN THE LAB"})
-          + metric("7 Laps in Heaven · 7-lap total", x=>x.t==="semi"?x.c.li7S:null, fmt, "s", true, {na:x=>onSemi(x)||"IN THE LAB"});
-    document.getElementById("sdtimes").innerHTML = left;
-    const rat = sel.some(x=>x.v.rat) ? `<div class="metric"><h4>Forza ratings (out of 10)</h4>${RLAB.map((l,ri)=>`<div style="margin-bottom:8px"><div class="mono" style="font-size:11px;color:var(--ink2);margin-bottom:3px">${l.toUpperCase()}</div>${sel.map(x=>{ const v=x.v.rat?x.v.rat[ri]:null; return `<div class="mrow" style="grid-template-columns:1fr 40px;margin-bottom:3px"><div class="track" style="height:8px"><i style="background:${PCOL[x.i]};width:${v!=null?v*10:0}%"></i></div><span class="val" style="font-size:12px">${v!=null?v.toFixed(1):"n/a"}</span></div>`; }).join("")}</div>`).join("")}</div>` : `<p style="color:var(--ink3)">No ratings logged for these cars on these tires yet.</p>`;
-    document.getElementById("sdrat").innerHTML = rat;
-    const rows=[["Year",x=>x.c.y],["Tires",x=>x.v.tireName],["Class",x=>x.v.pi?x.v.cls+" "+x.v.pi:"n/a"],["Drivetrain",x=>x.c.dt||"n/a"],["Power",x=>x.c.hp?x.c.hp+" hp":"n/a"],["Weight",x=>x.c.wt?x.c.wt.toLocaleString()+" lb":"n/a"],
-      ["0-60 mph",x=>x.v.z60!=null?x.v.z60.toFixed(3)+" s":"n/a"],["0-100 mph",x=>x.v.z100!=null?x.v.z100.toFixed(3)+" s":"n/a"],["Top speed",x=>x.v.top!=null?x.v.top+" mph":"n/a"]];
-    document.getElementById("sdspec").innerHTML = `<tr><th></th>${sel.map(x=>`<th style="color:${PCOL[x.i]}">${esc(x.c.md)}<br><small style="color:var(--ink3);font-weight:400">${TL[x.t]}</small></th>`).join("")}</tr>` + rows.map(r=>`<tr><td>${r[0]}</td>${sel.map(x=>`<td>${esc(r[1](x))}</td>`).join("")}</tr>`).join("");
-    // verdict
-    const v=document.getElementById("verdict");
-    if(sel.length<2){ v.innerHTML="Pick at least two cars to compare."; return; }
-    const label = x => `<b>${esc(x.c.md)}</b>${sel.filter(y=>y.c.id===x.c.id).length>1||sel.some(y=>y.t!==x.t)?` (${x.t==="semi"?"semis":"stock"})`:""}`;
-    const win=(get)=>{ const h=sel.filter(x=>get(x)!=null); if(h.length<2) return null; return h.sort((p,q)=>get(p)-get(q))[0]; };
-    const ws=[[x=>x.v.z60,"the sprint to 60"],[x=>x.v.z100,"the run to 100"],[x=>x.t==="stock"?x.c.sfS:null,"the Sunrise Sprint"],[x=>x.t==="semi"?x.c.hokS:null,"Golden Hour"],[x=>x.t==="semi"?x.c.li7S:null,"7 Laps in Heaven"]].map(([g,n])=>({w:win(g),n})).filter(x=>x.w);
-    const parts=ws.map(x=>`${label(x.w)} takes ${x.n}`);
-    const sweep = ws.length>=3 && ws.every(x=>x.w.i===ws[0].w.i);
-    v.innerHTML = parts.length ? "Lab verdict: "+(parts.length>1?parts.slice(0,-1).join(", ")+" and "+parts[parts.length-1]:parts[0])+(sweep?". A clean sweep.":".") : "Not enough shared numbers between these picks yet. Check back soon.";
+    const sel=[...pick.querySelectorAll("select")].map((s,i)=>({i, c:s.value===""?null:CARS[+s.value]})).filter(x=>x.c);
+    const tbl=document.getElementById("sdspec");
+    if(!sel.length){ tbl.innerHTML=""; document.getElementById("sdrat").innerHTML=""; document.getElementById("sdleg").innerHTML=""; return; }
+    const wins=new Map(sel.map(x=>[x.i,{test:0,all:0}])); let testRows=0, testTies=0;
+    tbl.style.minWidth=(140+sel.length*120)+"px";
+    let h=`<colgroup><col style="width:140px">${sel.map(()=>"<col>").join("")}</colgroup><thead><tr><th></th>${sel.map(x=>`<th><span class="cw" style="--c:${PCOL[x.i]}"><i></i>${esc(x.c.md)}<small>${esc(x.c.mk)} · ${x.c.y}</small></span></th>`).join("")}</tr></thead><tbody>`;
+    GROUPS.forEach(([g,rows])=>{
+      h+=`<tr class="grp"><td colspan="${sel.length+1}">${g}</td></tr>`;
+      rows.forEach(([lab,get,disp,better,tol,sub,clsOf])=>{
+        const vals=sel.map(x=>get(x.c)); const have=vals.filter(v=>v!=null);
+        let best=null; if(better && have.length>=2){ best = better==="low"?Math.min(...have):Math.max(...have); }
+        if(g==="Test Day" && have.length>=2) testRows++;
+        const isW = val => best!=null && val!=null && Math.abs(val-best)<=(tol||0)+1e-9;
+        const tie = vals.filter(isW).length>1; if(tie && g==="Test Day") testTies++;
+        h+=`<tr><td>${lab}${sub?`<small>${sub}</small>`:""}</td>${sel.map((x,k)=>{ const val=vals[k];
+          if(val==null) return `<td><span class="lab">${g==="Test Day"?"IN THE LAB":"n/a"}</span>${(()=>{ const ci=clsOf?clsOf(x.c):null; return ci&&ci[0]&&ci[1]?`<small><span class="pic">${cbadge(ci[0])}${ci[1]}</span></small>`:""; })()}</td>`;
+          const w = isW(val);
+          if(w && !tie){ const r=wins.get(x.i); r.all++; if(g==="Test Day") r.test++; }
+          return `<td class="${w?"w":""}" style="--c:${tie?"var(--ink3)":PCOL[x.i]}">${w?`<span class="ck" aria-label="${tie?"tie":"winner"}">${tie?"=":"✓"}</span>`:""}${esc(disp(val,x.c))}${(()=>{ const ci=clsOf?clsOf(x.c):null; const ct=ci&&ci[0]&&ci[1]?`<span class="pic">${cbadge(ci[0])}${ci[1]}</span>`:""; const tt=w&&tie?"TIE":""; return ct||tt?`<small>${tt}${tt&&ct?" · ":""}${ct}</small>`:""; })()}</td>`; }).join("")}</tr>`;
+      });
+    });
+    tbl.innerHTML=h+"</tbody>";
+    // radar overlay
+    const size=300, cx=size/2, cy=size/2, r=size/2-38, n=6;
+    const pt=(i,val)=>{ const a=-Math.PI/2+i*2*Math.PI/n; return [cx+Math.cos(a)*r*val/10, cy+Math.sin(a)*r*val/10]; };
+    let sv=`<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="Forza ratings overlay">`;
+    [2.5,5,7.5,10].forEach(val=>{ sv+=`<polygon points="${[...Array(n)].map((_,i)=>pt(i,val).join(",")).join(" ")}" fill="none" stroke="#33494B"/>`; });
+    for(let i=0;i<n;i++){ const p=pt(i,10), q=pt(i,11.9); sv+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#33494B"/><text x="${q[0]}" y="${q[1]+4}" text-anchor="middle" font-size="10.5" fill="#A9B6B7">${RLAB[i].toUpperCase()}</text>`; }
+    const HEX=["#1AB5C0","#D97757","#896279"];
+    const withR=sel.filter(x=>x.c.rS);
+    withR.forEach(x=>{ sv+=`<polygon points="${x.c.rS.map((val,i)=>pt(i,val).join(",")).join(" ")}" fill="${HEX[x.i]}" fill-opacity=".14" stroke="${HEX[x.i]}" stroke-width="2.2" stroke-linejoin="round"/>`; });
+    sv+=`</svg>`;
+    document.getElementById("sdrat").innerHTML = withR.length ? sv : `<p style="color:var(--ink3);font-size:13px">No ratings logged for these cars yet.</p>`;
+    document.getElementById("sdleg").innerHTML = withR.map(x=>`<span><i style="background:${HEX[x.i]}"></i>${esc(x.c.md)}</span>`).join("");
   }
   render();
 })();
@@ -1108,9 +1231,44 @@ const epSlug = n => "episode-" + n.toLowerCase().replace(/[^a-z0-9]+/g,"-").repl
 })();
 
 // ===== NAV highlight =====
-const links=[...document.querySelectorAll("#navl a")];
-const obs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-40% 0px -55% 0px"});
-document.querySelectorAll("section[id]").forEach(s=>obs.observe(s));
+// The current section is the last one whose top has passed a reading line just under the nav.
+// At the very bottom of the page the last section wins, since short sections can't reach the line.
+// Clicking a nav link lights it right away and holds it until the smooth scroll settles.
+(function(){
+  const nav=document.querySelector("nav"), ul=document.getElementById("navl");
+  const links=[...ul.querySelectorAll("a")];
+  const secs=links.map(a=>document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
+  let cur, lock=null, lockT=0, lockMax=0, raf=0;
+  const set=id=>{ if(id===cur) return; cur=id;
+    links.forEach(a=>{ const on=a.getAttribute("href")==="#"+id; a.classList.toggle("on",on);
+      if(on){ a.setAttribute("aria-current","location");
+        if(ul.scrollWidth>ul.clientWidth) ul.scrollTo({left:a.offsetLeft-ul.offsetLeft-(ul.clientWidth-a.offsetWidth)/2,behavior:"smooth"}); }
+      else a.removeAttribute("aria-current"); }); };
+  const pick=()=>{ raf=0; if(lock) return;
+    const se=document.scrollingElement, line=nav.offsetHeight+Math.min(innerHeight*.3,240);
+    if(se.scrollTop>0 && se.scrollTop+innerHeight>=se.scrollHeight-4){ set(secs[secs.length-1].id); return; }
+    let id=null; for(const s of secs){ if(s.getBoundingClientRect().top<=line) id=s.id; else break; }
+    set(id); };
+  const queue=()=>{ if(!raf) raf=requestAnimationFrame(pick); };
+  const release=()=>{ clearTimeout(lockT); clearTimeout(lockMax); lock=null; queue(); };
+  addEventListener("scroll",()=>{ if(lock){ clearTimeout(lockT); lockT=setTimeout(release,140); } else queue(); },{passive:true});
+  addEventListener("resize",queue);
+  new ResizeObserver(queue).observe(document.querySelector("main"));
+  ul.addEventListener("click",e=>{ const a=e.target.closest("a"); if(!a) return;
+    const id=a.getAttribute("href").slice(1); lock=id; set(id);
+    clearTimeout(lockT); clearTimeout(lockMax); lockT=setTimeout(release,400); lockMax=setTimeout(release,2000); });
+  queue();
+})();
+
+// ===== LAB FINDINGS TOGGLE =====
+(function(){
+  const seg=document.getElementById("fseg");
+  const show=v=>{ seg.querySelectorAll("button").forEach(b=>{ const on=b.dataset.v===v; b.classList.toggle("on",on); b.setAttribute("aria-selected",on); });
+    document.querySelectorAll("#findings .fpane").forEach(p=>p.hidden=p.dataset.p!==v); };
+  seg.addEventListener("click",e=>{ const b=e.target.closest("button"); if(b) show(b.dataset.v); });
+  const fromHash=()=>{ if(location.hash==="#overachievers") show("over"); else if(location.hash==="#tires") show("tires"); };
+  addEventListener("hashchange",fromHash); fromHash();
+})();
 </script>
 </body>
 </html>
