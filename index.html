@@ -3,38 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Poolzy Labs</title>
+<title>Poolzy Labs · Learning the world through games</title>
+<meta name="description" content="Poolzy Labs: learning the world through games. Shows about cars, places, and food that use games as the way in. First up: Test Day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=JetBrains+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#172426;--s1:#1E2E30;--line:#33494B;--ink:#E1DEE3;--ink2:#A9B6B7;--ink3:#748A8C;--teal:#1AB5C0;--acid:#98CE00}
+:root{--bg:#172426;--s1:#1E2E30;--slate:#293E40;--line:#33494B;--ink:#E1DEE3;--ink2:#A9B6B7;--ink3:#748A8C;--teal:#1AB5C0;--lav:#896279}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px}
-.wrap{max-width:720px;width:100%}
-.logo{display:flex;align-items:center;gap:10px;font-family:"Chakra Petch",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.mono{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.disp{font-family:"Chakra Petch",sans-serif;text-transform:uppercase}
+
+/* masthead */
+.top{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Chakra Petch",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px;text-decoration:none}
 .logo b{color:var(--teal)}
-h1{font-family:"Chakra Petch",sans-serif;font-size:clamp(40px,8vw,72px);line-height:.95;text-transform:uppercase;margin:28px 0 14px}
+.top nav{display:flex;gap:22px}
+.top nav a{text-decoration:none;color:var(--ink3)}
+.top nav a:hover{color:var(--teal)}
+
+/* hero */
+.hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+.issue{color:var(--teal);margin-bottom:22px}
+h1{font-family:"Chakra Petch",sans-serif;font-size:clamp(34px,7vw,84px);line-height:.9;text-transform:uppercase;margin:0;letter-spacing:-.01em}
 h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
-p{color:var(--ink2);font-size:17px;line-height:1.6;max-width:560px}
-.card{display:block;margin-top:32px;padding:22px 24px;background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:14px;color:var(--ink);text-decoration:none;transition:transform .15s,border-color .15s}
-.card:hover{transform:translateY(-2px);border-color:var(--teal)}
-.k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--teal);text-transform:uppercase}
-.t{font-family:"Chakra Petch",sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;margin-top:6px}
-.s{color:var(--ink3);font-size:14px;margin-top:4px}
-footer{margin-top:40px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.1em}
+h1 .dot{color:var(--teal)}
+.dek{color:var(--ink2);font-size:18px;line-height:1.65;margin:0}
+.dek strong{color:var(--ink);font-weight:500}
+
+/* section heads */
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:32px}
+.sh .n{color:var(--teal)}
+.sh h2{font-family:"Chakra Petch",sans-serif;font-size:30px;text-transform:uppercase;margin:0;letter-spacing:.02em}
+.sh .rule{flex:1;height:1px;background:var(--line)}
+
+/* principles */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pr{background:var(--s1);padding:26px 24px}
+.pr .mono{color:var(--lav)}
+.pr h3{font-family:"Chakra Petch",sans-serif;font-size:22px;text-transform:uppercase;margin:10px 0 8px}
+.pr p{color:var(--ink2);font-size:15px;line-height:1.6;margin:0}
+
+/* lineup */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;background:var(--s1);transition:border-color .15s,transform .15s}
+.feature:hover{border-color:var(--teal);transform:translateY(-2px)}
+.feature .art{background:linear-gradient(135deg,#1AB5C0 0%,#127d85 60%,#293E40 100%);padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:240px;position:relative;overflow:hidden}
+.feature .art::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(23,36,38,.14) 46px 48px)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg);color:var(--teal);padding:7px 12px;border-radius:99px;align-self:flex-start;position:relative;z-index:1}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(26,181,192,.25)}
+.big{font-family:"Chakra Petch",sans-serif;font-size:clamp(52px,7vw,84px);line-height:.85;text-transform:uppercase;color:var(--bg);position:relative;z-index:1}
+.feature .body{padding:30px;display:flex;flex-direction:column;gap:14px}
+.feature .body .mono{color:var(--ink3)}
+.feature .body p{color:var(--ink2);font-size:16px;line-height:1.6;margin:0}
+.sign{font-family:"Chakra Petch",sans-serif;font-size:18px;color:var(--ink);border-left:3px solid var(--teal);padding-left:12px;text-transform:none}
+.cta{margin-top:auto;color:var(--teal)}
+
+.soon{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.show{position:relative;border:1px dashed #4a6366;border-radius:16px;padding:28px;background:linear-gradient(180deg,rgba(137,98,121,.10),transparent 70%);overflow:hidden;min-height:170px;display:flex;flex-direction:column}
+.show .row{display:flex;justify-content:space-between;align-items:center}
+.show .row .mono:first-child{color:var(--lav)}
+.show .row .mono:last-child{color:var(--ink3)}
+.redact{font-family:"Chakra Petch",sans-serif;font-size:44px;text-transform:uppercase;line-height:.95;margin:26px 0 12px;color:transparent;-webkit-text-stroke:1.2px var(--ink2)}
+.show p{color:var(--ink2);font-size:15px;line-height:1.6;margin:0 0 18px}
+.feature .body p.credit{color:var(--ink3);font-size:11px;margin:0}
+.ghost{position:absolute;right:-14px;bottom:-30px;font-family:"Chakra Petch",sans-serif;font-size:170px;font-weight:700;color:rgba(225,222,227,.035);line-height:1;pointer-events:none}
+
+/* honesty strip */
+.strip{padding:56px 0;text-align:center}
+.strip q{font-family:"Chakra Petch",sans-serif;font-size:clamp(26px,4vw,40px);text-transform:uppercase;line-height:1.1;display:block;max-width:820px;margin:0 auto;quotes:none}
+.strip q span{color:var(--teal)}
+.strip .mono{color:var(--ink3);margin-top:16px;display:block}
+
+footer{padding:30px 0 40px;display:flex;justify-content:space-between;color:var(--ink3);flex-wrap:wrap;gap:12px}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:24px;padding:48px 0}
+  .three{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .feature .art{min-height:220px}
+  .soon{grid-template-columns:1fr}
+  .top nav{display:none}
+  section{padding:48px 0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1AB5C0" stroke-width="1.8" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10" stroke-dasharray="2 2"/></svg>Poolzy <b>Labs</b></div>
-  <h1>Learning the world<br><em>through games.</em></h1>
-  <p>Shows, experiments and data from the lab. First up: every car in Forza Horizon 6, put through the same test day.</p>
-  <a class="card" href="fh6/">
-    <div class="k">Forza Horizon 6</div>
-    <div class="t">Test Day Garage</div>
-    <div class="s">Every car in Forza Horizon 6, put through the same test day. Leaderboards, lab reports and showdowns.</div>
-  </a>
-  <footer>POOLZY LABS</footer>
+
+  <header class="top">
+    <a class="logo" href="./"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1AB5C0" stroke-width="1.8" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10" stroke-dasharray="2 2"/></svg>Poolzy <b>Labs</b></a>
+    <nav class="mono"><a href="#shows">Shows</a><a href="fh6/">Test Day Garage</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="issue mono">A lab for curious people</div>
+      <h1>Learning the world<br>through <em>games</em><span class="dot">.</span></h1>
+    </div>
+  </div>
+
+
+  <section id="shows">
+    <div class="sh"><span class="n mono">01</span><h2>Shows</h2><span class="rule"></span></div>
+
+    <a class="feature" href="fh6/">
+      <div class="art">
+        <span class="badge mono"><i></i>Now testing</span>
+        <div class="big">Test<br>Day</div>
+      </div>
+      <div class="body">
+        <div class="mono">Show 01 · Cars</div>
+        <p>Every car, same tests, same day.</p>
+        <p class="credit mono">Test footage and times from Forza Horizon 6</p>
+        <div class="cta mono">Open the Test Day Garage →</div>
+      </div>
+    </a>
+
+    <div class="soon">
+      <div class="show">
+        <div class="row"><span class="mono">Show 02 · Places</span><span class="mono">In development</span></div>
+        <div class="redact">Places</div>
+        <p>Coming later.</p>
+        <div class="ghost">02</div>
+      </div>
+      <div class="show">
+        <div class="row"><span class="mono">Show 03 · Food</span><span class="mono">In development</span></div>
+        <div class="redact">Food</div>
+        <p>Coming later.</p>
+        <div class="ghost">03</div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="mono"><span>Poolzy Labs</span><span>Learning the world through games</span></footer>
 </div>
 </body>
 </html>
